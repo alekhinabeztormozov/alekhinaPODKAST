@@ -4,12 +4,14 @@ import uuid
 from pathlib import Path
 
 from aiogram import Bot, F, Router
+from aiogram.filters import StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, FSInputFile, Message, User
 from loguru import logger
 
 from bot.keyboards.common import ambient_kb
 from bot.services.audio import make_episode
+from bot.services.pdf import build_guide
 from bot.states.flows import Producer
 from bot.ui import show
 from config import Settings, get_settings
@@ -18,6 +20,7 @@ from media.ambient import find_ambient
 router = Router(name="producer")
 
 MAX_TG_DOWNLOAD = 20 * 1024 * 1024
+MIN_GUIDE_LEN = 30
 TMP_DIR = Path("media/tmp")
 OUT_DIR = Path("media/out")
 
@@ -26,12 +29,45 @@ def _is_owner(user: User | None, settings: Settings) -> bool:
     return user is not None and user.id in settings.admin_ids
 
 
-@router.message(F.audio | F.voice)
-async def receive_audio(message: Message, state: FSMContext) -> None:
-    settings = get_settings()
-    if not _is_owner(message.from_user, settings):
+async def owner_only(message: Message) -> bool:
+    return _is_owner(message.from_user, get_settings())
+
+
+def split_guide(text: str) -> tuple[str, str]:
+    lines = text.splitlines()
+    non_empty = [line for line in lines if line.strip()]
+    if not non_empty:
+        return "Гайд", text.strip()
+    title = non_empty[0].strip()[:80]
+    index = lines.index(non_empty[0])
+    body = "\n".join(lines[index + 1:]).strip()
+    return title, body or non_empty[0].strip()
+
+
+@router.message(StateFilter(None), owner_only, F.text & ~F.text.startswith("/"))
+async def receive_guide_text(message: Message) -> None:
+    text = message.text or ""
+    if len(text.strip()) < MIN_GUIDE_LEN:
+        await message.answer("Пришли текст гайда (первая строка — заголовок) или аудио-эпизод для обработки.")
         return
 
+    title, body = split_guide(text)
+    await message.answer("Собираю PDF-гайд…")
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    out_path = OUT_DIR / f"guide_{uuid.uuid4().hex[:12]}.pdf"
+    try:
+        await build_guide(title, body, out_path)
+    except Exception as exc:
+        logger.error("Сборка PDF упала: {}", exc)
+        await message.answer("Не удалось собрать PDF-гайд.")
+        return
+
+    await message.answer_document(FSInputFile(out_path), caption=f"Гайд: {title}")
+    out_path.unlink(missing_ok=True)
+
+
+@router.message(owner_only, F.audio | F.voice)
+async def receive_audio(message: Message, state: FSMContext) -> None:
     media = message.audio or message.voice
     if media is None:
         return

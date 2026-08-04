@@ -9,7 +9,7 @@ from sqlalchemy.exc import IntegrityError
 
 from bot.content import find_item
 from bot.keyboards.common import main_menu
-from bot.services import sheets, subscriptions
+from bot.services import sales, sheets, subscriptions
 from config import Settings, get_settings
 from db.models import ProcessedPayment
 from db.session import DatabaseNotConfigured, session_scope
@@ -37,9 +37,9 @@ async def on_success(message: Message, bot: Bot) -> None:
 
     settings = get_settings()
     if payload == "sub":
-        await _fulfill_subscription(message, bot, user_id, settings, payment.total_amount)
+        await _fulfill_subscription(message, bot, user_id, settings, payment.total_amount, payment.currency)
     elif payload.startswith("item:"):
-        await _fulfill_item(message, user_id, payload.split(":", 1)[1], payment.total_amount)
+        await _fulfill_item(message, user_id, payload.split(":", 1)[1], payment.total_amount, payment.currency)
 
 
 async def _register_payment(
@@ -79,6 +79,7 @@ async def _fulfill_subscription(
     user_id: int,
     settings: Settings,
     amount: int,
+    currency: str,
 ) -> None:
     try:
         await subscriptions.grant(user_id, days=settings.subscription_days, status="active")
@@ -90,13 +91,15 @@ async def _fulfill_subscription(
     link = await _invite_link(bot, settings)
     tail = f"\nСсылка на канал: {link}" if link else ""
     await message.answer("Подписка активна. Спасибо!" + tail, reply_markup=main_menu())
+    await sales.record(user_id, "subscription", amount, currency)
     await sheets.add_sale(user_id, "subscription", amount)
 
 
-async def _fulfill_item(message: Message, user_id: int, item_id: str, amount: int) -> None:
+async def _fulfill_item(message: Message, user_id: int, item_id: str, amount: int, currency: str) -> None:
     item = find_item(item_id)
     title = item.title if item else item_id
     await message.answer(f"Спасибо! Твой гайд «{title}» уже в пути.", reply_markup=main_menu())
+    await sales.record(user_id, item_id, amount, currency)
     await sheets.add_sale(user_id, item_id, amount)
 
 

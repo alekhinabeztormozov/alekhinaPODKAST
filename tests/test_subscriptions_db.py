@@ -37,3 +37,15 @@ async def test_payment_idempotency(db):
     with pytest.raises(IntegrityError):
         async with session_scope() as session:
             session.add(ProcessedPayment(provider_payment_id="charge_x", tg_id=1, kind="sub"))
+
+
+async def test_sale_recorded_in_db(db):
+    from sqlalchemy import func, select
+
+    from bot.services import sales
+    from db.models import Sale
+
+    assert await sales.record(7, "starbucks", 30, "RUB") is True
+    async with session_scope() as session:
+        count = await session.scalar(select(func.count()).select_from(Sale))
+    assert count == 1

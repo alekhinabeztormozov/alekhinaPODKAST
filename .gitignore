@@ -1,0 +1,38 @@
+# secrets
+.env
+*.env
+!.env.example
+**/service_account*.json
+*.key
+*.pem
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# media artifacts (generated)
+media/out/
+media/tmp/
+*.mp3.tmp
+
+# db / logs
+*.sqlite3
+*.db
+logs/
+*.log
+
+# os / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# graph output stays tracked? keep cache out
+graphify-out/cache/

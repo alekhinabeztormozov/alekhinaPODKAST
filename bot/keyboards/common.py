@@ -4,6 +4,7 @@ from aiogram.types import InlineKeyboardMarkup
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 from bot.content import GuideItem, QuizQuestion
+from media.ambient import AMBIENTS
 
 
 def main_menu() -> InlineKeyboardMarkup:
@@ -63,5 +64,15 @@ def quiz_kb(question: QuizQuestion, index: int) -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     for option_index, option in enumerate(question.options):
         builder.button(text=option, callback_data=f"quiz:ans:{index}:{option_index}")
+    builder.adjust(1)
+    return builder.as_markup()
+
+
+def ambient_kb() -> InlineKeyboardMarkup:
+    builder = InlineKeyboardBuilder()
+    for track in AMBIENTS:
+        builder.button(text=track.title, callback_data=f"amb:{track.id}")
+    builder.button(text="Без фона", callback_data="amb:none")
+    builder.button(text="Отмена", callback_data="amb:cancel")
     builder.adjust(1)
     return builder.as_markup()

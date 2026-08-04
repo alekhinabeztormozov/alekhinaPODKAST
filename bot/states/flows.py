@@ -9,3 +9,7 @@ class PdfBonus(StatesGroup):
 
 class Quiz(StatesGroup):
     in_progress = State()
+
+
+class Producer(StatesGroup):
+    choosing_ambient = State()

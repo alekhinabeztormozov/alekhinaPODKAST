@@ -9,7 +9,7 @@ from aiogram.fsm.storage.base import BaseStorage
 from aiogram.fsm.storage.memory import MemoryStorage
 from loguru import logger
 
-from bot.handlers import admin, closed_channel, payments, pdf_bonus, quiz, shop, start
+from bot.handlers import admin, closed_channel, payments, pdf_bonus, producer, quiz, shop, start
 from bot.middlewares.throttling import ThrottlingMiddleware
 from config import Settings, get_settings
 
@@ -33,6 +33,7 @@ def build_dispatcher(settings: Settings) -> Dispatcher:
         closed_channel.router,
         shop.router,
         payments.router,
+        producer.router,
         admin.router,
     )
     return dispatcher

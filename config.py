@@ -17,6 +17,7 @@ class Settings(BaseSettings):
     )
 
     bot_token: str = ""
+    telegram_proxy: str = ""
     admin_tg_ids: str = ""
     open_channel_id: str = ""
     closed_channel_id: str = ""

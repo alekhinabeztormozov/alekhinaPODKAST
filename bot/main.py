@@ -22,6 +22,19 @@ def build_storage(settings: Settings) -> BaseStorage:
     return MemoryStorage()
 
 
+def build_bot(settings: Settings) -> Bot:
+    session = None
+    if settings.telegram_proxy:
+        from aiogram.client.session.aiohttp import AiohttpSession
+
+        session = AiohttpSession(proxy=settings.telegram_proxy)
+    return Bot(
+        token=settings.bot_token,
+        default=DefaultBotProperties(parse_mode=ParseMode.HTML),
+        session=session,
+    )
+
+
 def build_dispatcher(settings: Settings) -> Dispatcher:
     dispatcher = Dispatcher(storage=build_storage(settings))
     dispatcher.message.middleware(ThrottlingMiddleware())
@@ -44,10 +57,7 @@ async def main() -> None:
     if not settings.bot_token:
         raise SystemExit("BOT_TOKEN не задан — заполни .env")
 
-    bot = Bot(
-        token=settings.bot_token,
-        default=DefaultBotProperties(parse_mode=ParseMode.HTML),
-    )
+    bot = build_bot(settings)
     dispatcher = build_dispatcher(settings)
 
     logger.info("Бот запускается")

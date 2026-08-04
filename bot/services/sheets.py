@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import asyncio
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from functools import lru_cache
 from typing import Any
 
@@ -11,6 +11,15 @@ from config import get_settings
 
 CONTACTS_SHEET = "База контактов"
 SALES_SHEET = "Продажи"
+MARATHON_SHEET = "Участники марафона"
+AMBASSADORS_SHEET = "Игры и амбассадоры"
+
+SHEET_HEADERS: dict[str, list[str]] = {
+    CONTACTS_SHEET: ["Telegram ID", "Имя", "Email", "Дата подписки", "Источник", "Результат квиза"],
+    SALES_SHEET: ["Дата", "Telegram ID", "Товар", "Сумма", "Статус оплаты"],
+    MARATHON_SHEET: ["Telegram ID", "Имя", "Название марафона", "Прогресс", "Задания"],
+    AMBASSADORS_SHEET: ["Имя", "Контакты", "Статус", "Количество игр", "Комиссия"],
+}
 
 
 class SheetsNotConfigured(RuntimeError):
@@ -23,17 +32,32 @@ def _client() -> Any:
     if not settings.google_sa_json or not settings.google_sheets_id:
         raise SheetsNotConfigured("GOOGLE_SA_JSON / GOOGLE_SHEETS_ID не заданы")
     import gspread
+
     return gspread.service_account(filename=settings.google_sa_json)
 
 
+def _spreadsheet() -> Any:
+    return _client().open_by_key(get_settings().google_sheets_id)
+
+
 def _worksheet(title: str) -> Any:
-    settings = get_settings()
-    spreadsheet = _client().open_by_key(settings.google_sheets_id)
-    return spreadsheet.worksheet(title)
+    return _spreadsheet().worksheet(title)
 
 
 def _append_sync(title: str, row: list[Any]) -> None:
     _worksheet(title).append_row(row, value_input_option="USER_ENTERED")
+
+
+def _bootstrap_sync() -> None:
+    import gspread
+
+    spreadsheet = _spreadsheet()
+    for title, headers in SHEET_HEADERS.items():
+        try:
+            worksheet = spreadsheet.worksheet(title)
+        except gspread.WorksheetNotFound:
+            worksheet = spreadsheet.add_worksheet(title=title, rows=200, cols=max(len(headers), 5))
+        worksheet.update([headers], "A1")
 
 
 async def _append(title: str, row: list[Any]) -> bool:
@@ -49,7 +73,19 @@ async def _append(title: str, row: list[Any]) -> bool:
 
 
 def _now() -> str:
-    return datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M")
+    return datetime.now(UTC).strftime("%Y-%m-%d %H:%M")
+
+
+async def bootstrap() -> bool:
+    try:
+        await asyncio.to_thread(_bootstrap_sync)
+        return True
+    except SheetsNotConfigured:
+        logger.warning("Sheets не настроен — bootstrap пропущен")
+        return False
+    except Exception as exc:
+        logger.error("Sheets bootstrap упал: {}", exc)
+        return False
 
 
 async def add_contact(

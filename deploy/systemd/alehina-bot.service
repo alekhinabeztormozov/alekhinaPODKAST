@@ -1,0 +1,16 @@
+[Unit]
+Description=Alehina Telegram bot
+After=network-online.target postgresql.service redis-server.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=alehina
+WorkingDirectory=/opt/alehina-bot
+EnvironmentFile=/opt/alehina-bot/.env
+ExecStart=/opt/alehina-bot/.venv/bin/python -m bot.main
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

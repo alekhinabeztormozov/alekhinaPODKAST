@@ -1,0 +1,16 @@
+[Unit]
+Description=Alehina APScheduler (RSS, публикация, ревокация)
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=alehina
+WorkingDirectory=/opt/alehina-bot
+EnvironmentFile=/opt/alehina-bot/.env
+ExecStart=/opt/alehina-bot/.venv/bin/python -m scheduler.runner
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

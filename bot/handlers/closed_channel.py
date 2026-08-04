@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 from aiogram import Bot, F, Router
 from aiogram.types import CallbackQuery
@@ -69,7 +69,7 @@ async def _invite_link(bot: Bot, settings: Settings) -> str | None:
     if not settings.closed_channel_id:
         return None
     try:
-        expire = datetime.now(timezone.utc) + timedelta(days=1)
+        expire = datetime.now(UTC) + timedelta(days=1)
         link = await bot.create_chat_invite_link(
             chat_id=settings.closed_channel_id,
             member_limit=1,

@@ -1,0 +1,16 @@
+[Unit]
+Description=Alehina FastAPI web (health, webhooks)
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=alehina
+WorkingDirectory=/opt/alehina-bot
+EnvironmentFile=/opt/alehina-bot/.env
+ExecStart=/opt/alehina-bot/.venv/bin/uvicorn web.app:app --host 0.0.0.0 --port 8000
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

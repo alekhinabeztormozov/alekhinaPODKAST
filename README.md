@@ -53,6 +53,43 @@ python -m media.pipeline --voice raw.mp3 --intro media/assets/intro.mp3 \
 
 Подробности — [media/README.md](media/README.md).
 
+## Тесты и линт
+
+```bash
+pip install -r requirements-dev.txt
+pytest
+ruff check .
+```
+
+## Миграции
+
+```bash
+alembic upgrade head
+alembic revision --autogenerate -m "описание"
+```
+
+## Деплой
+
+### Docker Compose (рекомендуется)
+
+```bash
+cp .env.example .env
+docker compose up -d --build
+```
+
+Поднимает postgres, redis, применяет миграции (`migrate`), запускает bot, web,
+scheduler и Caddy (авто-TLS по `SITE_ADDRESS`).
+
+### systemd (без Docker)
+
+Юниты в [deploy/systemd/](deploy/systemd/). Проект в `/opt/alehina-bot`, venv собран,
+`.env` заполнен, `alembic upgrade head` выполнен:
+
+```bash
+sudo cp deploy/systemd/*.service /etc/systemd/system/
+sudo systemctl enable --now alehina-bot alehina-web alehina-scheduler
+```
+
 ## Структура
 
 ```

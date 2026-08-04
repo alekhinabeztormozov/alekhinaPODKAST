@@ -9,7 +9,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from loguru import logger
 
 from config import get_settings
-from scheduler.jobs import poll_rss, revoke_expired
+from scheduler.jobs import notify_ready, poll_rss, publish_due, revoke_expired
 
 
 async def main() -> None:
@@ -21,9 +21,10 @@ async def main() -> None:
         token=settings.bot_token,
         default=DefaultBotProperties(parse_mode=ParseMode.HTML),
     )
-    seen: set[str] = set()
     scheduler = AsyncIOScheduler(timezone="UTC")
-    scheduler.add_job(poll_rss, "interval", minutes=10, args=[bot, settings, seen])
+    scheduler.add_job(poll_rss, "interval", minutes=10, args=[bot, settings])
+    scheduler.add_job(publish_due, "interval", minutes=1, args=[bot])
+    scheduler.add_job(notify_ready, "interval", minutes=5, args=[bot, settings])
     scheduler.add_job(revoke_expired, "interval", hours=6, args=[bot, settings])
     scheduler.start()
 

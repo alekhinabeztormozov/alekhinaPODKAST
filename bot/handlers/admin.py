@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 from aiogram import Router
 from aiogram.filters import Command
@@ -42,7 +42,7 @@ async def admin_stats(message: Message) -> None:
 
 
 async def _week_stats() -> dict[str, int]:
-    since = datetime.now(timezone.utc) - timedelta(days=7)
+    since = datetime.now(UTC) - timedelta(days=7)
     async with session_scope() as session:
         contacts = await session.scalar(
             select(func.count()).select_from(Contact).where(Contact.created_at >= since)

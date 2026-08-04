@@ -1,8 +1,3 @@
-"""Central config. Loads secrets from .env via pydantic-settings.
-
-Никаких секретов в коде — только имена переменных. Реальные значения в .env
-(в .gitignore). См. PROJECT.md р.10.1.
-"""
 from __future__ import annotations
 
 from functools import lru_cache
@@ -22,37 +17,35 @@ class Settings(BaseSettings):
         case_sensitive=False,
     )
 
-    # --- Telegram bot ---
     bot_token: str = Field(default="", alias="BOT_TOKEN")
-    admin_tg_ids: str = Field(default="", alias="ADMIN_TG_IDS")  # csv
+    admin_tg_ids: str = Field(default="", alias="ADMIN_TG_IDS")
     open_channel_id: str = Field(default="", alias="OPEN_CHANNEL_ID")
     closed_channel_id: str = Field(default="", alias="CLOSED_CHANNEL_ID")
 
-    # --- Google Sheets ---
     google_sa_json: str = Field(default="", alias="GOOGLE_SA_JSON")
     google_sheets_id: str = Field(default="", alias="GOOGLE_SHEETS_ID")
 
-    # --- Notion ---
     notion_token: str = Field(default="", alias="NOTION_TOKEN")
     notion_db_episodes: str = Field(default="", alias="NOTION_DB_EPISODES")
 
-    # --- Podster / RSS ---
     podster_rss_url: str = Field(default="", alias="PODSTER_RSS_URL")
 
-    # --- Payments (Telegram-native: Stars или ЮKassa provider token) ---
     payment_provider_token: str = Field(default="", alias="PAYMENT_PROVIDER_TOKEN")
+    payment_currency: str = Field(default="XTR", alias="PAYMENT_CURRENCY")
 
-    # --- storage ---
     database_url: str = Field(default="", alias="DATABASE_URL")
-    redis_url: str = Field(default="redis://localhost:6379/0", alias="REDIS_URL")
+    redis_url: str = Field(default="", alias="REDIS_URL")
+    use_redis: bool = Field(default=False, alias="USE_REDIS")
 
-    # --- media / paths ---
     ffmpeg_bin: str = Field(default="ffmpeg", alias="FFMPEG_BIN")
     ffprobe_bin: str = Field(default="ffprobe", alias="FFPROBE_BIN")
 
+    subscription_price: int = Field(default=200, alias="SUBSCRIPTION_PRICE")
+    subscription_days: int = Field(default=30, alias="SUBSCRIPTION_DAYS")
+    trial_days: int = Field(default=1, alias="TRIAL_DAYS")
+
     @property
     def admin_ids(self) -> list[int]:
-        """Parsed whitelist of admin Telegram IDs."""
         return [int(x) for x in self.admin_ids_raw]
 
     @property

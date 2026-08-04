@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<style>
+    @page {
+        size: A4;
+        margin: 22mm 20mm 20mm 20mm;
+        @bottom-center {
+            content: "${brand}  ·  стр. " counter(page) " из " counter(pages);
+            font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            font-size: 9px;
+            color: #9aa0a6;
+        }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        color: #222831;
+        line-height: 1.6;
+        font-size: 12.5px;
+        margin: 0;
+    }
+
+    .cover {
+        border-left: 5px solid ${accent};
+        padding: 4px 0 4px 18px;
+        margin-bottom: 26px;
+    }
+
+    .brand {
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: ${accent};
+        font-weight: 600;
+    }
+
+    h1 {
+        font-size: 27px;
+        line-height: 1.2;
+        margin: 8px 0 0 0;
+        color: #14161a;
+        font-weight: 700;
+    }
+
+    .logo {
+        max-height: 46px;
+        margin-bottom: 18px;
+    }
+
+    .content p {
+        margin: 0 0 12px 0;
+        text-align: justify;
+    }
+
+    .content h2 {
+        font-size: 16px;
+        margin: 22px 0 8px 0;
+        color: ${accent};
+        font-weight: 600;
+    }
+
+    .rule {
+        height: 2px;
+        background: linear-gradient(90deg, ${accent} 0%, transparent 70%);
+        margin: 22px 0;
+        border: none;
+    }
+</style>
+</head>
+<body>
+    ${logo_block}
+    <div class="cover">
+        <div class="brand">${brand}</div>
+        <h1>${title}</h1>
+    </div>
+    <hr class="rule">
+    <div class="content">
+        ${body}
+    </div>
+</body>
+</html>

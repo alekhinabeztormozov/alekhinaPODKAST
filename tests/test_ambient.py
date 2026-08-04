@@ -5,28 +5,32 @@ import types
 from bot.handlers.producer import _is_owner, split_guide
 from bot.keyboards.common import ambient_kb
 from config import Settings
-from media.ambient import AMBIENTS, find_ambient
+from media.ambient import find_ambient, get_ambients
 
 
-def test_ambient_ids_unique():
-    ids = [track.id for track in AMBIENTS]
+def test_ambients_present_and_unique():
+    tracks = get_ambients()
+    assert tracks
+    ids = [track.id for track in tracks]
     assert len(ids) == len(set(ids))
 
 
 def test_find_ambient_known_and_unknown():
-    assert find_ambient(AMBIENTS[0].id) is AMBIENTS[0]
+    first = get_ambients()[0]
+    found = find_ambient(first.id)
+    assert found is not None and found.id == first.id
     assert find_ambient("nope") is None
 
 
-def test_ambient_path_matches_id():
-    track = AMBIENTS[0]
-    assert track.path.name == f"{track.id}.mp3"
+def test_ambient_files_exist():
+    for track in get_ambients():
+        assert track.path.exists()
 
 
 def test_ambient_kb_has_all_plus_controls():
     keyboard = ambient_kb()
     buttons = [button for row in keyboard.inline_keyboard for button in row]
-    assert len(buttons) == len(AMBIENTS) + 2
+    assert len(buttons) == len(get_ambients()) + 2
 
 
 def test_is_owner():

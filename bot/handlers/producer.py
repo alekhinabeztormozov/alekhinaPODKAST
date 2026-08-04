@@ -4,18 +4,18 @@ import uuid
 from pathlib import Path
 
 from aiogram import Bot, F, Router
-from aiogram.filters import StateFilter
+from aiogram.filters import Command, StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, FSInputFile, Message, User
 from loguru import logger
 
-from bot.keyboards.common import ambient_kb
+from bot.keyboards.common import ambient_kb, ambient_preview_kb
 from bot.services.audio import make_episode
 from bot.services.pdf import build_guide
 from bot.states.flows import Producer
 from bot.ui import show
 from config import Settings, get_settings
-from media.ambient import find_ambient
+from media.ambient import find_ambient, get_ambients
 
 router = Router(name="producer")
 
@@ -42,6 +42,35 @@ def split_guide(text: str) -> tuple[str, str]:
     index = lines.index(non_empty[0])
     body = "\n".join(lines[index + 1:]).strip()
     return title, body or non_empty[0].strip()
+
+
+@router.message(Command("ambients"), owner_only)
+async def list_ambients(message: Message) -> None:
+    tracks = get_ambients()
+    if not tracks:
+        await message.answer("Эмбиентов пока нет. Загрузи файлы в media/assets/ambient/.")
+        return
+    lines = [
+        f"• <b>{track.title}</b>" + (f" — {track.description}" if track.description else "")
+        for track in tracks
+    ]
+    await message.answer(
+        "Фоновые эмбиенты (нажми, чтобы послушать):\n\n" + "\n".join(lines),
+        reply_markup=ambient_preview_kb(),
+    )
+
+
+@router.callback_query(F.data.startswith("ambprev:"))
+async def preview_ambient(callback: CallbackQuery, bot: Bot) -> None:
+    if not _is_owner(callback.from_user, get_settings()):
+        await callback.answer()
+        return
+    track = find_ambient(callback.data.split(":", 1)[1])
+    if track is None or not track.path.exists():
+        await callback.answer("Файл не найден.", show_alert=True)
+        return
+    await callback.answer("Отправляю…")
+    await bot.send_audio(callback.from_user.id, FSInputFile(track.path), caption=track.title)
 
 
 @router.message(StateFilter(None), owner_only, F.text & ~F.text.startswith("/"))

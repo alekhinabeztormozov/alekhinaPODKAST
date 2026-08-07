@@ -9,7 +9,9 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, FSInputFile, Message, User
 from loguru import logger
 
-from bot.keyboards.common import ambient_kb, ambient_preview_kb
+from bot.content import MENU_HINT, OWNER_AUDIO_HINT, OWNER_GUIDE_HINT
+from bot.handlers.admin import week_stats_text
+from bot.keyboards.common import ambient_kb, ambient_preview_kb, main_menu
 from bot.services.audio import make_episode
 from bot.services.pdf import build_guide
 from bot.states.flows import Producer
@@ -71,6 +73,34 @@ async def preview_ambient(callback: CallbackQuery, bot: Bot) -> None:
         return
     await callback.answer("Отправляю…")
     await bot.send_audio(callback.from_user.id, FSInputFile(track.path), caption=track.title)
+
+
+@router.callback_query(F.data.startswith("own:"))
+async def owner_panel(callback: CallbackQuery) -> None:
+    if not _is_owner(callback.from_user, get_settings()):
+        await callback.answer()
+        return
+    action = callback.data.split(":", 1)[1]
+    if action == "audio":
+        await show(callback, OWNER_AUDIO_HINT)
+    elif action == "guide":
+        await show(callback, OWNER_GUIDE_HINT)
+    elif action == "ambients":
+        tracks = get_ambients()
+        if not tracks:
+            await show(callback, "Эмбиентов нет. Загрузи файлы в media/assets/ambient/.")
+            return
+        lines = [
+            f"• <b>{track.title}</b>" + (f" — {track.description}" if track.description else "")
+            for track in tracks
+        ]
+        await show(callback, "Фоновые эмбиенты (нажми, чтобы послушать):\n\n" + "\n".join(lines), ambient_preview_kb())
+    elif action == "stats":
+        await show(callback, await week_stats_text())
+    elif action == "client":
+        await show(callback, MENU_HINT, main_menu())
+    else:
+        await callback.answer()
 
 
 @router.message(StateFilter(None), owner_only, F.text & ~F.text.startswith("/"))

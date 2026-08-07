@@ -17,6 +17,17 @@ def main_menu() -> InlineKeyboardMarkup:
     return builder.as_markup()
 
 
+def owner_menu() -> InlineKeyboardMarkup:
+    builder = InlineKeyboardBuilder()
+    builder.button(text="🎧 Загрузить эпизод", callback_data="own:audio")
+    builder.button(text="📄 Собрать гайд", callback_data="own:guide")
+    builder.button(text="🎼 Эмбиенты", callback_data="own:ambients")
+    builder.button(text="📊 Статистика", callback_data="own:stats")
+    builder.button(text="👀 Клиентский вид", callback_data="own:client")
+    builder.adjust(2, 2, 1)
+    return builder.as_markup()
+
+
 def back_to_menu() -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     builder.button(text="◀ В меню", callback_data="menu")

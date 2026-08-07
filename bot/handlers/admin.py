@@ -23,22 +23,21 @@ def _is_admin(message: Message, settings: Settings) -> bool:
 
 @router.message(Command("admin"))
 async def admin_stats(message: Message) -> None:
-    settings = get_settings()
-    if not _is_admin(message, settings):
+    if not _is_admin(message, get_settings()):
         await message.answer(ADMIN_DENIED)
         return
+    await message.answer(await week_stats_text())
 
+
+async def week_stats_text() -> str:
     try:
         stats = await _week_stats()
     except DatabaseNotConfigured:
-        await message.answer("Статистика появится после подключения базы данных.")
-        return
+        return "Статистика появится после подключения базы данных."
     except Exception as exc:
         logger.error("Статистика упала: {}", exc)
-        await message.answer("Не удалось собрать статистику.")
-        return
-
-    await message.answer(
+        return "Не удалось собрать статистику."
+    return (
         "Статистика за 7 дней\n\n"
         f"Новые контакты: {stats['contacts']}\n"
         f"Продажи: {stats['sales']}\n"

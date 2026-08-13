@@ -23,4 +23,8 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
+RUN mkdir -p /usr/share/fonts/truetype/brand \
+    && cp pdf/fonts/*.ttf /usr/share/fonts/truetype/brand/ \
+    && fc-cache -f
+
 CMD ["python", "-m", "bot.main"]

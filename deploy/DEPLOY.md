@@ -53,6 +53,17 @@ docker compose exec bot python -m scripts.chat_id
 - Notion: расшарить страницу интеграции (Notion → страница → ... → Connections → bot-access), затем в боте `/setup_notion <page_id>` — создаст базу «Эпизоды», вернёт её id → в `.env` `NOTION_DB_EPISODES`, `docker compose up -d bot scheduler`.
 - Sheets: создать service-account JSON в Google Cloud (на единую почту), положить путь в `GOOGLE_SA_JSON`, id таблицы в `GOOGLE_SHEETS_ID`, расшарить таблицу на email сервис-аккаунта, затем `/setup_sheets`.
 
+## 5.1. Шрифты PDF (только без Docker)
+
+В Docker шрифты ставятся автоматически (Dockerfile). Для systemd/bare-запуска:
+
+```bash
+sudo mkdir -p /usr/share/fonts/truetype/brand
+sudo cp pdf/fonts/*.ttf /usr/share/fonts/truetype/brand/ && sudo fc-cache -f
+```
+
+Иначе гайды рендерятся системным шрифтом вместо фирменного Oswald/Roboto.
+
 ## 6. Проверка цепочки
 
 - Написать боту `/start` — меню.

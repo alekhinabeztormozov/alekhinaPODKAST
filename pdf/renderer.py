@@ -18,12 +18,6 @@ _GTK_CANDIDATES = (
 TEMPLATES_DIR = Path(__file__).resolve().parent / "templates"
 DEFAULT_TEMPLATE = TEMPLATES_DIR / "guide.html"
 FONTS_DIR = Path(__file__).resolve().parent / "fonts"
-FONT_FACES = (
-    ("BrandHead", "oswald-600.ttf", 600),
-    ("BrandHead", "oswald-700.ttf", 700),
-    ("BrandBody", "roboto-400.ttf", 400),
-    ("BrandBody", "roboto-700.ttf", 700),
-)
 
 
 @dataclass
@@ -51,20 +45,6 @@ def text_to_html(text: str) -> str:
     return "\n".join(rendered)
 
 
-def _font_face_css() -> str:
-    blocks: list[str] = []
-    for family, filename, weight in FONT_FACES:
-        path = FONTS_DIR / filename
-        if not path.exists():
-            continue
-        url = path.as_uri()
-        blocks.append(
-            f"@font-face{{font-family:'{family}';font-weight:{weight};font-style:normal;"
-            f"src:url('{url}') format('truetype');}}"
-        )
-    return "\n".join(blocks)
-
-
 def _logo_block(logo: Path | None) -> str:
     if not logo:
         return ""
@@ -88,7 +68,6 @@ def render_guide(
 
     template = Template(template_path.read_text(encoding="utf-8"))
     document = template.safe_substitute(
-        font_face=_font_face_css(),
         brand=html.escape(style.brand),
         accent=style.accent,
         title=html.escape(title),

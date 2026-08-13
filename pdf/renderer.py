@@ -22,7 +22,7 @@ DEFAULT_TEMPLATE = TEMPLATES_DIR / "guide.html"
 @dataclass
 class GuideStyle:
     brand: str = "АЛЁХИНА БЕЗ ТОРМОЗОВ"
-    accent: str = "#1f2a44"
+    accent: str = "#E10600"
     logo: Path | None = None
 
 

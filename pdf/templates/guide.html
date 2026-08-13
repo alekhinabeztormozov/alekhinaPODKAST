@@ -5,12 +5,12 @@
 <style>
     @page {
         size: A4;
-        margin: 22mm 20mm 20mm 20mm;
+        margin: 20mm 18mm 18mm 18mm;
         @bottom-center {
-            content: "${brand}  ·  стр. " counter(page) " из " counter(pages);
+            content: "${brand}  ·  " counter(page) " / " counter(pages);
             font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
             font-size: 9px;
-            color: #9aa0a6;
+            color: #8a8a8a;
         }
     }
 
@@ -18,37 +18,51 @@
 
     body {
         font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-        color: #222831;
-        line-height: 1.6;
+        color: #1c1c1c;
+        line-height: 1.62;
         font-size: 12.5px;
         margin: 0;
     }
 
-    .cover {
-        border-left: 5px solid ${accent};
-        padding: 4px 0 4px 18px;
+    .brandbar {
+        background: #101010;
+        border-bottom: 3px solid ${accent};
+        padding: 16px 20px;
         margin-bottom: 26px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
-    .brand {
-        font-size: 12px;
-        letter-spacing: 2px;
+    .brandbar .name {
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: 800;
+        letter-spacing: 3px;
         text-transform: uppercase;
-        color: ${accent};
-        font-weight: 600;
     }
+
+    .brandbar .accent {
+        color: ${accent};
+        font-weight: 800;
+    }
+
+    .logo { max-height: 40px; }
 
     h1 {
-        font-size: 27px;
-        line-height: 1.2;
-        margin: 8px 0 0 0;
-        color: #14161a;
-        font-weight: 700;
+        font-size: 30px;
+        line-height: 1.15;
+        margin: 0 0 6px 0;
+        color: #101010;
+        font-weight: 800;
+        text-transform: uppercase;
     }
 
-    .logo {
-        max-height: 46px;
-        margin-bottom: 18px;
+    .title-rule {
+        width: 90px;
+        height: 5px;
+        background: ${accent};
+        margin: 0 0 24px 0;
     }
 
     .content p {
@@ -58,28 +72,31 @@
 
     .content h2 {
         font-size: 16px;
-        margin: 22px 0 8px 0;
+        margin: 24px 0 8px 0;
         color: ${accent};
-        font-weight: 600;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
 
     .rule {
         height: 2px;
-        background: linear-gradient(90deg, ${accent} 0%, transparent 70%);
+        background: linear-gradient(90deg, ${accent} 0%, transparent 75%);
         margin: 22px 0;
         border: none;
     }
 </style>
 </head>
 <body>
-    ${logo_block}
-    <div class="cover">
-        <div class="brand">${brand}</div>
-        <h1>${title}</h1>
+    <div class="brandbar">
+        <span class="name">АЛЁХИНА <span class="accent">БЕЗ ТОРМОЗОВ</span></span>
+        ${logo_block}
     </div>
-    <hr class="rule">
+    <h1>${title}</h1>
+    <div class="title-rule"></div>
     <div class="content">
         ${body}
     </div>
+    <hr class="rule">
 </body>
 </html>

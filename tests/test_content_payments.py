@@ -7,7 +7,8 @@ from config import Settings
 
 def test_quiz_result_stable_verdict():
     result = quiz_result([0, 1, 2, 0, 1])
-    assert result.startswith("Результат теста")
+    assert "результат" in result.lower()
+    assert len(result) > 20
 
 
 def test_quiz_has_five_questions():

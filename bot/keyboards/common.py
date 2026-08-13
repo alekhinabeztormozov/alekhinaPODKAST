@@ -34,6 +34,12 @@ def back_to_menu() -> InlineKeyboardMarkup:
     return builder.as_markup()
 
 
+def back_to_owner() -> InlineKeyboardMarkup:
+    builder = InlineKeyboardBuilder()
+    builder.button(text="◀️ В пульт", callback_data="own:panel")
+    return builder.as_markup()
+
+
 def pdf_skip() -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     builder.button(text="Пропустить, дать ссылку", callback_data="pdf:skip")
@@ -101,5 +107,6 @@ def ambient_preview_kb() -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     for track in get_ambients():
         builder.button(text=f"▶ {track.title}", callback_data=f"ambprev:{track.id}")
+    builder.button(text="◀️ В пульт", callback_data="own:panel")
     builder.adjust(1)
     return builder.as_markup()

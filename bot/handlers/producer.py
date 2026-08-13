@@ -9,9 +9,9 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, FSInputFile, Message, User
 from loguru import logger
 
-from bot.content import MENU_HINT, OWNER_AUDIO_HINT, OWNER_GUIDE_HINT
+from bot.content import MENU_HINT, OWNER_AUDIO_HINT, OWNER_GUIDE_HINT, OWNER_PANEL
 from bot.handlers.admin import week_stats_text
-from bot.keyboards.common import ambient_kb, ambient_preview_kb, main_menu
+from bot.keyboards.common import ambient_kb, ambient_preview_kb, back_to_owner, main_menu, owner_menu
 from bot.services.audio import make_episode
 from bot.services.pdf import build_guide
 from bot.states.flows import Producer
@@ -81,14 +81,16 @@ async def owner_panel(callback: CallbackQuery) -> None:
         await callback.answer()
         return
     action = callback.data.split(":", 1)[1]
-    if action == "audio":
-        await show(callback, OWNER_AUDIO_HINT)
+    if action == "panel":
+        await show(callback, OWNER_PANEL, owner_menu())
+    elif action == "audio":
+        await show(callback, OWNER_AUDIO_HINT, back_to_owner())
     elif action == "guide":
-        await show(callback, OWNER_GUIDE_HINT)
+        await show(callback, OWNER_GUIDE_HINT, back_to_owner())
     elif action == "ambients":
         tracks = get_ambients()
         if not tracks:
-            await show(callback, "Эмбиентов нет. Загрузи файлы в media/assets/ambient/.")
+            await show(callback, "Эмбиентов нет. Загрузи файлы в media/assets/ambient/.", back_to_owner())
             return
         lines = [
             f"• <b>{track.title}</b>" + (f" — {track.description}" if track.description else "")
@@ -96,7 +98,7 @@ async def owner_panel(callback: CallbackQuery) -> None:
         ]
         await show(callback, "Фоновые эмбиенты (нажми, чтобы послушать):\n\n" + "\n".join(lines), ambient_preview_kb())
     elif action == "stats":
-        await show(callback, await week_stats_text())
+        await show(callback, await week_stats_text(), back_to_owner())
     elif action == "client":
         await show(callback, MENU_HINT, main_menu())
     else:
@@ -123,6 +125,7 @@ async def receive_guide_text(message: Message) -> None:
 
     await message.answer_document(FSInputFile(out_path), caption=f"Гайд: {title}")
     out_path.unlink(missing_ok=True)
+    await message.answer("Готово ✅ Пришли ещё текст или аудио, или вернись в пульт.", reply_markup=owner_menu())
 
 
 @router.message(owner_only, F.audio | F.voice)
@@ -181,6 +184,11 @@ async def choose_ambient(callback: CallbackQuery, bot: Bot, state: FSMContext) -
 
     await bot.send_audio(callback.from_user.id, FSInputFile(result), caption="Готовый эпизод")
     result.unlink(missing_ok=True)
+    await bot.send_message(
+        callback.from_user.id,
+        "Готово ✅ Пришли ещё эпизод, или вернись в пульт.",
+        reply_markup=owner_menu(),
+    )
 
 
 async def _process(bot: Bot, file_id: str, music: Path | None) -> Path:

@@ -21,8 +21,8 @@ FONTS_DIR = Path(__file__).resolve().parent / "fonts"
 FONT_FACES = (
     ("BrandHead", "oswald-600.ttf", 600),
     ("BrandHead", "oswald-700.ttf", 700),
-    ("BrandBody", "ptsans-400.ttf", 400),
-    ("BrandBody", "ptsans-700.ttf", 700),
+    ("BrandBody", "roboto-400.ttf", 400),
+    ("BrandBody", "roboto-700.ttf", 700),
 )
 
 
@@ -57,10 +57,10 @@ def _font_face_css() -> str:
         path = FONTS_DIR / filename
         if not path.exists():
             continue
-        encoded = base64.b64encode(path.read_bytes()).decode("ascii")
+        url = path.as_uri()
         blocks.append(
             f"@font-face{{font-family:'{family}';font-weight:{weight};font-style:normal;"
-            f"src:url(data:font/ttf;base64,{encoded}) format('truetype');}}"
+            f"src:url('{url}') format('truetype');}}"
         )
     return "\n".join(blocks)
 

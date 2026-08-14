@@ -53,6 +53,13 @@ docker compose exec bot python -m scripts.chat_id
 - Notion: расшарить страницу интеграции (Notion → страница → ... → Connections → bot-access), затем в боте `/setup_notion <page_id>` — создаст базу «Эпизоды», вернёт её id → в `.env` `NOTION_DB_EPISODES`, `docker compose up -d bot scheduler`.
 - Sheets: создать service-account JSON в Google Cloud (на единую почту), положить путь в `GOOGLE_SA_JSON`, id таблицы в `GOOGLE_SHEETS_ID`, расшарить таблицу на email сервис-аккаунта, затем `/setup_sheets`.
 
+## 5.05. Webhook ЮKassa (обязательно для оплат)
+
+После поднятия домена зарегистрировать URL уведомлений в ЛК ЮKassa
+(Настройки → Уведомления / HTTP-уведомления): `https://<домен>/payments/yookassa`.
+Событие — `payment.succeeded`. Без этого бот не узнает об оплате и не выдаст доступ.
+Наполнение контентом — командами `/add_season` и т.д. (docs/owner-guide.md).
+
 ## 5.1. Шрифты PDF (только без Docker)
 
 В Docker шрифты ставятся автоматически (Dockerfile). Для systemd/bare-запуска:

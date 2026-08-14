@@ -42,9 +42,10 @@ class Settings(BaseSettings):
     ffmpeg_bin: str = "ffmpeg"
     ffprobe_bin: str = "ffprobe"
 
-    subscription_price: int = 200
+    subscription_price: int = 790
     subscription_days: int = 30
     trial_days: int = 1
+    bot_username: str = "AlekhinaU_bot"
 
     @property
     def admin_ids(self) -> list[int]:

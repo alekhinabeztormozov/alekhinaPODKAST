@@ -1,10 +1,55 @@
 from __future__ import annotations
 
-from fastapi import FastAPI
+from aiogram import Bot
+from fastapi import FastAPI, Request
+from loguru import logger
 
-app = FastAPI(title="alekhina-bot", version="0.1.0")
+from bot.main import build_bot
+from bot.services import fulfillment, yookassa
+from config import get_settings
+
+app = FastAPI(title="alekhina-bot", version="0.2.0")
+
+_bot: Bot | None = None
+
+
+def _get_bot() -> Bot:
+    global _bot
+    if _bot is None:
+        _bot = build_bot(get_settings())
+    return _bot
 
 
 @app.get("/health")
 async def health() -> dict[str, str]:
+    return {"status": "ok"}
+
+
+@app.post("/payments/yookassa")
+async def yookassa_webhook(request: Request) -> dict[str, str]:
+    try:
+        data = await request.json()
+    except Exception:
+        return {"status": "bad_request"}
+
+    payment_id = data.get("object", {}).get("id")
+    if not payment_id:
+        return {"status": "ignored"}
+
+    try:
+        payment = await yookassa.get_payment(payment_id)
+    except Exception as exc:
+        logger.error("YooKassa get_payment {} упал: {}", payment_id, exc)
+        return {"status": "error"}
+
+    if payment.get("status") != "succeeded" or not payment.get("paid"):
+        return {"status": "pending"}
+
+    metadata = payment.get("metadata", {})
+    amount = int(float(payment.get("amount", {}).get("value", "0")))
+    currency = payment.get("amount", {}).get("currency", "RUB")
+    try:
+        await fulfillment.fulfill(_get_bot(), payment_id, metadata, amount, currency)
+    except Exception as exc:
+        logger.error("Выдача по платежу {} упала: {}", payment_id, exc)
     return {"status": "ok"}

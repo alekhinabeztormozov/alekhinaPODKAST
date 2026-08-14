@@ -1,19 +1,89 @@
 from __future__ import annotations
 
+from typing import Any
+
 from aiogram.types import InlineKeyboardMarkup
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
-from bot.content import GuideItem, QuizQuestion
 from media.ambient import get_ambients
 
 
 def main_menu() -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
-    builder.button(text="📄 Забрать бесплатный гайд", callback_data="pdf")
-    builder.button(text="🧠 Пройти тест", callback_data="quiz")
-    builder.button(text="🔒 Закрытый клуб", callback_data="closed")
-    builder.button(text="🛒 Магазин", callback_data="shop")
-    builder.adjust(1, 1, 2)
+    builder.button(text="🚀 О подписке", callback_data="club")
+    builder.button(text="🔍 Найти в архиве", callback_data="search")
+    builder.button(text="🏪 Магазин сезонов", callback_data="shop")
+    builder.adjust(1)
+    return builder.as_markup()
+
+
+def back_to_menu() -> InlineKeyboardMarkup:
+    builder = InlineKeyboardBuilder()
+    builder.button(text="◀️ В меню", callback_data="menu")
+    return builder.as_markup()
+
+
+def club_offer_kb(price: int) -> InlineKeyboardMarkup:
+    builder = InlineKeyboardBuilder()
+    builder.button(text=f"💳 Вступить в клуб за {price} ₽", callback_data="club:buy")
+    builder.button(text="◀️ В меню", callback_data="menu")
+    builder.adjust(1)
+    return builder.as_markup()
+
+
+def club_active_kb() -> InlineKeyboardMarkup:
+    builder = InlineKeyboardBuilder()
+    builder.button(text="🎁 Бонусы сезона", callback_data="club:bonuses")
+    builder.button(text="🏪 Магазин сезонов", callback_data="shop")
+    builder.button(text="◀️ В меню", callback_data="menu")
+    builder.adjust(1)
+    return builder.as_markup()
+
+
+def after_bonus_kb(price: int) -> InlineKeyboardMarkup:
+    builder = InlineKeyboardBuilder()
+    builder.button(text=f"🚀 Вступить в клуб за {price} ₽", callback_data="club:buy")
+    builder.button(text="◀️ В меню", callback_data="menu")
+    builder.adjust(1)
+    return builder.as_markup()
+
+
+def shop_kb(seasons: list[dict[str, Any]], subscribed: bool) -> InlineKeyboardMarkup:
+    builder = InlineKeyboardBuilder()
+    for season in seasons:
+        price = season["price_subscriber"] if subscribed else season["price"]
+        builder.button(text=f"{season['title']} · {price} ₽", callback_data=f"season:buy:{season['season_id']}")
+    builder.button(text="◀️ В меню", callback_data="menu")
+    builder.adjust(1)
+    return builder.as_markup()
+
+
+def season_buy_kb(season_id: str, price: int) -> InlineKeyboardMarkup:
+    builder = InlineKeyboardBuilder()
+    builder.button(text=f"💳 Купить за {price} ₽", callback_data=f"season:buy:{season_id}")
+    builder.button(text="◀️ В меню", callback_data="menu")
+    builder.adjust(1)
+    return builder.as_markup()
+
+
+def search_results_kb(results: list[dict[str, Any]]) -> InlineKeyboardMarkup:
+    builder = InlineKeyboardBuilder()
+    for item in results:
+        if item["kind"] == "episode" and item.get("audio_link"):
+            builder.button(text=f"▶ {item['title'][:40]}", url=item["audio_link"])
+        elif item["kind"] == "bonus":
+            builder.button(text=f"🎁 {item['title'][:40]}", callback_data=f"bonus:{item['bonus_id']}")
+    builder.button(text="◀️ В меню", callback_data="menu")
+    builder.adjust(1)
+    return builder.as_markup()
+
+
+def bonuses_list_kb(bonuses: list[dict[str, Any]]) -> InlineKeyboardMarkup:
+    builder = InlineKeyboardBuilder()
+    for bonus in bonuses:
+        builder.button(text=f"🎁 {bonus['title'][:45]}", callback_data=f"bonus:{bonus['bonus_id']}")
+    builder.button(text="◀️ В меню", callback_data="menu")
+    builder.adjust(1)
     return builder.as_markup()
 
 
@@ -28,68 +98,9 @@ def owner_menu() -> InlineKeyboardMarkup:
     return builder.as_markup()
 
 
-def back_to_menu() -> InlineKeyboardMarkup:
-    builder = InlineKeyboardBuilder()
-    builder.button(text="◀️ В меню", callback_data="menu")
-    return builder.as_markup()
-
-
 def back_to_owner() -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     builder.button(text="◀️ В пульт", callback_data="own:panel")
-    return builder.as_markup()
-
-
-def pdf_skip() -> InlineKeyboardMarkup:
-    builder = InlineKeyboardBuilder()
-    builder.button(text="Пропустить, дать ссылку", callback_data="pdf:skip")
-    builder.button(text="◀️ В меню", callback_data="menu")
-    builder.adjust(1)
-    return builder.as_markup()
-
-
-def offer_closed() -> InlineKeyboardMarkup:
-    builder = InlineKeyboardBuilder()
-    builder.button(text="🔒 В закрытый клуб", callback_data="closed")
-    builder.button(text="◀️ В меню", callback_data="menu")
-    builder.adjust(1)
-    return builder.as_markup()
-
-
-def closed_channel_kb() -> InlineKeyboardMarkup:
-    builder = InlineKeyboardBuilder()
-    builder.button(text="🎁 Попробовать бесплатно", callback_data="closed:trial")
-    builder.button(text="💳 Оформить подписку", callback_data="closed:buy")
-    builder.button(text="◀️ В меню", callback_data="menu")
-    builder.adjust(1)
-    return builder.as_markup()
-
-
-def shop_kb(items: list[GuideItem]) -> InlineKeyboardMarkup:
-    builder = InlineKeyboardBuilder()
-    for item in items:
-        builder.button(
-            text=f"{item.title} · {item.price} ₽",
-            callback_data=f"shop:buy:{item.id}",
-        )
-    builder.button(text="◀️ В меню", callback_data="menu")
-    builder.adjust(1)
-    return builder.as_markup()
-
-
-def quiz_intro_kb() -> InlineKeyboardMarkup:
-    builder = InlineKeyboardBuilder()
-    builder.button(text="▶️ Начать тест", callback_data="quiz:go")
-    builder.button(text="◀️ В меню", callback_data="menu")
-    builder.adjust(1)
-    return builder.as_markup()
-
-
-def quiz_kb(question: QuizQuestion, index: int) -> InlineKeyboardMarkup:
-    builder = InlineKeyboardBuilder()
-    for option_index, option in enumerate(question.options):
-        builder.button(text=option, callback_data=f"quiz:ans:{index}:{option_index}")
-    builder.adjust(1)
     return builder.as_markup()
 
 

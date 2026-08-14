@@ -52,6 +52,12 @@ async def bonus_by_keyword(keyword: str) -> dict[str, Any] | None:
     return None
 
 
+async def bonus_by_id(bonus_id: str) -> dict[str, Any] | None:
+    async with session_scope() as session:
+        row = await session.scalar(select(Bonus).where(Bonus.bonus_id == bonus_id))
+        return _bonus(row) if row else None
+
+
 async def current_season() -> dict[str, Any] | None:
     async with session_scope() as session:
         row = await session.scalar(select(Season).where(Season.is_current.is_(True)))

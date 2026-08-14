@@ -50,5 +50,13 @@ async def create_payment(
         return response.json()
 
 
+async def get_payment(payment_id: str) -> dict[str, Any]:
+    headers = {"Authorization": _auth_header()}
+    async with httpx.AsyncClient(timeout=30) as client:
+        response = await client.get(f"{API_URL}/{payment_id}", headers=headers)
+        response.raise_for_status()
+        return response.json()
+
+
 def confirmation_url(payment: dict[str, Any]) -> str:
     return payment.get("confirmation", {}).get("confirmation_url", "")

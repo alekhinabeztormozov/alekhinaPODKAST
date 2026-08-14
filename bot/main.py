@@ -9,7 +9,7 @@ from aiogram.fsm.storage.base import BaseStorage
 from aiogram.fsm.storage.memory import MemoryStorage
 from loguru import logger
 
-from bot.handlers import admin, closed_channel, payments, pdf_bonus, producer, quiz, shop, start
+from bot.handlers import admin, bonus, club, producer, seasons, start, text_router
 from bot.middlewares.throttling import ThrottlingMiddleware
 from config import Settings, get_settings
 
@@ -41,13 +41,12 @@ def build_dispatcher(settings: Settings) -> Dispatcher:
     dispatcher.callback_query.middleware(ThrottlingMiddleware())
     dispatcher.include_routers(
         start.router,
-        pdf_bonus.router,
-        quiz.router,
-        closed_channel.router,
-        shop.router,
-        payments.router,
+        club.router,
+        seasons.router,
+        bonus.router,
         producer.router,
         admin.router,
+        text_router.router,
     )
     return dispatcher
 

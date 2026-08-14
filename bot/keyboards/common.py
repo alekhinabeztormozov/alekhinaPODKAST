@@ -13,6 +13,16 @@ def main_menu() -> InlineKeyboardMarkup:
     builder.button(text="🚀 О подписке", callback_data="club")
     builder.button(text="🔍 Найти в архиве", callback_data="search")
     builder.button(text="🏪 Магазин сезонов", callback_data="shop")
+    builder.button(text="🎯 Интенсив", callback_data="intensive")
+    builder.adjust(1)
+    return builder.as_markup()
+
+
+def intensive_kb(payment_link: str) -> InlineKeyboardMarkup:
+    builder = InlineKeyboardBuilder()
+    if payment_link:
+        builder.button(text="✍️ Записаться на интенсив", url=payment_link)
+    builder.button(text="◀️ В меню", callback_data="menu")
     builder.adjust(1)
     return builder.as_markup()
 

@@ -66,7 +66,24 @@ async def add_purchased_season(tg_id: int, season_id: str) -> None:
 async def has_season(tg_id: int, season_id: str) -> bool:
     async with session_scope() as session:
         user = await session.scalar(select(User).where(User.tg_id == tg_id))
-        return bool(user and season_id in (user.purchased_seasons or []))
+        owned = list(user.purchased_seasons or []) if user else []
+        return season_id in owned or "all" in owned
+
+
+async def all_user_ids() -> list[int]:
+    async with session_scope() as session:
+        result = await session.execute(select(User.tg_id))
+        return [row[0] for row in result.all()]
+
+
+async def subscriber_ids() -> list[int]:
+    async with session_scope() as session:
+        result = await session.execute(
+            select(User.tg_id)
+            .where(User.is_subscribed.is_(True))
+            .where(User.subscription_expires > _now())
+        )
+        return [row[0] for row in result.all()]
 
 
 async def take_voice_demo(tg_id: int) -> bool:

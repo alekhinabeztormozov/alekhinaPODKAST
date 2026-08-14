@@ -4,7 +4,7 @@ from typing import Any
 
 from sqlalchemy import select
 
-from db.models import Bonus, Episode, Season
+from db.models import Bonus, Episode, MainProduct, Season
 from db.session import session_scope
 
 
@@ -50,6 +50,27 @@ async def bonus_by_keyword(keyword: str) -> dict[str, Any] | None:
         if row.keyword.strip().lower() == key:
             return _bonus(row)
     return None
+
+
+def _product(p: MainProduct) -> dict[str, Any]:
+    return {
+        "product_id": p.product_id,
+        "season_id": p.season_id,
+        "title": p.title,
+        "description": p.description,
+        "price": p.price,
+        "price_subscriber": p.price_subscriber,
+        "payment_link": p.payment_link,
+    }
+
+
+async def active_main_product(season_id: str | None = None) -> dict[str, Any] | None:
+    async with session_scope() as session:
+        query = select(MainProduct).where(MainProduct.is_active.is_(True))
+        if season_id:
+            query = query.where(MainProduct.season_id == season_id)
+        row = await session.scalar(query)
+        return _product(row) if row else None
 
 
 async def bonus_by_id(bonus_id: str) -> dict[str, Any] | None:

@@ -9,7 +9,7 @@ from loguru import logger
 from sqlalchemy import func, select
 
 from bot.content import ADMIN_DENIED
-from bot.services import notion, sheets
+from bot.services import admin_content, notion, sheets
 from config import Settings, get_settings
 from db.models import Contact, ProcessedPayment, Sale
 from db.session import DatabaseNotConfigured, session_scope
@@ -70,6 +70,59 @@ async def setup_notion(message: Message, command: CommandObject) -> None:
         await message.answer(f"База «Эпизоды» создана.\nID: {database_id}\nВпиши его в NOTION_DB_EPISODES.")
     else:
         await message.answer("Не создал базу — проверь NOTION_TOKEN и доступ интеграции к странице.")
+
+
+async def _run_add(message: Message, command: CommandObject, expected: int, func, usage: str) -> None:
+    if not _is_admin(message, get_settings()):
+        await message.answer(ADMIN_DENIED)
+        return
+    parts = [p.strip() for p in (command.args or "").split("|")]
+    if len(parts) != expected:
+        await message.answer("Формат:\n" + usage)
+        return
+    try:
+        result = await func(parts)
+    except Exception as exc:
+        logger.error("Добавление контента упало: {}", exc)
+        await message.answer(f"Ошибка: {exc}")
+        return
+    await message.answer(f"✅ {result}")
+
+
+@router.message(Command("add_season"))
+async def add_season(message: Message, command: CommandObject) -> None:
+    await _run_add(message, command, 6, admin_content.add_season,
+                   "/add_season id | Название | 299 | 179 | ссылка_на_архив | 1")
+
+
+@router.message(Command("add_bonus"))
+async def add_bonus(message: Message, command: CommandObject) -> None:
+    await _run_add(message, command, 6, admin_content.add_bonus,
+                   "/add_bonus id | season_id | КЛЮЧ | Название | pdf_ссылка | аудио_ссылка")
+
+
+@router.message(Command("add_episode"))
+async def add_episode(message: Message, command: CommandObject) -> None:
+    await _run_add(message, command, 5, admin_content.add_episode,
+                   "/add_episode id | season_id | Название | аудио_ссылка | тег1,тег2")
+
+
+@router.message(Command("add_product"))
+async def add_product(message: Message, command: CommandObject) -> None:
+    await _run_add(message, command, 7, admin_content.add_product,
+                   "/add_product id | season_id | Название | 3900 | 2730 | ссылка_оплаты | 1")
+
+
+@router.message(Command("content"))
+async def content_counts(message: Message) -> None:
+    if not _is_admin(message, get_settings()):
+        await message.answer(ADMIN_DENIED)
+        return
+    c = await admin_content.counts()
+    await message.answer(
+        f"Контент:\nСезоны: {c['seasons']}\nЭпизоды: {c['episodes']}\n"
+        f"Бонусы: {c['bonuses']}\nПродукты: {c['products']}"
+    )
 
 
 async def _week_stats() -> dict[str, int]:

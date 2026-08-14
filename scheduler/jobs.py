@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime, timedelta
 from typing import Any
 
 import feedparser
@@ -8,9 +8,10 @@ from aiogram import Bot
 from loguru import logger
 from sqlalchemy import select
 
-from bot.services import notion, seen, subscriptions
+from bot.content import FINALE_ANNOUNCE, SEASON_ENDING, SUB_EXPIRED
+from bot.services import catalog, notion, seen, users
 from config import Settings
-from db.models import ScheduledPost
+from db.models import ScheduledPost, Season
 from db.session import session_scope
 
 
@@ -23,14 +24,24 @@ def announce_text(entry: dict[str, Any]) -> str:
         parts.append(summary[:400])
     if link:
         parts.append(f"Слушать: {link}")
-    parts.append("Забери PDF-бонус и разборы в боте.")
+    parts.append("Напиши ключевое слово из эпизода в бота — заберёшь бонус.")
     return "\n\n".join(parts)
+
+
+async def _broadcast(bot: Bot, ids: list[int], text: str) -> int:
+    sent = 0
+    for tg_id in ids:
+        try:
+            await bot.send_message(tg_id, text)
+            sent += 1
+        except Exception as exc:
+            logger.error("Рассылка {} не дошла: {}", tg_id, exc)
+    return sent
 
 
 async def poll_rss(bot: Bot, settings: Settings) -> int:
     if not settings.podster_rss_url or not settings.open_channel_id:
         return 0
-
     feed = feedparser.parse(settings.podster_rss_url)
     published = 0
     for entry in reversed(feed.entries):
@@ -85,13 +96,54 @@ async def notify_ready(bot: Bot, settings: Settings) -> int:
 
 async def revoke_expired(bot: Bot, settings: Settings) -> int:
     revoked = 0
-    for tg_id in await subscriptions.expired():
+    for tg_id in await users.expired_subscribers():
         try:
+            await users.drop_subscription(tg_id)
             if settings.closed_channel_id:
                 await bot.ban_chat_member(settings.closed_channel_id, tg_id)
                 await bot.unban_chat_member(settings.closed_channel_id, tg_id)
-            await subscriptions.mark_expired(tg_id)
+            await bot.send_message(tg_id, SUB_EXPIRED)
             revoked += 1
         except Exception as exc:
             logger.error("Не отозвал доступ у {}: {}", tg_id, exc)
     return revoked
+
+
+async def _seasons_ending(target: date) -> list[Season]:
+    async with session_scope() as session:
+        result = await session.execute(
+            select(Season).where(Season.is_current.is_(True)).where(Season.end_date == target)
+        )
+        return list(result.scalars().all())
+
+
+async def notify_season_ending(bot: Bot, settings: Settings) -> int:
+    target = date.today() + timedelta(days=3)
+    seasons = await _seasons_ending(target)
+    notified = 0
+    for season in seasons:
+        if await seen.is_seen("season_ending", season.season_id):
+            continue
+        await _broadcast(bot, await users.subscriber_ids(), SEASON_ENDING.format(title=season.title))
+        await seen.mark_seen("season_ending", season.season_id)
+        notified += 1
+    return notified
+
+
+async def notify_finale(bot: Bot, settings: Settings) -> int:
+    today = date.today()
+    async with session_scope() as session:
+        result = await session.execute(select(Season).where(Season.end_date == today))
+        seasons = list(result.scalars().all())
+    notified = 0
+    for season in seasons:
+        if await seen.is_seen("finale", season.season_id):
+            continue
+        product = await catalog.active_main_product(season.season_id)
+        if product is None:
+            continue
+        text = FINALE_ANNOUNCE.format(title=product["title"], description=product["description"])
+        await _broadcast(bot, await users.all_user_ids(), text)
+        await seen.mark_seen("finale", season.season_id)
+        notified += 1
+    return notified

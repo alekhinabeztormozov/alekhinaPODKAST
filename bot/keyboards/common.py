@@ -18,6 +18,17 @@ def main_menu() -> InlineKeyboardMarkup:
     return builder.as_markup()
 
 
+def client_preview_kb() -> InlineKeyboardMarkup:
+    builder = InlineKeyboardBuilder()
+    builder.button(text="🚀 О подписке", callback_data="club")
+    builder.button(text="🔍 Найти в архиве", callback_data="search")
+    builder.button(text="🏪 Магазин сезонов", callback_data="shop")
+    builder.button(text="🎯 Интенсив", callback_data="intensive")
+    builder.button(text="◀️ В пульт", callback_data="own:panel")
+    builder.adjust(1)
+    return builder.as_markup()
+
+
 def intensive_kb(payment_link: str) -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     if payment_link:

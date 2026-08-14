@@ -11,7 +11,13 @@ from loguru import logger
 
 from bot.content import MENU_HINT, OWNER_AUDIO_HINT, OWNER_GUIDE_HINT, OWNER_PANEL
 from bot.handlers.admin import week_stats_text
-from bot.keyboards.common import ambient_kb, ambient_preview_kb, back_to_owner, main_menu, owner_menu
+from bot.keyboards.common import (
+    ambient_kb,
+    ambient_preview_kb,
+    back_to_owner,
+    client_preview_kb,
+    owner_menu,
+)
 from bot.services.audio import make_episode
 from bot.services.pdf import build_guide
 from bot.states.flows import Producer
@@ -100,7 +106,7 @@ async def owner_panel(callback: CallbackQuery) -> None:
     elif action == "stats":
         await show(callback, await week_stats_text(), back_to_owner())
     elif action == "client":
-        await show(callback, MENU_HINT, main_menu())
+        await show(callback, MENU_HINT, client_preview_kb())
     else:
         await callback.answer()
 

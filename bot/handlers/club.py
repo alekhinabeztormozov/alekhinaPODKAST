@@ -4,14 +4,8 @@ from aiogram import F, Router
 from aiogram.types import CallbackQuery
 from loguru import logger
 
-from bot.content import (
-    CLUB_ACTIVE,
-    CLUB_OFFER,
-    PAY_LINK,
-    PAY_UNAVAILABLE,
-    SEARCH_NONE,
-)
-from bot.keyboards.common import bonuses_list_kb, club_active_kb, club_offer_kb
+from bot.content import CLUB_ACTIVE, CLUB_OFFER, PAY_LINK, PAY_UNAVAILABLE
+from bot.keyboards.common import back_to_menu, bonuses_list_kb, club_active_kb, club_offer_kb
 from bot.services import catalog, users, yookassa
 from bot.ui import show
 from config import get_settings
@@ -57,7 +51,7 @@ async def buy_club(callback: CallbackQuery) -> None:
         await callback.answer("Не удалось создать оплату.", show_alert=True)
         return
     await callback.answer()
-    await show(callback, PAY_LINK.format(url=yookassa.confirmation_url(payment)))
+    await show(callback, PAY_LINK.format(url=yookassa.confirmation_url(payment)), back_to_menu())
 
 
 @router.callback_query(F.data == "club:bonuses")
@@ -72,6 +66,6 @@ async def club_bonuses(callback: CallbackQuery) -> None:
     season = await catalog.current_season()
     bonuses = await catalog.season_bonuses(season["season_id"]) if season else []
     if not bonuses:
-        await show(callback, SEARCH_NONE)
+        await show(callback, "Бонусы сезона появятся совсем скоро.", back_to_menu())
         return
     await show(callback, "🎁 Бонусы текущего сезона:", bonuses_list_kb(bonuses))

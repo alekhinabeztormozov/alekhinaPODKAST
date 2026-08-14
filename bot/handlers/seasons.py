@@ -43,7 +43,11 @@ async def buy_season(callback: CallbackQuery) -> None:
 
     tg_id = callback.from_user.id
     if await users.has_season(tg_id, season_id):
-        await show(callback, f"У тебя уже есть доступ к сезону «{season['title']}».\n{season['archive_link']}")
+        await show(
+            callback,
+            f"У тебя уже есть доступ к сезону «{season['title']}».\n{season['archive_link']}",
+            back_to_menu(),
+        )
         return
 
     subscribed = await users.is_subscribed(tg_id)
@@ -64,4 +68,4 @@ async def buy_season(callback: CallbackQuery) -> None:
         await callback.answer("Не удалось создать оплату.", show_alert=True)
         return
     await callback.answer()
-    await show(callback, PAY_LINK.format(url=yookassa.confirmation_url(payment)))
+    await show(callback, PAY_LINK.format(url=yookassa.confirmation_url(payment)), back_to_menu())

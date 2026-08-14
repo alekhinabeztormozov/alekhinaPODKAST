@@ -1,13 +1,91 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date, datetime
 
-from sqlalchemy import BigInteger, DateTime, Integer, String, Text, UniqueConstraint, func
+from sqlalchemy import (
+    JSON,
+    BigInteger,
+    Boolean,
+    Date,
+    DateTime,
+    Integer,
+    String,
+    Text,
+    UniqueConstraint,
+    func,
+)
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
 class Base(DeclarativeBase):
     pass
+
+
+class User(Base):
+    __tablename__ = "users"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    tg_id: Mapped[int] = mapped_column(BigInteger, unique=True, index=True)
+    username: Mapped[str] = mapped_column(String(255), default="")
+    is_subscribed: Mapped[bool] = mapped_column(Boolean, default=False)
+    subscription_expires: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    purchased_seasons: Mapped[list] = mapped_column(JSON, default=list)
+    got_voice_demo: Mapped[bool] = mapped_column(Boolean, default=False)
+    registered_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class Season(Base):
+    __tablename__ = "seasons"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    season_id: Mapped[str] = mapped_column(String(64), unique=True, index=True)
+    title: Mapped[str] = mapped_column(String(255))
+    description: Mapped[str] = mapped_column(Text, default="")
+    price: Mapped[int] = mapped_column(Integer, default=299)
+    price_subscriber: Mapped[int] = mapped_column(Integer, default=179)
+    archive_link: Mapped[str] = mapped_column(Text, default="")
+    is_current: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
+    start_date: Mapped[date | None] = mapped_column(Date, nullable=True)
+    end_date: Mapped[date | None] = mapped_column(Date, nullable=True)
+
+
+class Episode(Base):
+    __tablename__ = "episodes"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    episode_id: Mapped[str] = mapped_column(String(64), unique=True, index=True)
+    season_id: Mapped[str] = mapped_column(String(64), index=True)
+    title: Mapped[str] = mapped_column(String(512))
+    audio_link: Mapped[str] = mapped_column(Text, default="")
+    tags: Mapped[list] = mapped_column(JSON, default=list)
+
+
+class Bonus(Base):
+    __tablename__ = "bonuses"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    bonus_id: Mapped[str] = mapped_column(String(64), unique=True, index=True)
+    season_id: Mapped[str] = mapped_column(String(64), index=True)
+    keyword: Mapped[str] = mapped_column(String(128), index=True)
+    title: Mapped[str] = mapped_column(String(512))
+    pdf_link: Mapped[str] = mapped_column(Text, default="")
+    audio_link: Mapped[str] = mapped_column(Text, default="")
+    tags: Mapped[list] = mapped_column(JSON, default=list)
+    is_free: Mapped[bool] = mapped_column(Boolean, default=True)
+
+
+class MainProduct(Base):
+    __tablename__ = "main_products"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    product_id: Mapped[str] = mapped_column(String(64), unique=True, index=True)
+    season_id: Mapped[str] = mapped_column(String(64), index=True)
+    title: Mapped[str] = mapped_column(String(512))
+    description: Mapped[str] = mapped_column(Text, default="")
+    price: Mapped[int] = mapped_column(Integer, default=3900)
+    price_subscriber: Mapped[int] = mapped_column(Integer, default=2730)
+    payment_link: Mapped[str] = mapped_column(Text, default="")
+    is_active: Mapped[bool] = mapped_column(Boolean, default=False)
 
 
 class Contact(Base):

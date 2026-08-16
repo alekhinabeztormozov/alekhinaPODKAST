@@ -5,12 +5,14 @@
 <style>
     @page {
         size: A4;
-        margin: 20mm 18mm 18mm 18mm;
+        margin: 32mm 28mm 30mm 28mm;
         @bottom-center {
             content: "${brand}  ·  " counter(page) " / " counter(pages);
-            font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            font-family: "Oswald", "Segoe UI", Arial, sans-serif;
             font-size: 9px;
-            color: #9a9a9a;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #ffffff;
         }
     }
 
@@ -24,15 +26,19 @@
         margin: 0;
     }
 
-    .topbrush {
-        margin: 0 0 6px 0;
-        line-height: 0;
+    .pageframe {
+        position: fixed;
+        top: -32mm;
+        left: -28mm;
+        width: 210mm;
+        height: 297mm;
+        z-index: -1;
     }
-    .topbrush img { width: 100%; height: auto; display: block; }
+    .pageframe img { width: 100%; height: 100%; display: block; }
 
     h1 {
         font-family: "Oswald", "Segoe UI", Arial, sans-serif;
-        font-size: 34px;
+        font-size: 33px;
         line-height: 1.08;
         margin: 0 0 8px 0;
         color: #0d0d0d;
@@ -42,10 +48,10 @@
     }
 
     .title-rule {
-        width: 88px;
+        width: 84px;
         height: 5px;
         background: ${accent};
-        margin: 0 0 22px 0;
+        margin: 0 0 20px 0;
     }
 
     .content p {
@@ -56,24 +62,20 @@
     .content h2 {
         font-family: "Oswald", "Segoe UI", Arial, sans-serif;
         font-size: 18px;
-        margin: 22px 0 8px 0;
+        margin: 20px 0 8px 0;
         color: ${accent};
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.8px;
     }
-
-    .botbrush { margin: 30px 0 0 0; line-height: 0; }
-    .botbrush img { width: 100%; height: auto; display: block; transform: scaleX(-1); }
 </style>
 </head>
 <body>
-    <div class="topbrush">${brush}</div>
+    ${frame}
     <h1>${title}</h1>
     <div class="title-rule"></div>
     <div class="content">
         ${body}
     </div>
-    <div class="botbrush">${brush}</div>
 </body>
 </html>

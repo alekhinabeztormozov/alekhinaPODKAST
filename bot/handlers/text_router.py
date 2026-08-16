@@ -7,7 +7,7 @@ from aiogram.types import Message
 from bot.content import SEARCH_NONE
 from bot.handlers.bonus import deliver
 from bot.keyboards.common import main_menu, search_results_kb
-from bot.services import catalog, users
+from bot.services import catalog, contacts, users
 from config import get_settings
 
 router = Router(name="text_router")
@@ -21,11 +21,13 @@ async def route_text(message: Message) -> None:
         return
 
     query = (message.text or "").strip()
+    name = message.from_user.full_name or message.from_user.username or ""
     await users.get_or_create(message.from_user.id, message.from_user.username or message.from_user.full_name)
+    await contacts.record(message.from_user.id, name=name, source="keyword")
 
     bonus = await catalog.bonus_by_keyword(query)
     if bonus is not None:
-        await deliver(message, message.from_user.id, bonus)
+        await deliver(message, message.from_user.id, bonus, name)
         return
 
     results = await catalog.search(query)

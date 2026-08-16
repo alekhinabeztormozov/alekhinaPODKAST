@@ -44,9 +44,10 @@ def back_to_menu() -> InlineKeyboardMarkup:
     return builder.as_markup()
 
 
-def club_offer_kb(price: int) -> InlineKeyboardMarkup:
+def club_offer_kb(price: int, price3: int) -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
-    builder.button(text=f"💳 Вступить в клуб за {price} ₽", callback_data="club:buy")
+    builder.button(text=f"💳 Месяц — {price} ₽", callback_data="club:buy:1")
+    builder.button(text=f"💎 3 месяца — {price3} ₽", callback_data="club:buy:3")
     builder.button(text="◀️ В меню", callback_data="menu")
     builder.adjust(1)
     return builder.as_markup()
@@ -63,27 +64,92 @@ def club_active_kb() -> InlineKeyboardMarkup:
 
 def after_bonus_kb(price: int) -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
-    builder.button(text=f"🚀 Вступить в клуб за {price} ₽", callback_data="club:buy")
+    builder.button(text=f"🚀 Вступить в клуб за {price} ₽", callback_data="club")
+    builder.button(text="🎁 Все бонусы этого сезона", callback_data="club:bonuses")
     builder.button(text="◀️ В меню", callback_data="menu")
     builder.adjust(1)
     return builder.as_markup()
 
 
-def shop_kb(seasons: list[dict[str, Any]], subscribed: bool) -> InlineKeyboardMarkup:
+def voice_demo_kb() -> InlineKeyboardMarkup:
+    builder = InlineKeyboardBuilder()
+    builder.button(text="🎁 Забрать 24 часа бесплатно", callback_data="club:trial")
+    builder.button(text="🚀 О подписке", callback_data="club")
+    builder.button(text="◀️ В меню", callback_data="menu")
+    builder.adjust(1)
+    return builder.as_markup()
+
+
+def shop_kb(all_seasons_price: int, subscribed: bool, has_workbooks: bool, has_pack: bool) -> InlineKeyboardMarkup:
+    builder = InlineKeyboardBuilder()
+    builder.button(text="📦 Купить сезон", callback_data="shop:seasons")
+    if has_workbooks:
+        builder.button(text="📓 Рабочая тетрадь", callback_data="shop:workbooks")
+    if has_pack:
+        builder.button(text=f"🎁 Все сезоны · {all_seasons_price} ₽", callback_data="shop:all")
+    if not subscribed:
+        builder.button(text="🚀 Вступить в клуб (−40%)", callback_data="club")
+    builder.button(text="◀️ В меню", callback_data="menu")
+    builder.adjust(1)
+    return builder.as_markup()
+
+
+def seasons_list_kb(seasons: list[dict[str, Any]], subscribed: bool) -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     for season in seasons:
         price = season["price_subscriber"] if subscribed else season["price"]
-        builder.button(text=f"{season['title']} · {price} ₽", callback_data=f"season:buy:{season['season_id']}")
-    builder.button(text="◀️ В меню", callback_data="menu")
+        builder.button(text=f"{season['title']} · {price} ₽", callback_data=f"season:show:{season['season_id']}")
+    builder.button(text="◀️ В магазин", callback_data="shop")
     builder.adjust(1)
     return builder.as_markup()
 
 
-def season_buy_kb(season_id: str, price: int) -> InlineKeyboardMarkup:
+def workbooks_list_kb(seasons: list[dict[str, Any]], subscribed: bool) -> InlineKeyboardMarkup:
+    builder = InlineKeyboardBuilder()
+    price = _wb_price(subscribed)
+    for season in seasons:
+        builder.button(text=f"{season['title']} · {price} ₽", callback_data=f"wb:show:{season['season_id']}")
+    builder.button(text="◀️ В магазин", callback_data="shop")
+    builder.adjust(1)
+    return builder.as_markup()
+
+
+def _wb_price(subscribed: bool) -> int:
+    from config import get_settings
+
+    settings = get_settings()
+    return settings.workbook_price_subscriber if subscribed else settings.workbook_price
+
+
+def season_offer_kb(season_id: str, price: int, subscribed: bool) -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     builder.button(text=f"💳 Купить за {price} ₽", callback_data=f"season:buy:{season_id}")
-    builder.button(text="◀️ В меню", callback_data="menu")
+    if not subscribed:
+        builder.button(text="🚀 Вступить в клуб (−40%)", callback_data="club")
+    builder.button(text="◀️ В магазин", callback_data="shop")
     builder.adjust(1)
+    return builder.as_markup()
+
+
+def workbook_offer_kb(season_id: str, price: int) -> InlineKeyboardMarkup:
+    builder = InlineKeyboardBuilder()
+    builder.button(text=f"💳 Купить за {price} ₽", callback_data=f"wb:buy:{season_id}")
+    builder.button(text="◀️ В магазин", callback_data="shop")
+    builder.adjust(1)
+    return builder.as_markup()
+
+
+def all_seasons_kb(price: int) -> InlineKeyboardMarkup:
+    builder = InlineKeyboardBuilder()
+    builder.button(text=f"💳 Купить за {price} ₽", callback_data="all:buy")
+    builder.button(text="◀️ В магазин", callback_data="shop")
+    builder.adjust(1)
+    return builder.as_markup()
+
+
+def back_to_shop() -> InlineKeyboardMarkup:
+    builder = InlineKeyboardBuilder()
+    builder.button(text="◀️ В магазин", callback_data="shop")
     return builder.as_markup()
 
 

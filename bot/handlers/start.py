@@ -7,6 +7,7 @@ from aiogram.types import CallbackQuery, Message
 
 from bot.content import MENU_HINT, OWNER_PANEL, SEARCH_PROMPT, START_TEXT
 from bot.keyboards.common import back_to_menu, main_menu, owner_menu
+from bot.services import contacts, users
 from bot.ui import clear_recent, show
 from config import get_settings
 
@@ -24,6 +25,10 @@ async def cmd_start(message: Message, state: FSMContext, bot: Bot) -> None:
     if message.from_user is not None and _is_owner(message.from_user.id):
         await message.answer(OWNER_PANEL, reply_markup=owner_menu())
         return
+    if message.from_user is not None:
+        name = message.from_user.full_name or message.from_user.username or ""
+        await users.get_or_create(message.from_user.id, message.from_user.username or name)
+        await contacts.record(message.from_user.id, name=name, source="start")
     await message.answer(START_TEXT, reply_markup=main_menu())
 
 

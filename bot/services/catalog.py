@@ -4,6 +4,7 @@ from typing import Any
 
 from sqlalchemy import select
 
+from config import get_settings
 from db.models import Bonus, Episode, MainProduct, Season
 from db.session import session_scope
 
@@ -28,6 +29,7 @@ def _season(s: Season) -> dict[str, Any]:
         "price": s.price,
         "price_subscriber": s.price_subscriber,
         "archive_link": s.archive_link,
+        "workbook_link": s.workbook_link,
         "is_current": s.is_current,
     }
 
@@ -92,9 +94,21 @@ async def get_season(season_id: str) -> dict[str, Any] | None:
 
 
 async def all_seasons() -> list[dict[str, Any]]:
+    """Продаваемые сезоны — без служебного пакета «все сезоны»."""
+    pack_id = get_settings().all_seasons_season_id
     async with session_scope() as session:
         rows = (await session.execute(select(Season))).scalars().all()
-        return [_season(s) for s in rows]
+        return [_season(s) for s in rows if s.season_id != pack_id]
+
+
+async def sellable_workbooks() -> list[dict[str, Any]]:
+    """Сезоны, у которых заполнена ссылка на рабочую тетрадь."""
+    return [s for s in await all_seasons() if s["workbook_link"]]
+
+
+async def all_seasons_pack() -> dict[str, Any] | None:
+    """Служебный сезон-пакет «все сезоны» (season_id из настроек)."""
+    return await get_season(get_settings().all_seasons_season_id)
 
 
 async def season_bonuses(season_id: str) -> list[dict[str, Any]]:

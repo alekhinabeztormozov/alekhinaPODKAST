@@ -51,6 +51,16 @@ async def add_product(parts: list[str]) -> str:
     ))
 
 
+async def set_workbook(parts: list[str]) -> str:
+    season_id, link = parts
+    async with session_scope() as session:
+        row = await session.scalar(select(Season).where(Season.season_id == season_id))
+        if row is None:
+            raise ValueError(f"Сезон «{season_id}» не найден — сперва /add_season")
+        row.workbook_link = link
+    return f"тетрадь для «{season_id}» сохранена"
+
+
 async def counts() -> dict[str, int]:
     async with session_scope() as session:
         seasons = await session.scalar(select(func.count()).select_from(Season))

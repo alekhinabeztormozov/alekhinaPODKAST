@@ -23,8 +23,9 @@ nano .env
 - `OPEN_CHANNEL_ID` — `@alekhinabeztormozov`.
 - `CLOSED_CHANNEL_ID` — числовой id закрытого канала (см. п.4).
 - `NOTION_TOKEN`, `PODSTER_RSS_URL` — уже есть.
-- `PAYMENT_CURRENCY=RUB`, `PAYMENT_PROVIDER_TOKEN` — токен ЮKassa (docs/payments-setup.md).
-- `POSTGRES_PASSWORD`, `SITE_ADDRESS` (домен для Caddy/HTTPS, если нужен web).
+- `YOOKASSA_SHOP_ID` + `YOOKASSA_SECRET_KEY` — данные магазина ЮKassa (docs/payments-setup.md). Именно они, а не `PAYMENT_PROVIDER_TOKEN` — оплаты идут внешним чекаутом ЮKassa + вебхук.
+- `USE_REDIS=true` — на проде FSM в Redis (переживает рестарт).
+- `POSTGRES_PASSWORD`, `SITE_ADDRESS` (домен для Caddy/HTTPS — обязателен для вебхука ЮKassa).
 - `DATABASE_URL`/`REDIS_URL` в compose проставляются автоматически — в `.env` можно не трогать.
 
 `TELEGRAM_PROXY` на VPS оставить пустым.

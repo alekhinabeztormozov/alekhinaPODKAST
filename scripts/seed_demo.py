@@ -10,13 +10,26 @@ from db.session import init_models, session_scope
 SEASONS = [
     dict(season_id="sweet", title="Сладкая империя", description="Разбор брендов сладостей.",
          price=299, price_subscriber=179, archive_link="https://drive.google.com/drive/folders/xxxx",
+         workbook_link="https://drive.google.com/drive/folders/sweet_workbook",
          is_current=True),
+    dict(season_id="coffee", title="Кофемания", description="Архивный сезон про кофе-бренды.",
+         price=299, price_subscriber=179, archive_link="https://drive.google.com/drive/folders/coffee",
+         workbook_link="https://drive.google.com/drive/folders/coffee_workbook",
+         is_current=False),
+    # служебный пакет «все сезоны» (season_id='all') — скрыт из обычного списка
+    dict(season_id="all", title="Все сезоны", description="Общий архив со всеми сезонами.",
+         price=999, price_subscriber=599, archive_link="https://drive.google.com/drive/folders/all",
+         is_current=False),
 ]
 EPISODES = [
     dict(episode_id="sweet_nutella", season_id="sweet",
          title="Nutella: почему ты ешь её ложкой из банки",
          audio_link="https://example.com/nutella.mp3",
          tags=["nutella", "шоколад", "паста", "детство", "якорь любви"]),
+    dict(episode_id="coffee_sbux", season_id="coffee",
+         title="Starbucks: как продать эмоцию дороже кофе",
+         audio_link="https://example.com/sbux.mp3",
+         tags=["starbucks", "кофе", "ритуал", "упаковка"]),
 ]
 BONUSES = [
     dict(bonus_id="bonus_nutella", season_id="sweet", keyword="НУТЕЛЛА",
@@ -24,6 +37,11 @@ BONUSES = [
          pdf_link="https://drive.google.com/nutella_bonus.pdf",
          audio_link="https://example.com/nutella_bonus.mp3",
          tags=["нейминг", "сладости", "ошибки"]),
+    dict(bonus_id="bonus_coffee", season_id="coffee", keyword="КОФЕ",
+         title="Кофейный якорь: как бренд формирует привычку",
+         pdf_link="https://drive.google.com/coffee_bonus.pdf",
+         audio_link="https://example.com/coffee_bonus.mp3",
+         tags=["кофе", "якорь", "привычка"]),
 ]
 PRODUCTS = [
     dict(product_id="intensive_sweet", season_id="sweet",

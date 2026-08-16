@@ -12,6 +12,19 @@ def _now() -> datetime:
     return datetime.now(UTC)
 
 
+def _aware(value: datetime | None) -> datetime | None:
+    if value is not None and value.tzinfo is None:
+        return value.replace(tzinfo=UTC)
+    return value
+
+
+def _is_active(user: User) -> bool:
+    if not user.is_subscribed:
+        return False
+    expires = _aware(user.subscription_expires)
+    return expires is None or expires > _now()
+
+
 async def get_or_create(tg_id: int, username: str = "") -> dict:
     async with session_scope() as session:
         user = await session.scalar(select(User).where(User.tg_id == tg_id))
@@ -29,13 +42,44 @@ async def is_subscribed(tg_id: int) -> bool:
         user = await session.scalar(select(User).where(User.tg_id == tg_id))
         if user is None or not user.is_subscribed:
             return False
-        expires = user.subscription_expires
-        if expires is not None and expires.tzinfo is None:
-            expires = expires.replace(tzinfo=UTC)
-        if expires is not None and expires <= _now():
+        if not _is_active(user):
             user.is_subscribed = False
             return False
         return True
+
+
+async def subscription_until(tg_id: int) -> datetime | None:
+    """Дата окончания активной подписки (или None, если не активна)."""
+    async with session_scope() as session:
+        user = await session.scalar(select(User).where(User.tg_id == tg_id))
+        if user is None or not _is_active(user):
+            return None
+        return _aware(user.subscription_expires)
+
+
+async def can_trial(tg_id: int) -> bool:
+    """Триал доступен, если ещё не брал и сейчас не подписан."""
+    async with session_scope() as session:
+        user = await session.scalar(select(User).where(User.tg_id == tg_id))
+        if user is None:
+            return True
+        return not user.trial_used and not _is_active(user)
+
+
+async def grant_trial(tg_id: int, hours: int, username: str = "") -> datetime | None:
+    """Выдать 24ч триал клуба. None, если триал уже брали или подписка активна."""
+    expires = _now() + timedelta(hours=hours)
+    async with session_scope() as session:
+        user = await session.scalar(select(User).where(User.tg_id == tg_id))
+        if user is None:
+            user = User(tg_id=tg_id, username=username)
+            session.add(user)
+        if user.trial_used or _is_active(user):
+            return None
+        user.is_subscribed = True
+        user.subscription_expires = expires
+        user.trial_used = True
+    return expires
 
 
 async def grant_subscription(tg_id: int, days: int, username: str = "") -> datetime:
@@ -125,4 +169,5 @@ def _snapshot(user: User) -> dict:
         "subscription_expires": user.subscription_expires,
         "purchased_seasons": list(user.purchased_seasons or []),
         "got_voice_demo": user.got_voice_demo,
+        "trial_used": user.trial_used,
     }

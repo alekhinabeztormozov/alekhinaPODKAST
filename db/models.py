@@ -31,6 +31,7 @@ class User(Base):
     subscription_expires: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     purchased_seasons: Mapped[list] = mapped_column(JSON, default=list)
     got_voice_demo: Mapped[bool] = mapped_column(Boolean, default=False)
+    trial_used: Mapped[bool] = mapped_column(Boolean, default=False)
     registered_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
@@ -44,6 +45,7 @@ class Season(Base):
     price: Mapped[int] = mapped_column(Integer, default=299)
     price_subscriber: Mapped[int] = mapped_column(Integer, default=179)
     archive_link: Mapped[str] = mapped_column(Text, default="")
+    workbook_link: Mapped[str] = mapped_column(Text, default="")
     is_current: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
     start_date: Mapped[date | None] = mapped_column(Date, nullable=True)
     end_date: Mapped[date | None] = mapped_column(Date, nullable=True)

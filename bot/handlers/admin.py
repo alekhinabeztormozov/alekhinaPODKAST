@@ -113,6 +113,12 @@ async def add_product(message: Message, command: CommandObject) -> None:
                    "/add_product id | season_id | Название | 3900 | 2730 | ссылка_оплаты | 1")
 
 
+@router.message(Command("set_workbook"))
+async def set_workbook(message: Message, command: CommandObject) -> None:
+    await _run_add(message, command, 2, admin_content.set_workbook,
+                   "/set_workbook season_id | ссылка_на_тетрадь")
+
+
 @router.message(Command("content"))
 async def content_counts(message: Message) -> None:
     if not _is_admin(message, get_settings()):

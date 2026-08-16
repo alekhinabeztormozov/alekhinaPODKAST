@@ -44,7 +44,16 @@ class Settings(BaseSettings):
 
     subscription_price: int = 790
     subscription_days: int = 30
-    trial_days: int = 1
+    subscription_price_3m: int = 1890
+    subscription_days_3m: int = 90
+    trial_hours: int = 24
+
+    workbook_price: int = 599
+    workbook_price_subscriber: int = 359
+    all_seasons_price: int = 999
+    all_seasons_price_subscriber: int = 599
+    all_seasons_season_id: str = "all"
+
     bot_username: str = "AlekhinaU_bot"
 
     @property

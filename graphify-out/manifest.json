@@ -240,8 +240,8 @@
     "semantic_hash": ""
   },
   "pdf/renderer.py": {
-    "mtime": 1786886709.0258703,
-    "ast_hash": "5dca486ec038dfc4deab38588e72a81f",
+    "mtime": 1786891416.4038956,
+    "ast_hash": "b4fddceaf145a4e14a63848cbd807c8c",
     "semantic_hash": ""
   },
   "pyproject.toml": {
@@ -410,8 +410,8 @@
     "semantic_hash": ""
   },
   "pdf/assets/logo.png": {
-    "mtime": 1786727732.8340888,
-    "ast_hash": "8e60d4f013327444878f24aa197a0f6a",
+    "mtime": 1786891281.9481819,
+    "ast_hash": "c7e63589167caea4a137f6249246d623",
     "semantic_hash": ""
   },
   "media/assets/ambient/drifting-dreams.mp3": {

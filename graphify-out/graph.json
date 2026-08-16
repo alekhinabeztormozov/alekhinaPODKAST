@@ -4005,7 +4005,7 @@
       "label": "_logo_img()",
       "file_type": "code",
       "source_file": "pdf/renderer.py",
-      "source_location": "L48",
+      "source_location": "L59",
       "_origin": "ast",
       "id": "pdf_renderer_logo_img",
       "community": 15,
@@ -4027,7 +4027,7 @@
       "label": "_wordmark()",
       "file_type": "code",
       "source_file": "pdf/renderer.py",
-      "source_location": "L54",
+      "source_location": "L65",
       "_origin": "ast",
       "id": "pdf_renderer_wordmark",
       "community": 15,
@@ -4038,7 +4038,7 @@
       "label": "_header_block()",
       "file_type": "code",
       "source_file": "pdf/renderer.py",
-      "source_location": "L61",
+      "source_location": "L72",
       "_origin": "ast",
       "id": "pdf_renderer_header_block",
       "community": 15,
@@ -4049,7 +4049,7 @@
       "label": "render_guide()",
       "file_type": "code",
       "source_file": "pdf/renderer.py",
-      "source_location": "L69",
+      "source_location": "L80",
       "_origin": "ast",
       "id": "pdf_renderer_render_guide",
       "community": 15,
@@ -4060,7 +4060,7 @@
       "label": "_ensure_gtk()",
       "file_type": "code",
       "source_file": "pdf/renderer.py",
-      "source_location": "L91",
+      "source_location": "L102",
       "_origin": "ast",
       "id": "pdf_renderer_ensure_gtk",
       "community": 15,
@@ -4071,7 +4071,7 @@
       "label": "render_html()",
       "file_type": "code",
       "source_file": "pdf/renderer.py",
-      "source_location": "L104",
+      "source_location": "L115",
       "_origin": "ast",
       "id": "pdf_renderer_render_html",
       "community": 15,
@@ -5243,8 +5243,8 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "tests_test_spec_features_test_catalog_excludes_all_pack",
-      "community": 22,
-      "community_name": "test_spec_features.py",
+      "community": 25,
+      "community_name": "catalog.py",
       "norm_label": "test_catalog_excludes_all_pack()"
     },
     {
@@ -6375,7 +6375,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "\u0434\u0432\u0430 telegram-\u043a\u0430\u043d\u0430\u043b\u0430 (\u043e\u0442\u043a\u0440\u044b\u0442\u044b\u0438 \u043f\u0443\u0431\u043b\u0438\u0447\u043d\u044b\u0438 + \u0437\u0430\u043a\u0440\u044b\u0442\u044b\u0438 \u0447\u0430\u0441\u0442\u043d\u044b\u0438)",
-      "community_name": "\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "dostupy_dlya_yulii_two_channels"
     },
     {
@@ -6683,7 +6683,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "\u0432\u043e\u0440\u043e\u043d\u043a\u0430 \u043f\u0440\u043e\u0434\u0430\u0436",
-      "community_name": "\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_funnel"
     },
     {
@@ -6711,7 +6711,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "\u0440\u0430\u0441\u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0435\u043d\u0438\u0435 \u043f\u043e\u0434\u043a\u0430\u0441\u0442\u0430 (podster \u2192 \u043f\u043b\u043e\u0449\u0430\u0434\u043a\u0438)",
-      "community_name": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0430\u0443\u0434\u0438\u043e (ffmpeg, \u0431\u0435\u0437 \u043d\u0435\u0439\u0440\u043e\u043d\u043a\u0438)",
+      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_podcast_distribution"
     },
     {
@@ -6725,7 +6725,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "podster (\u0445\u043e\u0441\u0442\u0438\u043d\u0433 \u0430\u0443\u0434\u0438\u043e)",
-      "community_name": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0430\u0443\u0434\u0438\u043e (ffmpeg, \u0431\u0435\u0437 \u043d\u0435\u0439\u0440\u043e\u043d\u043a\u0438)",
+      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_podster"
     },
     {
@@ -6739,7 +6739,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "rss-\u043b\u0435\u043d\u0442\u0430 \u043f\u043e\u0434\u043a\u0430\u0441\u0442\u0430",
-      "community_name": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0430\u0443\u0434\u0438\u043e (ffmpeg, \u0431\u0435\u0437 \u043d\u0435\u0439\u0440\u043e\u043d\u043a\u0438)",
+      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_rss_feed"
     },
     {
@@ -6753,7 +6753,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "\u0430\u0432\u0442\u043e-\u0430\u043d\u043e\u043d\u0441 \u0432 \u043e\u0442\u043a\u0440\u044b\u0442\u044b\u0438 telegram-\u043a\u0430\u043d\u0430\u043b",
-      "community_name": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0430\u0443\u0434\u0438\u043e (ffmpeg, \u0431\u0435\u0437 \u043d\u0435\u0439\u0440\u043e\u043d\u043a\u0438)",
+      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_open_channel_announce"
     },
     {
@@ -6767,7 +6767,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "\u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0430\u0443\u0434\u0438\u043e (ffmpeg, \u0431\u0435\u0437 \u043d\u0435\u0438\u0440\u043e\u043d\u043a\u0438)",
-      "community_name": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0430\u0443\u0434\u0438\u043e (ffmpeg, \u0431\u0435\u0437 \u043d\u0435\u0439\u0440\u043e\u043d\u043a\u0438)",
+      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_audio_processing"
     },
     {
@@ -6821,9 +6821,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 49,
+      "community": 1,
       "norm_label": "telegram-\u0431\u043e\u0442 (aiogram 3.x)",
-      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_telegram_bot"
     },
     {
@@ -6835,9 +6835,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 49,
+      "community": 1,
       "norm_label": "\u0441\u0446\u0435\u043d\u0430\u0440\u0438\u0438 /start (\u043f\u0440\u0438\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u0435 + \u043a\u043d\u043e\u043f\u043a\u0438)",
-      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_scenario_start"
     },
     {
@@ -6851,7 +6851,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "\u0441\u0446\u0435\u043d\u0430\u0440\u0438\u0438 pdf-\u0431\u043e\u043d\u0443\u0441",
-      "community_name": "\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_scenario_pdf_bonus"
     },
     {
@@ -6879,7 +6879,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "\u0441\u0446\u0435\u043d\u0430\u0440\u0438\u0438 \u0437\u0430\u043a\u0440\u044b\u0442\u044b\u0438 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
-      "community_name": "\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_scenario_closed_channel"
     },
     {
@@ -6977,7 +6977,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "\u043c\u043e\u043d\u0435\u0442\u0438\u0437\u0430\u0446\u0438\u044f",
-      "community_name": "\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_monetization"
     },
     {
@@ -6991,7 +6991,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "\u043f\u043e\u0434\u043f\u0438\u0441\u043a\u0430 ~200 \u20bd/\u043c\u0435\u0441 (\u0437\u0430\u043a\u0440\u044b\u0442\u044b\u0438 \u043a\u0430\u043d\u0430\u043b)",
-      "community_name": "\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_subscription_200"
     },
     {
@@ -7005,7 +7005,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "pdf-\u0433\u0430\u0438\u0434\u044b 20-30 \u20bd",
-      "community_name": "\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_pdf_guides_20_30"
     },
     {
@@ -7019,7 +7019,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "1-\u0434\u043d\u0435\u0432\u043d\u044b\u0438 \u0431\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u044b\u0438 \u0442\u0440\u0438\u0430\u043b",
-      "community_name": "\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_trial_1day"
     },
     {
@@ -7033,7 +7033,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "\u043b\u043e\u0433\u0438\u043a\u0430 \u0432\u043e\u0440\u043e\u043d\u043a\u0438: \u0434\u0435\u0448\u0435\u0432\u044b\u0438 \u0433\u0430\u0438\u0434 \u0442\u043e\u043b\u043a\u0430\u0435\u0442 \u0432 \u043f\u043e\u0434\u043f\u0438\u0441\u043a\u0443",
-      "community_name": "\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_funnel_logic"
     },
     {
@@ -7213,7 +7213,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 49,
+      "community": 2,
       "norm_label": "\u0442\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0438 \u0441\u0442\u0435\u043a",
       "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_tech_stack"
@@ -7227,7 +7227,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 49,
+      "community": 2,
       "norm_label": "aiogram 3.x",
       "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_aiogram"
@@ -7241,7 +7241,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 49,
+      "community": 2,
       "norm_label": "fastapi + uvicorn",
       "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_fastapi"
@@ -7255,7 +7255,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 49,
+      "community": 2,
       "norm_label": "httpx (async http-\u043a\u043b\u0438\u0435\u043d\u0442)",
       "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_httpx"
@@ -7285,7 +7285,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "ffmpeg",
-      "community_name": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0430\u0443\u0434\u0438\u043e (ffmpeg, \u0431\u0435\u0437 \u043d\u0435\u0439\u0440\u043e\u043d\u043a\u0438)",
+      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_ffmpeg"
     },
     {
@@ -7327,7 +7327,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "feedparser (rss)",
-      "community_name": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0430\u0443\u0434\u0438\u043e (ffmpeg, \u0431\u0435\u0437 \u043d\u0435\u0439\u0440\u043e\u043d\u043a\u0438)",
+      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_feedparser"
     },
     {
@@ -7339,9 +7339,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 49,
+      "community": 1,
       "norm_label": "redis (fsm-\u0445\u0440\u0430\u043d\u0438\u043b\u0438\u0449\u0435)",
-      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_redis"
     },
     {
@@ -7353,7 +7353,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 49,
+      "community": 2,
       "norm_label": "caddy (\u0430\u0432\u0442\u043e-tls https \u0434\u043b\u044f \u0432\u0435\u0431\u0445\u0443\u043a\u043e\u0432)",
       "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_caddy"
@@ -7367,7 +7367,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 49,
+      "community": 2,
       "norm_label": "\u0434\u0435\u043f\u043b\u043e\u0438 \u043d\u0430 vps (systemd / docker compose)",
       "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_vps_deploy"
@@ -7437,9 +7437,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 49,
+      "community": 1,
       "norm_label": "bot_token",
-      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_env_bot_token"
     },
     {
@@ -7481,7 +7481,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "closed_channel_id",
-      "community_name": "\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_env_closed_channel_id"
     },
     {
@@ -7551,7 +7551,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "podster_rss_url",
-      "community_name": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0430\u0443\u0434\u0438\u043e (ffmpeg, \u0431\u0435\u0437 \u043d\u0435\u0439\u0440\u043e\u043d\u043a\u0438)",
+      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_env_podster_rss_url"
     },
     {
@@ -23243,7 +23243,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "pdf/renderer.py",
-      "source_location": "L91",
+      "source_location": "L102",
       "weight": 1.0,
       "_origin": "ast",
       "source": "pdf_renderer",
@@ -23265,7 +23265,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "pdf/renderer.py",
-      "source_location": "L61",
+      "source_location": "L72",
       "weight": 1.0,
       "_origin": "ast",
       "source": "pdf_renderer",
@@ -23276,7 +23276,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "pdf/renderer.py",
-      "source_location": "L48",
+      "source_location": "L59",
       "weight": 1.0,
       "_origin": "ast",
       "source": "pdf_renderer",
@@ -23298,7 +23298,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "pdf/renderer.py",
-      "source_location": "L69",
+      "source_location": "L80",
       "weight": 1.0,
       "_origin": "ast",
       "source": "pdf_renderer",
@@ -23309,7 +23309,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "pdf/renderer.py",
-      "source_location": "L104",
+      "source_location": "L115",
       "weight": 1.0,
       "_origin": "ast",
       "source": "pdf_renderer",
@@ -23331,7 +23331,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "pdf/renderer.py",
-      "source_location": "L54",
+      "source_location": "L65",
       "weight": 1.0,
       "_origin": "ast",
       "source": "pdf_renderer",
@@ -23355,7 +23355,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "pdf/renderer.py",
-      "source_location": "L61",
+      "source_location": "L72",
       "weight": 1.0,
       "_origin": "ast",
       "source": "pdf_renderer_header_block",
@@ -23367,7 +23367,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "pdf/renderer.py",
-      "source_location": "L69",
+      "source_location": "L80",
       "weight": 1.0,
       "_origin": "ast",
       "source": "pdf_renderer_render_guide",
@@ -23379,7 +23379,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "pdf/renderer.py",
-      "source_location": "L64",
+      "source_location": "L75",
       "weight": 1.0,
       "_origin": "ast",
       "source": "pdf_renderer_header_block",
@@ -23402,7 +23402,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "pdf/renderer.py",
-      "source_location": "L78",
+      "source_location": "L89",
       "weight": 1.0,
       "_origin": "ast",
       "source": "pdf_renderer_render_guide",
@@ -23414,7 +23414,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "pdf/renderer.py",
-      "source_location": "L109",
+      "source_location": "L120",
       "weight": 1.0,
       "_origin": "ast",
       "source": "pdf_renderer_render_html",
@@ -23426,7 +23426,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "pdf/renderer.py",
-      "source_location": "L85",
+      "source_location": "L96",
       "weight": 1.0,
       "_origin": "ast",
       "source": "pdf_renderer_render_guide",
@@ -23486,7 +23486,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "pdf/renderer.py",
-      "source_location": "L65",
+      "source_location": "L76",
       "weight": 1.0,
       "_origin": "ast",
       "source": "pdf_renderer_header_block",
@@ -23498,7 +23498,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "pdf/renderer.py",
-      "source_location": "L48",
+      "source_location": "L59",
       "weight": 1.0,
       "_origin": "ast",
       "source": "pdf_renderer_logo_img",
@@ -23510,7 +23510,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "pdf/renderer.py",
-      "source_location": "L95",
+      "source_location": "L106",
       "weight": 1.0,
       "_origin": "ast",
       "source": "pdf_renderer_ensure_gtk",
@@ -23522,7 +23522,7 @@
       "context": "return_type",
       "confidence": "EXTRACTED",
       "source_file": "pdf/renderer.py",
-      "source_location": "L69",
+      "source_location": "L80",
       "weight": 1.0,
       "_origin": "ast",
       "source": "pdf_renderer_render_guide",
@@ -23534,7 +23534,7 @@
       "context": "return_type",
       "confidence": "EXTRACTED",
       "source_file": "pdf/renderer.py",
-      "source_location": "L104",
+      "source_location": "L115",
       "weight": 1.0,
       "_origin": "ast",
       "source": "pdf_renderer_render_html",
@@ -23546,7 +23546,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "pdf/renderer.py",
-      "source_location": "L66",
+      "source_location": "L77",
       "weight": 1.0,
       "_origin": "ast",
       "source": "pdf_renderer_header_block",
@@ -23558,7 +23558,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "pdf/renderer.py",
-      "source_location": "L86",
+      "source_location": "L97",
       "weight": 1.0,
       "_origin": "ast",
       "source": "pdf_renderer_render_guide",
@@ -23570,7 +23570,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "pdf/renderer.py",
-      "source_location": "L88",
+      "source_location": "L99",
       "weight": 1.0,
       "_origin": "ast",
       "source": "pdf_renderer_render_guide",
@@ -23606,7 +23606,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "pdf/renderer.py",
-      "source_location": "L105",
+      "source_location": "L116",
       "weight": 1.0,
       "_origin": "ast",
       "source": "pdf_renderer_render_html",
@@ -27619,5 +27619,5 @@
       "source_file": "PROJECT.md"
     }
   ],
-  "built_at_commit": "84c36c1f80fa6e44aa54a7189bb984a8175cc372"
+  "built_at_commit": "2e224691ad6a1f59c6d1d8d10c774af88da8724f"
 }

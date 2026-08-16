@@ -1,23 +1,23 @@
 # Graph Report - music bot  (2026-08-16)
 
 ## Corpus Check
-- 84 files · ~102,365 words
+- 84 files · ~48,557 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 664 nodes · 1720 edges · 50 communities (49 shown, 1 thin omitted)
+- 664 nodes · 1720 edges · 49 communities (48 shown, 1 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 40 edges (avg confidence: 0.7)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `84c36c1f`
+- Built from commit: `2e224691`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - Мастер-документ проекта «Алёхина без тормозов»
-- Сценарий Закрытый канал (оплата → invite)
-- Обработка аудио (ffmpeg, без нейронки)
+- Telegram-бот (aiogram 3.x)
+- Технический стек
 - Оплаты Telegram-нативно (ключевое решение)
 - Апселлы фаза 2+ (отдельная плата)
 - Google Sheets (витрина для клиента)
@@ -48,7 +48,6 @@
 - notion_sync.py
 - subscriptions.py
 - admin_content.py
-- Технический стек
 
 ## God Nodes (most connected - your core abstractions)
 1. `session_scope()` - 71 edges
@@ -82,19 +81,19 @@
 - **Пайплайн: запись→Podster→анонс→бот→продажа** — project_audio_processing, project_podster, project_rss_feed, project_open_channel_announce, project_telegram_bot, project_monetization [EXTRACTED 1.00]
 - **Механизм закрытого канала: оплата→invite→ревокация** — project_telegram_stars, project_invite_revocation, project_apscheduler, project_scenario_closed_channel [EXTRACTED 0.95]
 
-## Communities (50 total, 1 thin omitted)
+## Communities (49 total, 1 thin omitted)
 
 ### Community 0 - "Мастер-документ проекта «Алёхина без тормозов»"
 Cohesion: 0.15
 Nodes (16): доступы-для-юлии.md (инструкция клиенту), Доступы + материалы от клиента, Дедлайн 3-4 недели от старта, Условия сделки, Прямая оплата, не через Kwork, Разделение труда исполнитель/клиент, Первый шаг: ffmpeg аудио-пайплайн, Проверка всей цепочки (аудио→Podster→бот→продажа) (+8 more)
 
-### Community 1 - "Сценарий Закрытый канал (оплата → invite)"
-Cohesion: 0.24
-Nodes (10): Два Telegram-канала (открытый публичный + закрытый частный), CLOSED_CHANNEL_ID, Воронка продаж, Логика воронки: дешёвый гайд толкает в подписку, Монетизация, PDF-гайды 20-30 ₽, Сценарий Закрытый канал (оплата → invite), Сценарий PDF-бонус (+2 more)
+### Community 1 - "Telegram-бот (aiogram 3.x)"
+Cohesion: 0.18
+Nodes (14): Два Telegram-канала (открытый публичный + закрытый частный), BOT_TOKEN, CLOSED_CHANNEL_ID, Воронка продаж, Логика воронки: дешёвый гайд толкает в подписку, Монетизация, PDF-гайды 20-30 ₽, Redis (FSM-хранилище) (+6 more)
 
-### Community 2 - "Обработка аудио (ffmpeg, без нейронки)"
-Cohesion: 0.25
-Nodes (8): Обработка аудио (ffmpeg, без нейронки), PODSTER_RSS_URL, feedparser (RSS), ffmpeg, Авто-анонс в открытый Telegram-канал, Распространение подкаста (Podster → площадки), Podster (хостинг аудио), RSS-лента подкаста
+### Community 2 - "Технический стек"
+Cohesion: 0.16
+Nodes (14): aiogram 3.x, Обработка аудио (ffmpeg, без нейронки), Caddy (авто-TLS HTTPS для вебхуков), PODSTER_RSS_URL, FastAPI + uvicorn, feedparser (RSS), ffmpeg, httpx (async HTTP-клиент) (+6 more)
 
 ### Community 3 - "Оплаты Telegram-нативно (ключевое решение)"
 Cohesion: 0.20
@@ -173,8 +172,8 @@ Cohesion: 0.07
 Nodes (25): 1. Подготовка сервера, 2. .env, 3. Запуск, 4. Числовой id закрытого канала, 5.05. Webhook ЮKassa (обязательно для оплат), 5.1. Шрифты PDF (только без Docker), 5. Notion и Sheets, 6. Проверка цепочки (+17 more)
 
 ### Community 22 - "test_spec_features.py"
-Cohesion: 0.26
-Nodes (10): date, Season, _seasons_ending(), FakeBot, _seed_seasons(), test_catalog_excludes_all_pack(), test_fulfill_all_grants_everything(), test_fulfill_season_and_idempotent() (+2 more)
+Cohesion: 0.28
+Nodes (9): date, Season, _seasons_ending(), FakeBot, _seed_seasons(), test_fulfill_all_grants_everything(), test_fulfill_season_and_idempotent(), test_fulfill_sub_3m() (+1 more)
 
 ### Community 23 - "Логика бота (спека клиента, 14.08) — источник правды"
 Cohesion: 0.20
@@ -185,8 +184,8 @@ Cohesion: 0.18
 Nodes (10): PDF-гайд из текста, Гайд владельца — как пользоваться ботом, Готовый подкаст из аудио, Наполнение контентом через Notion (основной способ), Настройка таблиц и Notion (разово, команды в боте), Пакеты магазина и цены, Подписка и триал (автоматически), Про большие файлы (+2 more)
 
 ### Community 25 - "catalog.py"
-Cohesion: 0.25
-Nodes (17): active_main_product(), all_seasons(), _bonus(), bonus_by_id(), bonus_by_keyword(), current_season(), _episode(), _matches() (+9 more)
+Cohesion: 0.24
+Nodes (18): active_main_product(), all_seasons(), _bonus(), bonus_by_id(), bonus_by_keyword(), current_season(), _episode(), _matches() (+10 more)
 
 ### Community 26 - "generate_ambient.py"
 Cohesion: 0.67
@@ -211,10 +210,6 @@ Nodes (11): expired(), grant(), has_used_trial(), is_active(), mark_expired(), _
 ### Community 48 - "admin_content.py"
 Cohesion: 0.33
 Nodes (9): add_bonus(), add_episode(), add_product(), add_season(), counts(), set_workbook(), _tags(), _upsert() (+1 more)
-
-### Community 49 - "Технический стек"
-Cohesion: 0.24
-Nodes (10): aiogram 3.x, Caddy (авто-TLS HTTPS для вебхуков), BOT_TOKEN, FastAPI + uvicorn, httpx (async HTTP-клиент), Redis (FSM-хранилище), Сценарий /start (приветствие + кнопки), Технический стек (+2 more)
 
 ## Knowledge Gaps
 - **72 isolated node(s):** `alehina-bot`, `Требования`, `GTK для WeasyPrint на Windows`, `Запуск`, `Аудио-пайплайн` (+67 more)

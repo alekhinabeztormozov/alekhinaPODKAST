@@ -25,7 +25,6 @@ BRUSH_ASSET = Path(__file__).resolve().parent / "assets" / "brush.png"
 class GuideStyle:
     brand: str = "АЛЁХИНА БЕЗ ТОРМОЗОВ"
     accent: str = "#E10600"
-    logo: Path | None = None
 
 
 class PdfError(RuntimeError):
@@ -63,29 +62,10 @@ def _data_uri(path: Path) -> str:
     return f"data:{mime};base64,{encoded}"
 
 
-def _logo_img(logo: Path) -> str:
-    return f'<img class="logo" src="{_data_uri(logo)}" alt="logo">'
-
-
 def _brush_block() -> str:
     if not BRUSH_ASSET.exists():
         return ""
-    return f'<img class="brush" src="{_data_uri(BRUSH_ASSET)}" alt="">'
-
-
-def _wordmark(brand: str) -> str:
-    top, _, bottom = brand.strip().partition(" ")
-    top_html = f'<span class="wm-top">{html.escape(top)}</span>'
-    bottom_html = f'<span class="wm-bot">{html.escape(bottom)}</span>' if bottom else ""
-    return f'<div class="wordmark">{top_html}{bottom_html}<span class="wm-tag">Подкаст</span></div>'
-
-
-def _header_block(style: GuideStyle) -> str:
-    if style.logo:
-        if not style.logo.exists():
-            raise PdfError(f"логотип не найден: {style.logo}")
-        return _logo_img(style.logo)
-    return _wordmark(style.brand)
+    return f'<img src="{_data_uri(BRUSH_ASSET)}" alt="">'
 
 
 def render_guide(
@@ -105,7 +85,6 @@ def render_guide(
         accent=style.accent,
         title=html.escape(title),
         body=text_to_html(body_text),
-        header=_header_block(style),
         brush=_brush_block(),
     )
     return render_html(document, out_path, base_url=str(template_path.parent))

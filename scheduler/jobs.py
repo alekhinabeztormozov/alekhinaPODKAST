@@ -9,7 +9,7 @@ from loguru import logger
 from sqlalchemy import select
 
 from bot.content import FINALE_ANNOUNCE, SEASON_ENDING, SUB_EXPIRED
-from bot.services import catalog, notion, seen, users
+from bot.services import catalog, notion, notion_sync, seen, users
 from config import Settings
 from db.models import ScheduledPost, Season
 from db.session import session_scope
@@ -37,6 +37,11 @@ async def _broadcast(bot: Bot, ids: list[int], text: str) -> int:
         except Exception as exc:
             logger.error("Рассылка {} не дошла: {}", tg_id, exc)
     return sent
+
+
+async def pull_notion(bot: Bot, settings: Settings) -> int:
+    await notion_sync.sync_catalog()
+    return await notion_sync.publish_ready_posts(bot, settings)
 
 
 async def poll_rss(bot: Bot, settings: Settings) -> int:

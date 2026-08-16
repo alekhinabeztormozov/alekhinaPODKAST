@@ -57,7 +57,7 @@ def probe_duration(path: Path, ffprobe: str = "ffprobe") -> float:
     result = subprocess.run(
         [exe, "-v", "error", "-show_entries", "format=duration",
          "-of", "json", str(path)],
-        capture_output=True, text=True,
+        capture_output=True, text=True, encoding="utf-8", errors="replace",
     )
     if result.returncode != 0:
         raise PipelineError(f"ffprobe упал на {path}: {result.stderr.strip()}")
@@ -67,7 +67,7 @@ def probe_duration(path: Path, ffprobe: str = "ffprobe") -> float:
         raise PipelineError(f"не разобрал длительность {path}: {exc}") from exc
 
 
-def build_filter_complex(inp: PipelineInputs) -> tuple[str, str]:
+def build_filter_complex(inp: PipelineInputs, voice_duration: float | None = None) -> tuple[str, str]:
     profile = inp.profile
     order: list[str] = []
     if inp.intro:
@@ -87,16 +87,20 @@ def build_filter_complex(inp: PipelineInputs) -> tuple[str, str]:
     if inp.music:
         parts.append("[voicef]asplit=2[vmain][vside]")
         parts.append(
-            f"[musicf]aloop=loop=-1:size=2147483647,volume={profile.music_volume},"
-            f"afade=t=in:d={profile.music_fade}[bgraw]"
+            f"[musicf]volume={profile.music_volume},afade=t=in:d={profile.music_fade}[bgraw]"
         )
         parts.append(
             f"[bgraw][vside]sidechaincompress="
             f"threshold={profile.duck_threshold}:ratio={profile.duck_ratio}:"
             f"attack={profile.duck_attack}:release={profile.duck_release}[bgduck]"
         )
+        duck_out = "[bgduck]"
+        if voice_duration is not None:
+            fade_start = max(0.0, voice_duration - profile.music_fade)
+            parts.append(f"[bgduck]afade=t=out:st={fade_start:.3f}:d={profile.music_fade}[bgfade]")
+            duck_out = "[bgfade]"
         parts.append(
-            "[vmain][bgduck]amix=inputs=2:duration=first:normalize=0[body]"
+            f"[vmain]{duck_out}amix=inputs=2:duration=first:normalize=0[body]"
         )
     else:
         parts.append("[voicef]anull[body]")
@@ -122,16 +126,16 @@ def build_filter_complex(inp: PipelineInputs) -> tuple[str, str]:
     return ";".join(parts), "[out]"
 
 
-def _ordered_input_paths(inp: PipelineInputs) -> list[Path]:
-    paths: list[Path] = []
+def _ordered_inputs(inp: PipelineInputs) -> list[tuple[list[str], Path]]:
+    items: list[tuple[list[str], Path]] = []
     if inp.intro:
-        paths.append(inp.intro)
-    paths.append(inp.voice)
+        items.append(([], inp.intro))
+    items.append(([], inp.voice))
     if inp.music:
-        paths.append(inp.music)
+        items.append((["-stream_loop", "-1"], inp.music))
     if inp.outro:
-        paths.append(inp.outro)
-    return paths
+        items.append(([], inp.outro))
+    return items
 
 
 def process_episode(
@@ -153,11 +157,18 @@ def process_episode(
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
-    filter_complex, out_label = build_filter_complex(inp)
+    voice_duration: float | None = None
+    if inp.music:
+        try:
+            voice_duration = probe_duration(inp.voice, ffprobe)
+        except PipelineError:
+            log.warning("не измерил длину голоса — финальный фейд музыки пропущен")
+    filter_complex, out_label = build_filter_complex(inp, voice_duration)
+    inputs = _ordered_inputs(inp)
     cmd: list[str] = [ffmpeg_exe, "-hide_banner", "-nostdin"]
     cmd += ["-y"] if overwrite else ["-n"]
-    for path in _ordered_input_paths(inp):
-        cmd += ["-i", str(path)]
+    for opts, path in inputs:
+        cmd += [*opts, "-i", str(path)]
     cmd += ["-filter_complex", filter_complex, "-map", out_label]
     cmd += [
         "-c:a", "libmp3lame", "-b:a", inp.profile.bitrate,
@@ -165,8 +176,8 @@ def process_episode(
         str(out_path),
     ]
 
-    log.info("ffmpeg run: %d inputs -> %s", len(_ordered_input_paths(inp)), out_path)
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    log.info("ffmpeg run: %d inputs -> %s", len(inputs), out_path)
+    result = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace")
     if result.returncode != 0:
         tail = result.stderr.strip().splitlines()[-1] if result.stderr.strip() else ""
         raise PipelineError(f"ffmpeg упал (код {result.returncode}): {tail}")

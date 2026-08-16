@@ -13,6 +13,7 @@ from scheduler.jobs import (
     notify_season_ending,
     poll_rss,
     publish_due,
+    pull_notion,
     revoke_expired,
 )
 
@@ -25,6 +26,7 @@ async def main() -> None:
     bot = build_bot(settings)
     scheduler = AsyncIOScheduler(timezone="UTC")
     scheduler.add_job(poll_rss, "interval", minutes=10, args=[bot, settings])
+    scheduler.add_job(pull_notion, "interval", minutes=5, args=[bot, settings])
     scheduler.add_job(publish_due, "interval", minutes=1, args=[bot])
     scheduler.add_job(notify_ready, "interval", minutes=5, args=[bot, settings])
     scheduler.add_job(revoke_expired, "interval", hours=6, args=[bot, settings])

@@ -9,7 +9,7 @@ from loguru import logger
 from sqlalchemy import func, select
 
 from bot.content import ADMIN_DENIED
-from bot.services import admin_content, notion, sheets
+from bot.services import admin_content, notion, notion_sync, sheets
 from config import Settings, get_settings
 from db.models import Contact, ProcessedPayment, Sale
 from db.session import DatabaseNotConfigured, session_scope
@@ -117,6 +117,19 @@ async def add_product(message: Message, command: CommandObject) -> None:
 async def set_workbook(message: Message, command: CommandObject) -> None:
     await _run_add(message, command, 2, admin_content.set_workbook,
                    "/set_workbook season_id | ссылка_на_тетрадь")
+
+
+@router.message(Command("sync_notion"))
+async def sync_notion(message: Message) -> None:
+    if not _is_admin(message, get_settings()):
+        await message.answer(ADMIN_DENIED)
+        return
+    await message.answer("Синхронизирую контент из Notion…")
+    result = await notion_sync.sync_catalog()
+    await message.answer(
+        f"Готово. Эпизоды: {result['episodes']}, бонусы: {result['bonuses']}, "
+        f"пропущено: {result['skipped']}."
+    )
 
 
 @router.message(Command("content"))

@@ -45,14 +45,25 @@ def text_to_html(text: str) -> str:
     return "\n".join(rendered)
 
 
-def _logo_block(logo: Path | None) -> str:
-    if not logo:
-        return ""
-    if not logo.exists():
-        raise PdfError(f"логотип не найден: {logo}")
+def _logo_img(logo: Path) -> str:
     mime = mimetypes.guess_type(str(logo))[0] or "image/png"
     encoded = base64.b64encode(logo.read_bytes()).decode("ascii")
     return f'<img class="logo" src="data:{mime};base64,{encoded}" alt="logo">'
+
+
+def _wordmark(brand: str) -> str:
+    top, _, bottom = brand.strip().partition(" ")
+    top_html = f'<span class="wm-top">{html.escape(top)}</span>'
+    bottom_html = f'<span class="wm-bot">{html.escape(bottom)}</span>' if bottom else ""
+    return f'<div class="wordmark">{top_html}{bottom_html}<span class="wm-tag">Подкаст</span></div>'
+
+
+def _header_block(style: GuideStyle) -> str:
+    if style.logo:
+        if not style.logo.exists():
+            raise PdfError(f"логотип не найден: {style.logo}")
+        return _logo_img(style.logo)
+    return _wordmark(style.brand)
 
 
 def render_guide(
@@ -72,7 +83,7 @@ def render_guide(
         accent=style.accent,
         title=html.escape(title),
         body=text_to_html(body_text),
-        logo_block=_logo_block(style.logo),
+        header=_header_block(style),
     )
     return render_html(document, out_path, base_url=str(template_path.parent))
 

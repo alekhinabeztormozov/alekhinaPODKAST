@@ -26,29 +26,49 @@
 
     .brandbar {
         background: #101010;
-        border-bottom: 3px solid ${accent};
-        padding: 16px 20px;
-        margin-bottom: 26px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        border-bottom: 4px solid ${accent};
+        padding: 22px 24px;
+        margin-bottom: 28px;
+        text-align: center;
     }
 
-    .brandbar .name {
+    .wordmark .wm-top {
+        display: block;
         font-family: "Oswald", "Segoe UI", Arial, sans-serif;
         color: #ffffff;
-        font-size: 17px;
+        font-size: 30px;
         font-weight: 700;
-        letter-spacing: 2px;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        line-height: 1.05;
+    }
+
+    .wordmark .wm-bot {
+        display: block;
+        font-family: "Oswald", "Segoe UI", Arial, sans-serif;
+        color: ${accent};
+        font-size: 30px;
+        font-weight: 800;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        line-height: 1.05;
+    }
+
+    .wordmark .wm-tag {
+        display: inline-block;
+        margin-top: 8px;
+        padding: 2px 12px;
+        border: 1.5px solid ${accent};
+        border-radius: 4px;
+        color: ${accent};
+        font-family: "Oswald", "Segoe UI", Arial, sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 5px;
         text-transform: uppercase;
     }
 
-    .brandbar .accent {
-        color: ${accent};
-        font-weight: 800;
-    }
-
-    .logo { max-height: 40px; }
+    .logo { max-height: 130px; max-width: 100%; display: block; margin: 0 auto; }
 
     h1 {
         font-family: "Oswald", "Segoe UI", Arial, sans-serif;
@@ -93,8 +113,7 @@
 </head>
 <body>
     <div class="brandbar">
-        <span class="name">АЛЁХИНА <span class="accent">БЕЗ ТОРМОЗОВ</span></span>
-        ${logo_block}
+        ${header}
     </div>
     <h1>${title}</h1>
     <div class="title-rule"></div>

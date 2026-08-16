@@ -61,7 +61,10 @@ def generate(ffmpeg: str = "ffmpeg") -> list[str]:
     AMBIENT_DIR.mkdir(parents=True, exist_ok=True)
     created: list[str] = []
     for spec in SYNTH_SPECS:
-        result = subprocess.run(_build_command(spec, ffmpeg), capture_output=True, text=True)
+        result = subprocess.run(
+            _build_command(spec, ffmpeg), capture_output=True, text=True,
+            encoding="utf-8", errors="replace",
+        )
         if result.returncode != 0:
             tail = result.stderr.strip().splitlines()[-1] if result.stderr.strip() else ""
             raise RuntimeError(f"ffmpeg упал на {spec.id}: {tail}")

@@ -18,6 +18,7 @@ _GTK_CANDIDATES = (
 TEMPLATES_DIR = Path(__file__).resolve().parent / "templates"
 DEFAULT_TEMPLATE = TEMPLATES_DIR / "guide.html"
 FONTS_DIR = Path(__file__).resolve().parent / "fonts"
+BRUSH_ASSET = Path(__file__).resolve().parent / "assets" / "brush.png"
 
 
 @dataclass
@@ -56,10 +57,20 @@ def text_to_html(text: str) -> str:
     return "\n".join(rendered)
 
 
+def _data_uri(path: Path) -> str:
+    mime = mimetypes.guess_type(str(path))[0] or "image/png"
+    encoded = base64.b64encode(path.read_bytes()).decode("ascii")
+    return f"data:{mime};base64,{encoded}"
+
+
 def _logo_img(logo: Path) -> str:
-    mime = mimetypes.guess_type(str(logo))[0] or "image/png"
-    encoded = base64.b64encode(logo.read_bytes()).decode("ascii")
-    return f'<img class="logo" src="data:{mime};base64,{encoded}" alt="logo">'
+    return f'<img class="logo" src="{_data_uri(logo)}" alt="logo">'
+
+
+def _brush_block() -> str:
+    if not BRUSH_ASSET.exists():
+        return ""
+    return f'<img class="brush" src="{_data_uri(BRUSH_ASSET)}" alt="">'
 
 
 def _wordmark(brand: str) -> str:
@@ -95,6 +106,7 @@ def render_guide(
         title=html.escape(title),
         body=text_to_html(body_text),
         header=_header_block(style),
+        brush=_brush_block(),
     )
     return render_html(document, out_path, base_url=str(template_path.parent))
 

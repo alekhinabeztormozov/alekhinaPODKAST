@@ -5,7 +5,7 @@
 <style>
     @page {
         size: A4;
-        margin: 20mm 18mm 18mm 18mm;
+        margin: 22mm 18mm 18mm 18mm;
         @bottom-center {
             content: "${brand}  ·  " counter(page) " / " counter(pages);
             font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
@@ -25,67 +25,42 @@
     }
 
     .brandbar {
-        background: #101010;
-        border-bottom: 4px solid ${accent};
-        padding: 22px 24px;
-        margin-bottom: 28px;
-        text-align: center;
+        background: #0d0d0d;
+        margin: -22mm -18mm 0 -18mm;
+        padding: 20px 18mm 22px 18mm;
+        text-align: left;
     }
 
-    .wordmark .wm-top {
+    .logo { height: 92px; max-width: 62%; display: inline-block; vertical-align: middle; }
+
+    .brushband {
+        margin: 0 -18mm 22px -18mm;
+        line-height: 0;
+    }
+
+    .brush {
         display: block;
-        font-family: "Oswald", "Segoe UI", Arial, sans-serif;
-        color: #ffffff;
-        font-size: 30px;
-        font-weight: 700;
-        letter-spacing: 6px;
-        text-transform: uppercase;
-        line-height: 1.05;
+        width: 100%;
+        height: auto;
+        margin-top: -14px;
     }
-
-    .wordmark .wm-bot {
-        display: block;
-        font-family: "Oswald", "Segoe UI", Arial, sans-serif;
-        color: ${accent};
-        font-size: 30px;
-        font-weight: 800;
-        letter-spacing: 4px;
-        text-transform: uppercase;
-        line-height: 1.05;
-    }
-
-    .wordmark .wm-tag {
-        display: inline-block;
-        margin-top: 8px;
-        padding: 2px 12px;
-        border: 1.5px solid ${accent};
-        border-radius: 4px;
-        color: ${accent};
-        font-family: "Oswald", "Segoe UI", Arial, sans-serif;
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 5px;
-        text-transform: uppercase;
-    }
-
-    .logo { max-height: 130px; max-width: 100%; display: block; margin: 0 auto; }
 
     h1 {
         font-family: "Oswald", "Segoe UI", Arial, sans-serif;
-        font-size: 34px;
-        line-height: 1.1;
-        margin: 0 0 6px 0;
-        color: #101010;
+        font-size: 33px;
+        line-height: 1.08;
+        margin: 0 0 8px 0;
+        color: #0d0d0d;
         font-weight: 700;
         letter-spacing: 0.5px;
         text-transform: uppercase;
     }
 
     .title-rule {
-        width: 90px;
+        width: 84px;
         height: 5px;
         background: ${accent};
-        margin: 0 0 24px 0;
+        margin: 0 0 22px 0;
     }
 
     .content p {
@@ -96,30 +71,21 @@
     .content h2 {
         font-family: "Oswald", "Segoe UI", Arial, sans-serif;
         font-size: 18px;
-        margin: 24px 0 8px 0;
+        margin: 22px 0 8px 0;
         color: ${accent};
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.8px;
     }
-
-    .rule {
-        height: 2px;
-        background: linear-gradient(90deg, ${accent} 0%, transparent 75%);
-        margin: 22px 0;
-        border: none;
-    }
 </style>
 </head>
 <body>
-    <div class="brandbar">
-        ${header}
-    </div>
+    <div class="brandbar">${header}</div>
+    <div class="brushband">${brush}</div>
     <h1>${title}</h1>
     <div class="title-rule"></div>
     <div class="content">
         ${body}
     </div>
-    <hr class="rule">
 </body>
 </html>

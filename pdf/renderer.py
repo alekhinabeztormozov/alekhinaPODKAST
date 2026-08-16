@@ -18,7 +18,7 @@ _GTK_CANDIDATES = (
 TEMPLATES_DIR = Path(__file__).resolve().parent / "templates"
 DEFAULT_TEMPLATE = TEMPLATES_DIR / "guide.html"
 FONTS_DIR = Path(__file__).resolve().parent / "fonts"
-FRAME_ASSET = Path(__file__).resolve().parent / "assets" / "frame.png"
+BRUSH_ASSET = Path(__file__).resolve().parent / "assets" / "brush.png"
 
 
 @dataclass
@@ -62,10 +62,10 @@ def _data_uri(path: Path) -> str:
     return f"data:{mime};base64,{encoded}"
 
 
-def _frame_block() -> str:
-    if not FRAME_ASSET.exists():
+def _brush_block() -> str:
+    if not BRUSH_ASSET.exists():
         return ""
-    return f'<div class="pageframe"><img src="{_data_uri(FRAME_ASSET)}" alt=""></div>'
+    return f'<img src="{_data_uri(BRUSH_ASSET)}" alt="">'
 
 
 def render_guide(
@@ -85,7 +85,7 @@ def render_guide(
         accent=style.accent,
         title=html.escape(title),
         body=text_to_html(body_text),
-        frame=_frame_block(),
+        brush=_brush_block(),
     )
     return render_html(document, out_path, base_url=str(template_path.parent))
 

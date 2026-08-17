@@ -46,7 +46,7 @@ def split_guide(text: str) -> tuple[str, str]:
     non_empty = [line for line in lines if line.strip()]
     if not non_empty:
         return "Гайд", text.strip()
-    title = non_empty[0].strip()[:80]
+    title = non_empty[0].strip().lstrip("#*•").strip()[:80] or "Гайд"
     index = lines.index(non_empty[0])
     body = "\n".join(lines[index + 1:]).strip()
     return title, body or non_empty[0].strip()

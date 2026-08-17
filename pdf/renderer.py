@@ -35,25 +35,39 @@ class PdfError(RuntimeError):
 def text_to_html(text: str) -> str:
     rendered: list[str] = []
     paragraph: list[str] = []
+    items: list[str] = []
 
-    def flush() -> None:
+    def flush_paragraph() -> None:
         if paragraph:
             rendered.append("<p>" + "<br>".join(paragraph) + "</p>")
             paragraph.clear()
 
+    def flush_list() -> None:
+        if items:
+            rendered.append("<ul>" + "".join(f"<li>{item}</li>" for item in items) + "</ul>")
+            items.clear()
+
+    def flush_all() -> None:
+        flush_paragraph()
+        flush_list()
+
     for raw in text.replace("\r\n", "\n").split("\n"):
         line = raw.strip()
         if not line:
-            flush()
+            flush_all()
+        elif line[:2] in ("- ", "* ", "• "):
+            flush_paragraph()
+            items.append(html.escape(line[2:].strip()))
         elif line.startswith("## "):
-            flush()
+            flush_all()
             rendered.append(f"<h2>{html.escape(line[3:].strip())}</h2>")
         elif line.startswith("# "):
-            flush()
+            flush_all()
             rendered.append(f"<h2>{html.escape(line[2:].strip())}</h2>")
         else:
+            flush_list()
             paragraph.append(html.escape(line))
-    flush()
+    flush_all()
     return "\n".join(rendered)
 
 

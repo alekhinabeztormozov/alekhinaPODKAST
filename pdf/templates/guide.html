@@ -33,6 +33,14 @@
     }
     .sidebrush img { width: 112mm; height: auto; display: block; }
 
+    .logo-tr {
+        position: fixed;
+        top: -40mm;
+        right: -12mm;
+        z-index: -1;
+    }
+    .logo-tr img { width: 30mm; height: auto; display: block; }
+
     h1 {
         font-family: "Oswald", "Segoe UI", Arial, sans-serif;
         font-size: 40px;
@@ -63,6 +71,7 @@
 </head>
 <body>
     ${side}
+    ${logo}
     <h1>${title}</h1>
     <div class="content">
         ${body}

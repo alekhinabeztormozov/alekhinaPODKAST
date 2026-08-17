@@ -19,6 +19,7 @@ TEMPLATES_DIR = Path(__file__).resolve().parent / "templates"
 DEFAULT_TEMPLATE = TEMPLATES_DIR / "guide.html"
 FONTS_DIR = Path(__file__).resolve().parent / "fonts"
 SIDE_ASSET = Path(__file__).resolve().parent / "assets" / "brush.png"
+LOGO_ASSET = Path(__file__).resolve().parent / "assets" / "logo_dark.png"
 
 
 @dataclass
@@ -68,6 +69,12 @@ def _side_block() -> str:
     return f'<div class="sidebrush"><img src="{_data_uri(SIDE_ASSET)}" alt=""></div>'
 
 
+def _logo_block() -> str:
+    if not LOGO_ASSET.exists():
+        return ""
+    return f'<div class="logo-tr"><img src="{_data_uri(LOGO_ASSET)}" alt=""></div>'
+
+
 def render_guide(
     title: str,
     body_text: str,
@@ -86,6 +93,7 @@ def render_guide(
         title=html.escape(title),
         body=text_to_html(body_text),
         side=_side_block(),
+        logo=_logo_block(),
     )
     return render_html(document, out_path, base_url=str(template_path.parent))
 

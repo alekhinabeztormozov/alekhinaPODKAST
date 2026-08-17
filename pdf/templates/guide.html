@@ -5,7 +5,7 @@
 <style>
     @page {
         size: A4;
-        margin: 26mm 20mm 22mm 44mm;
+        margin: 48mm 20mm 22mm 20mm;
         @bottom-center {
             content: "${brand}  ·  " counter(page) " / " counter(pages);
             font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
@@ -26,12 +26,12 @@
 
     .sidebrush {
         position: fixed;
-        left: -44mm;
-        top: 7%;
-        height: 86%;
+        top: -52mm;
+        left: -30mm;
+        transform: rotate(-9deg);
         z-index: -1;
     }
-    .sidebrush img { height: 100%; width: 34mm; display: block; }
+    .sidebrush img { width: 112mm; height: auto; display: block; }
 
     h1 {
         font-family: "Oswald", "Segoe UI", Arial, sans-serif;

@@ -1,7 +1,7 @@
 {
   ".claude/settings.local.json": {
-    "mtime": 1786904940.4310198,
-    "ast_hash": "ec6695389e938f340cb15b33d086bc8f",
+    "mtime": 1786730439.7976913,
+    "ast_hash": "f4e801c17e1599fc688d986f16a51b43",
     "semantic_hash": ""
   },
   "PROJECT.md": {
@@ -50,8 +50,8 @@
     "semantic_hash": ""
   },
   "bot/handlers/producer.py": {
-    "mtime": 1786964167.0485857,
-    "ast_hash": "83a0f35f7415170fc680f7b52b7a7c5f",
+    "mtime": 1786730686.2875886,
+    "ast_hash": "3a51834a801ed11d96b0f8b8c1470d77",
     "semantic_hash": ""
   },
   "bot/handlers/seasons.py": {
@@ -125,8 +125,8 @@
     "semantic_hash": ""
   },
   "bot/services/pdf.py": {
-    "mtime": 1786892527.2378004,
-    "ast_hash": "b3d834e21f8c18705db68e79d7885f2c",
+    "mtime": 1786886722.8480496,
+    "ast_hash": "6e138ed161807638938664f735d95b84",
     "semantic_hash": ""
   },
   "bot/services/sales.py": {
@@ -240,8 +240,8 @@
     "semantic_hash": ""
   },
   "pdf/renderer.py": {
-    "mtime": 1786964059.6675136,
-    "ast_hash": "602346d0aac84ac82e82817a5ace38de",
+    "mtime": 1786891416.4038956,
+    "ast_hash": "b4fddceaf145a4e14a63848cbd807c8c",
     "semantic_hash": ""
   },
   "pyproject.toml": {
@@ -300,8 +300,8 @@
     "semantic_hash": ""
   },
   "tests/test_pdf.py": {
-    "mtime": 1786964391.7448664,
-    "ast_hash": "804f2c7c64544b924c7c5e3f19bbe87e",
+    "mtime": 1785836373.428186,
+    "ast_hash": "0ce4302dcc872bc7d03771549e6c068e",
     "semantic_hash": ""
   },
   "tests/test_phase2.py": {
@@ -390,8 +390,8 @@
     "semantic_hash": ""
   },
   "pdf/templates/guide.html": {
-    "mtime": 1786964089.6129806,
-    "ast_hash": "114e765c439571af8af3972a4fc33297",
+    "mtime": 1786886688.9117515,
+    "ast_hash": "8548f811157c83031f24770a67295f0b",
     "semantic_hash": ""
   },
   "requirements-dev.txt": {
@@ -472,16 +472,6 @@
   "tests/test_pipeline_ffmpeg.py": {
     "mtime": 1786876546.0783186,
     "ast_hash": "7cf8187a12a54009319d0df9e51632ec",
-    "semantic_hash": ""
-  },
-  "pdf/assets/brush.png": {
-    "mtime": 1786895225.3256395,
-    "ast_hash": "5378d09a1064d8634f858e3e7e9c3d25",
-    "semantic_hash": ""
-  },
-  "pdf/assets/logo_dark.png": {
-    "mtime": 1786962801.923462,
-    "ast_hash": "6d0920f38b57bb004db29de46d7a5311",
     "semantic_hash": ""
   }
 }

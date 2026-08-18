@@ -120,8 +120,8 @@
     "semantic_hash": ""
   },
   "bot/services/notion.py": {
-    "mtime": 1787042545.9266627,
-    "ast_hash": "b9a63b98a9a98c35f121f24b158eb729",
+    "mtime": 1786876361.6103842,
+    "ast_hash": "752f5c6d984f205dd8584285ca2704c4",
     "semantic_hash": ""
   },
   "bot/services/pdf.py": {
@@ -175,8 +175,8 @@
     "semantic_hash": ""
   },
   "config.py": {
-    "mtime": 1787042472.6993551,
-    "ast_hash": "e74dd3c4050671679a3a084861348f14",
+    "mtime": 1786874359.0054593,
+    "ast_hash": "c2048b9b4f9e58a8969f8178f6023301",
     "semantic_hash": ""
   },
   "db/__init__.py": {
@@ -255,8 +255,8 @@
     "semantic_hash": ""
   },
   "scheduler/jobs.py": {
-    "mtime": 1787042570.7615142,
-    "ast_hash": "6b46ae7d39294a02cc1d0c7222837497",
+    "mtime": 1786876411.360236,
+    "ast_hash": "f858af23ef6844d99d683262a0b0e4f7",
     "semantic_hash": ""
   },
   "scheduler/runner.py": {
@@ -345,8 +345,8 @@
     "semantic_hash": ""
   },
   "web/app.py": {
-    "mtime": 1787042534.2499983,
-    "ast_hash": "9017481bfb25e8509b8a2b269ae1974f",
+    "mtime": 1786728664.5542636,
+    "ast_hash": "84f329d5fbf0d161bdc326a047ea2ec3",
     "semantic_hash": ""
   },
   "README.md": {
@@ -375,8 +375,8 @@
     "semantic_hash": ""
   },
   "docs/owner-guide.md": {
-    "mtime": 1787042866.679914,
-    "ast_hash": "dd094287d1e36933567a544963bbde2e",
+    "mtime": 1786876617.277813,
+    "ast_hash": "036d8d1c9a3ba3a7a1b838ad6bb0f665",
     "semantic_hash": ""
   },
   "docs/payments-setup.md": {
@@ -455,13 +455,13 @@
     "semantic_hash": ""
   },
   "docs/deploy-checklist.md": {
-    "mtime": 1787042839.891301,
-    "ast_hash": "b192a6a7eddafc61892fa0fd01443778",
+    "mtime": 1786876637.8335428,
+    "ast_hash": "2b9f7856571aa8af3f1aaab841ca0cc3",
     "semantic_hash": ""
   },
   "bot/services/notion_sync.py": {
-    "mtime": 1787042564.1326594,
-    "ast_hash": "834a1b1792a529b9eaf5d96160e16c27",
+    "mtime": 1786876380.686999,
+    "ast_hash": "655581f11a50689e8ec2bf78c37b44f4",
     "semantic_hash": ""
   },
   "tests/test_notion_sync.py": {
@@ -482,21 +482,6 @@
   "pdf/assets/logo_dark.png": {
     "mtime": 1786962801.923462,
     "ast_hash": "6d0920f38b57bb004db29de46d7a5311",
-    "semantic_hash": ""
-  },
-  "bot/services/vk.py": {
-    "mtime": 1787042489.5534453,
-    "ast_hash": "be3ae961bf4a5d374f75c455b45cc696",
-    "semantic_hash": ""
-  },
-  "bot/services/vk_bot.py": {
-    "mtime": 1787042509.1318488,
-    "ast_hash": "7a314ffc59f841dbc4214c00904ed51d",
-    "semantic_hash": ""
-  },
-  "tests/test_vk.py": {
-    "mtime": 1787042617.5751598,
-    "ast_hash": "71ee0340453473063a2f8d3254895541",
     "semantic_hash": ""
   }
 }

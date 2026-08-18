@@ -1,16 +1,16 @@
-# Graph Report - music bot  (2026-08-18)
+# Graph Report - music bot  (2026-08-17)
 
 ## Corpus Check
-- 87 files · ~76,942 words
+- 84 files · ~76,067 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 694 nodes · 1816 edges · 47 communities (46 shown, 1 thin omitted)
+- 666 nodes · 1724 edges · 45 communities (44 shown, 1 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 40 edges (avg confidence: 0.7)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `62ce8716`
+- Built from commit: `6b5f3639`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -24,33 +24,31 @@
 - Секреты / env-переменные (.env)
 - Пошаговая инструкция по доступам для Юлии
 - Автоматизация подкаста бизнес-блогера
-- test_vk.py
+- users.py
 - Settings
-- get_settings
+- seasons.py
 - session_scope
 - producer.py
 - PipelineInputs
 - render_guide
 - notion.py
 - Алёхина без тормозов — бот и автоматизация подкаста
-- admin.py
+- get_settings
 - sheets.py
 - Технический стек
 - Чеклист go-live (VPS)
-- yookassa.py
+- fulfillment.py
 - Логика бота (спека клиента, 14.08) — источник правды
 - Гайд владельца — как пользоваться ботом
 - catalog.py
 - generate_ambient.py
 - Google Sheets — service-account JSON
 - alehina-bot
-- ThrottlingMiddleware
-- env.py
 
 ## God Nodes (most connected - your core abstractions)
-1. `session_scope()` - 73 edges
-2. `get_settings()` - 68 edges
-3. `Settings` - 41 edges
+1. `session_scope()` - 71 edges
+2. `get_settings()` - 60 edges
+3. `Settings` - 38 edges
 4. `show()` - 26 edges
 5. `is_subscribed()` - 18 edges
 6. `PipelineInputs` - 18 edges
@@ -62,14 +60,14 @@
 ## Surprising Connections (you probably didn't know these)
 - `test_split_guide_strips_markdown_title()` --calls--> `split_guide()`  [EXTRACTED]
   tests/test_pdf.py → bot/handlers/producer.py
-- `set_workbook()` --calls--> `session_scope()`  [EXTRACTED]
-  bot/services/admin_content.py → db/session.py
-- `test_publish_vk_posts_gate_when_unconfigured()` --calls--> `publish_vk_posts()`  [EXTRACTED]
-  tests/test_vk.py → bot/services/notion_sync.py
-- `test_voice_demo_once()` --calls--> `take_voice_demo()`  [EXTRACTED]
-  tests/test_core_flows.py → bot/services/users.py
 - `FakeBot` --uses--> `Settings`  [INFERRED]
   tests/test_notion_sync.py → config.py
+- `FakeBot` --uses--> `Settings`  [INFERRED]
+  tests/test_phase2.py → config.py
+- `FakeBot` --uses--> `Settings`  [INFERRED]
+  tests/test_scheduler_db.py → config.py
+- `FakeBot` --uses--> `User`  [INFERRED]
+  tests/test_phase2.py → db/models.py
 
 ## Import Cycles
 - None detected.
@@ -79,7 +77,7 @@
 - **Пайплайн: запись→Podster→анонс→бот→продажа** — project_audio_processing, project_podster, project_rss_feed, project_open_channel_announce, project_telegram_bot, project_monetization [EXTRACTED 1.00]
 - **Механизм закрытого канала: оплата→invite→ревокация** — project_telegram_stars, project_invite_revocation, project_apscheduler, project_scenario_closed_channel [EXTRACTED 0.95]
 
-## Communities (47 total, 1 thin omitted)
+## Communities (45 total, 1 thin omitted)
 
 ### Community 0 - "Мастер-документ проекта «Алёхина без тормозов»"
 Cohesion: 0.15
@@ -117,25 +115,25 @@ Nodes (6): BotFather (создание бота, получение токена
 Cohesion: 0.33
 Nodes (6): Стиль сообщений клиенту (прямые кавычки, короткое тире, сплошные абзацы), Разработчик Лев (соло, lev.dev), Автоматизация подкаста бизнес-блогера, Принцип: записал один раз → система разнесла и продала, Windows-заметка PYTHONIOENCODING=utf-8, Юлия Алёхина (клиент, бизнес-стратег)
 
-### Community 9 - "test_vk.py"
-Cohesion: 0.10
-Nodes (29): _bonus_text(), handle_incoming(), _none_text(), _results_text(), _tg_link(), _call(), check_secret(), is_configured() (+21 more)
+### Community 9 - "users.py"
+Cohesion: 0.15
+Nodes (26): add_purchased_season(), all_user_ids(), _aware(), can_trial(), drop_subscription(), expired_subscribers(), get_or_create(), grant_subscription() (+18 more)
 
 ### Community 10 - "Settings"
-Cohesion: 0.09
-Nodes (44): BaseSettings, build_bot(), Bot, publish_ready_posts(), Any, Bot, sync_catalog(), _upsert_bonus() (+36 more)
+Cohesion: 0.26
+Nodes (18): BaseSettings, is_seen(), mark_seen(), Settings, announce_text(), _broadcast(), notify_finale(), notify_ready() (+10 more)
 
-### Community 11 - "get_settings"
-Cohesion: 0.07
-Nodes (78): BaseStorage, deliver(), Any, Message, buy_club(), club_bonuses(), club_trial(), _offer() (+70 more)
+### Community 11 - "seasons.py"
+Cohesion: 0.10
+Nodes (50): buy_club(), club_bonuses(), club_trial(), _offer(), Bot, callback_query, CallbackQuery, _return_url() (+42 more)
 
 ### Community 12 - "session_scope"
 Cohesion: 0.06
-Nodes (75): async_sessionmaker, AsyncEngine, AsyncSession, Записать контакт в БД + Google Sheets. Один пользователь = одна строка (дедуп…, record(), _already_done(), fulfill(), _fulfill_all() (+67 more)
+Nodes (65): async_sessionmaker, AsyncEngine, AsyncSession, add_bonus(), add_episode(), add_product(), add_season(), counts() (+57 more)
 
 ### Community 13 - "producer.py"
-Cohesion: 0.11
-Nodes (36): choose_ambient(), _is_owner(), list_ambients(), owner_only(), owner_panel(), preview_ambient(), _process(), Bot (+28 more)
+Cohesion: 0.07
+Nodes (56): bonus_by_button(), deliver(), Any, callback_query, CallbackQuery, Message, choose_ambient(), _is_owner() (+48 more)
 
 ### Community 14 - "PipelineInputs"
 Cohesion: 0.22
@@ -146,16 +144,16 @@ Cohesion: 0.17
 Nodes (21): build_guide(), Path, _data_uri(), _ensure_gtk(), GuideStyle, _logo_block(), PdfError, Path (+13 more)
 
 ### Community 16 - "notion.py"
-Cohesion: 0.17
+Cohesion: 0.16
 Nodes (25): catalog_pages(), _client(), create_episodes_db(), _create_episodes_db_sync(), episode_id(), episode_status(), episode_title(), extract_catalog() (+17 more)
 
 ### Community 17 - "Алёхина без тормозов — бот и автоматизация подкаста"
 Cohesion: 0.11
 Nodes (16): Ассеты от клиента (кладём в `media/assets/`), Аудио-пайплайн (ffmpeg), Запуск, Профиль звука, Docker Compose (рекомендуется), GTK для WeasyPrint на Windows, systemd (без Docker), Алёхина без тормозов — бот и автоматизация подкаста (+8 more)
 
-### Community 18 - "admin.py"
-Cohesion: 0.18
-Nodes (25): add_bonus(), add_episode(), add_product(), add_season(), admin_stats(), content_counts(), _is_admin(), Message (+17 more)
+### Community 18 - "get_settings"
+Cohesion: 0.06
+Nodes (54): BaseMiddleware, BaseStorage, add_bonus(), add_episode(), add_product(), add_season(), admin_stats(), content_counts() (+46 more)
 
 ### Community 19 - "sheets.py"
 Cohesion: 0.31
@@ -169,21 +167,21 @@ Nodes (10): aiogram 3.x, Caddy (авто-TLS HTTPS для вебхуков), BOT
 Cohesion: 0.07
 Nodes (25): 1. Подготовка сервера, 2. .env, 3. Запуск, 4. Числовой id закрытого канала, 5.05. Webhook ЮKassa (обязательно для оплат), 5.1. Шрифты PDF (только без Docker), 5. Notion и Sheets, 6. Проверка цепочки (+17 more)
 
-### Community 22 - "yookassa.py"
-Cohesion: 0.33
-Nodes (9): _auth_header(), confirmation_url(), create_payment(), get_payment(), Any, RuntimeError, YooKassaNotConfigured, test_confirmation_url_extracted() (+1 more)
+### Community 22 - "fulfillment.py"
+Cohesion: 0.24
+Nodes (16): _already_done(), fulfill(), _fulfill_all(), _fulfill_season(), _fulfill_sub(), _fulfill_workbook(), _invite_link(), Any (+8 more)
 
 ### Community 23 - "Логика бота (спека клиента, 14.08) — источник правды"
 Cohesion: 0.20
 Nodes (9): БД (таблицы), Логика бота (спека клиента, 14.08) — источник правды, Модель, Статус реализации (на 2026-08-16) — готово к деплою, Сценарии, Технические, Фазы, Цены (жёстко; скидка подписчику по `is_subscribed`) (+1 more)
 
 ### Community 24 - "Гайд владельца — как пользоваться ботом"
-Cohesion: 0.17
-Nodes (11): PDF-гайд из текста, ВКонтакте (верх воронки), Гайд владельца — как пользоваться ботом, Готовый подкаст из аудио, Наполнение контентом через Notion (основной способ), Настройка таблиц и Notion (разово, команды в боте), Пакеты магазина и цены, Подписка и триал (автоматически) (+3 more)
+Cohesion: 0.18
+Nodes (10): PDF-гайд из текста, Гайд владельца — как пользоваться ботом, Готовый подкаст из аудио, Наполнение контентом через Notion (основной способ), Настройка таблиц и Notion (разово, команды в боте), Пакеты магазина и цены, Подписка и триал (автоматически), Про большие файлы (+2 more)
 
 ### Community 25 - "catalog.py"
-Cohesion: 0.12
-Nodes (29): bonus_by_button(), callback_query, CallbackQuery, active_main_product(), all_seasons(), _bonus(), bonus_by_id(), bonus_by_keyword() (+21 more)
+Cohesion: 0.13
+Nodes (27): active_main_product(), all_seasons(), all_seasons_pack(), _bonus(), bonus_by_id(), bonus_by_keyword(), current_season(), _episode() (+19 more)
 
 ### Community 26 - "generate_ambient.py"
 Cohesion: 0.67
@@ -193,14 +191,6 @@ Nodes (5): _build_command(), _cli(), _filter_complex(), generate(), SynthSpec
 Cohesion: 0.50
 Nodes (3): Google Sheets — service-account JSON, Что дальше делаю я, Шаги
 
-### Community 45 - "ThrottlingMiddleware"
-Cohesion: 0.27
-Nodes (6): BaseMiddleware, Any, ThrottlingMiddleware, TelegramObject, test_missing_user_passes_through(), test_second_call_suppressed()
-
-### Community 46 - "env.py"
-Cohesion: 0.53
-Nodes (5): Connection, do_run_migrations(), get_url(), run_migrations_offline(), run_migrations_online()
-
 ## Knowledge Gaps
 - **72 isolated node(s):** `alehina-bot`, `Требования`, `GTK для WeasyPrint на Windows`, `Запуск`, `Аудио-пайплайн` (+67 more)
   These have ≤1 connection - possible missing edges or undocumented components.
@@ -209,17 +199,17 @@ Nodes (5): Connection, do_run_migrations(), get_url(), run_migrations_offline(),
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `get_settings()` connect `get_settings` to `test_vk.py`, `Settings`, `session_scope`, `producer.py`, `PipelineInputs`, `env.py`, `notion.py`, `admin.py`, `sheets.py`, `yookassa.py`, `catalog.py`?**
-  _High betweenness centrality (0.162) - this node is a cross-community bridge._
-- **Why does `session_scope()` connect `session_scope` to `test_vk.py`, `Settings`, `get_settings`, `admin.py`, `catalog.py`?**
+- **Why does `get_settings()` connect `get_settings` to `Settings`, `seasons.py`, `session_scope`, `producer.py`, `PipelineInputs`, `notion.py`, `sheets.py`, `fulfillment.py`, `catalog.py`?**
+  _High betweenness centrality (0.144) - this node is a cross-community bridge._
+- **Why does `session_scope()` connect `session_scope` to `users.py`, `Settings`, `seasons.py`, `get_settings`, `fulfillment.py`, `catalog.py`?**
   _High betweenness centrality (0.076) - this node is a cross-community bridge._
-- **Why does `Settings` connect `Settings` to `test_vk.py`, `get_settings`, `session_scope`, `producer.py`, `admin.py`, `catalog.py`?**
-  _High betweenness centrality (0.059) - this node is a cross-community bridge._
+- **Why does `Settings` connect `Settings` to `session_scope`, `producer.py`, `notion.py`, `get_settings`, `fulfillment.py`, `catalog.py`?**
+  _High betweenness centrality (0.057) - this node is a cross-community bridge._
 - **Are the 3 inferred relationships involving `Settings` (e.g. with `FakeBot` and `FakeBot`) actually correct?**
   _`Settings` has 3 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `alehina-bot`, `Требования`, `GTK для WeasyPrint на Windows` to the rest of the system?**
   _72 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `test_vk.py` be split into smaller, more focused modules?**
-  _Cohesion score 0.10420168067226891 - nodes in this community are weakly interconnected._
-- **Should `Settings` be split into smaller, more focused modules?**
-  _Cohesion score 0.09096045197740113 - nodes in this community are weakly interconnected._
+- **Should `seasons.py` be split into smaller, more focused modules?**
+  _Cohesion score 0.10101010101010101 - nodes in this community are weakly interconnected._
+- **Should `session_scope` be split into smaller, more focused modules?**
+  _Cohesion score 0.06358543417366946 - nodes in this community are weakly interconnected._

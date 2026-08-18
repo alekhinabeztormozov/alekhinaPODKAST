@@ -6,7 +6,7 @@ from aiogram import Bot
 from loguru import logger
 from sqlalchemy import select
 
-from bot.services import notion, seen
+from bot.services import notion, seen, vk
 from config import Settings
 from db.models import Bonus, Episode
 from db.session import DatabaseNotConfigured, session_scope
@@ -86,4 +86,22 @@ async def publish_ready_posts(bot: Bot, settings: Settings) -> int:
             published += 1
         except Exception as exc:
             logger.error("Не опубликовал пост Notion {}: {}", page_id, exc)
+    return published
+
+
+async def publish_vk_posts() -> int:
+    if not vk.is_configured():
+        return 0
+    published = 0
+    for page in await notion.published_pages():
+        page_id = notion.episode_id(page)
+        text = notion.vk_post(page)
+        if not page_id or not text or await seen.is_seen("vk_post", page_id):
+            continue
+        try:
+            await vk.post_to_wall(text)
+            await seen.mark_seen("vk_post", page_id)
+            published += 1
+        except Exception as exc:
+            logger.error("Не опубликовал пост VK {}: {}", page_id, exc)
     return published

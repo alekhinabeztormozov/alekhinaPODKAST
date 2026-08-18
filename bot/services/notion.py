@@ -116,6 +116,10 @@ def telegram_post(page: dict[str, Any]) -> str:
     return _rich(page, "Пост для Telegram")
 
 
+def vk_post(page: dict[str, Any]) -> str:
+    return _rich(page, "Пост для VK")
+
+
 def extract_catalog(page: dict[str, Any]) -> dict[str, Any]:
     page_id = page.get("id", "")
     slug = page_id.replace("-", "")

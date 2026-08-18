@@ -2,10 +2,11 @@ from __future__ import annotations
 
 from aiogram import Bot
 from fastapi import FastAPI, Request
+from fastapi.responses import PlainTextResponse
 from loguru import logger
 
 from bot.main import build_bot
-from bot.services import fulfillment, yookassa
+from bot.services import fulfillment, vk, vk_bot, yookassa
 from config import get_settings
 
 app = FastAPI(title="alekhina-bot", version="0.2.0")
@@ -53,3 +54,34 @@ async def yookassa_webhook(request: Request) -> dict[str, str]:
     except Exception as exc:
         logger.error("Выдача по платежу {} упала: {}", payment_id, exc)
     return {"status": "ok"}
+
+
+@app.post("/vk/callback")
+async def vk_callback(request: Request) -> PlainTextResponse:
+    if not vk.is_configured():
+        return PlainTextResponse("ok")
+    try:
+        data = await request.json()
+    except Exception:
+        return PlainTextResponse("ok")
+
+    if data.get("type") == "confirmation":
+        return PlainTextResponse(get_settings().vk_confirmation_token or "ok")
+
+    if not vk.check_secret(data.get("secret")):
+        logger.warning("VK callback: неверный secret")
+        return PlainTextResponse("ok")
+
+    if data.get("type") == "message_new":
+        obj = data.get("object", {})
+        message = obj.get("message", obj)
+        text = message.get("text", "")
+        peer_id = message.get("peer_id") or message.get("from_id")
+        from_id = message.get("from_id", 0)
+        if peer_id:
+            try:
+                await vk_bot.handle_incoming(text, int(peer_id), int(from_id))
+            except Exception as exc:
+                logger.error("VK message_new обработка упала: {}", exc)
+
+    return PlainTextResponse("ok")

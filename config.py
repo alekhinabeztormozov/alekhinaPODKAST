@@ -28,6 +28,12 @@ class Settings(BaseSettings):
     notion_token: str = ""
     notion_db_episodes: str = ""
 
+    vk_group_token: str = ""
+    vk_group_id: int = 0
+    vk_confirmation_token: str = ""
+    vk_secret: str = ""
+    vk_api_version: str = "5.199"
+
     podster_rss_url: str = ""
 
     payment_provider_token: str = ""

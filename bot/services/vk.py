@@ -47,11 +47,15 @@ async def _call(method: str, params: dict[str, Any]) -> dict[str, Any]:
     return data.get("response", {})
 
 
-async def send_message(peer_id: int, text: str) -> None:
-    await _call(
-        "messages.send",
-        {"peer_id": peer_id, "message": text, "random_id": random.randint(1, 2_000_000_000)},
-    )
+async def send_message(peer_id: int, text: str, keyboard: str | None = None) -> None:
+    params: dict[str, Any] = {
+        "peer_id": peer_id,
+        "message": text,
+        "random_id": random.randint(1, 2_000_000_000),
+    }
+    if keyboard:
+        params["keyboard"] = keyboard
+    await _call("messages.send", params)
 
 
 async def post_to_wall(text: str) -> None:

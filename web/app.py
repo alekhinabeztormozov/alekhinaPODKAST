@@ -76,11 +76,12 @@ async def vk_callback(request: Request) -> PlainTextResponse:
         obj = data.get("object", {})
         message = obj.get("message", obj)
         text = message.get("text", "")
+        payload = message.get("payload", "")
         peer_id = message.get("peer_id") or message.get("from_id")
         from_id = message.get("from_id", 0)
         if peer_id:
             try:
-                await vk_bot.handle_incoming(text, int(peer_id), int(from_id))
+                await vk_bot.handle_incoming(text, int(peer_id), int(from_id), payload=payload)
             except Exception as exc:
                 logger.error("VK message_new обработка упала: {}", exc)
 

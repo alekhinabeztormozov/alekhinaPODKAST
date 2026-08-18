@@ -1269,8 +1269,8 @@
       "source_location": "L177",
       "_origin": "ast",
       "id": "bot_keyboards_common_owner_menu",
-      "community": 11,
-      "community_name": "get_settings",
+      "community": 13,
+      "community_name": "producer.py",
       "norm_label": "owner_menu()"
     },
     {
@@ -1346,8 +1346,8 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "bot_main_build_bot",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 11,
+      "community_name": "get_settings",
       "norm_label": "build_bot()"
     },
     {
@@ -1357,8 +1357,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "bot_main_py_bot",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 11,
+      "community_name": "get_settings",
       "norm_label": "bot"
     },
     {
@@ -1500,8 +1500,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "bot_services_admin_content",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "admin_content.py"
     },
     {
@@ -1511,8 +1511,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "bot_services_admin_content_tags",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "_tags()"
     },
     {
@@ -1522,8 +1522,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "bot_services_admin_content_upsert",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "_upsert()"
     },
     {
@@ -1533,8 +1533,8 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "bot_services_admin_content_add_season",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "add_season()"
     },
     {
@@ -1544,8 +1544,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "bot_services_admin_content_add_bonus",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "add_bonus()"
     },
     {
@@ -1555,8 +1555,8 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "bot_services_admin_content_add_episode",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "add_episode()"
     },
     {
@@ -1566,8 +1566,8 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "bot_services_admin_content_add_product",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "add_product()"
     },
     {
@@ -1577,8 +1577,8 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "bot_services_admin_content_set_workbook",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "set_workbook()"
     },
     {
@@ -1588,8 +1588,8 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "bot_services_admin_content_counts",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "counts()"
     },
     {
@@ -1885,8 +1885,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "bot_services_fulfillment",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 19,
+      "community_name": "fulfillment.py",
       "norm_label": "fulfillment.py"
     },
     {
@@ -1896,8 +1896,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "bot_services_fulfillment_already_done",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 19,
+      "community_name": "fulfillment.py",
       "norm_label": "_already_done()"
     },
     {
@@ -1907,8 +1907,8 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "bot_services_fulfillment_invite_link",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 19,
+      "community_name": "fulfillment.py",
       "norm_label": "_invite_link()"
     },
     {
@@ -1918,8 +1918,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "bot_services_fulfillment_py_bot",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 19,
+      "community_name": "fulfillment.py",
       "norm_label": "bot"
     },
     {
@@ -1929,8 +1929,8 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "bot_services_fulfillment_record_sale",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 19,
+      "community_name": "fulfillment.py",
       "norm_label": "_record_sale()"
     },
     {
@@ -1940,8 +1940,8 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "bot_services_fulfillment_fulfill",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 19,
+      "community_name": "fulfillment.py",
       "norm_label": "fulfill()"
     },
     {
@@ -1951,8 +1951,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "bot_services_fulfillment_py_any",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 19,
+      "community_name": "fulfillment.py",
       "norm_label": "any"
     },
     {
@@ -1962,8 +1962,8 @@
       "source_location": "L77",
       "_origin": "ast",
       "id": "bot_services_fulfillment_fulfill_sub",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 19,
+      "community_name": "fulfillment.py",
       "norm_label": "_fulfill_sub()"
     },
     {
@@ -1973,8 +1973,8 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "bot_services_fulfillment_fulfill_season",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 19,
+      "community_name": "fulfillment.py",
       "norm_label": "_fulfill_season()"
     },
     {
@@ -1984,8 +1984,8 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "bot_services_fulfillment_fulfill_workbook",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 19,
+      "community_name": "fulfillment.py",
       "norm_label": "_fulfill_workbook()"
     },
     {
@@ -1995,8 +1995,8 @@
       "source_location": "L136",
       "_origin": "ast",
       "id": "bot_services_fulfillment_fulfill_all",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 19,
+      "community_name": "fulfillment.py",
       "norm_label": "_fulfill_all()"
     },
     {
@@ -2006,8 +2006,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "bot_services_notion",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "notion.py"
     },
     {
@@ -2017,8 +2017,8 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "bot_services_notion_notionnotconfigured",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "notionnotconfigured"
     },
     {
@@ -2028,8 +2028,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "bot_services_notion_py_runtimeerror",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "runtimeerror"
     },
     {
@@ -2039,8 +2039,8 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "bot_services_notion_client",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "_client()"
     },
     {
@@ -2050,8 +2050,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "bot_services_notion_py_any",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "any"
     },
     {
@@ -2061,8 +2061,8 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "bot_services_notion_create_episodes_db_sync",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "_create_episodes_db_sync()"
     },
     {
@@ -2072,8 +2072,8 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "bot_services_notion_query_status_sync",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "_query_status_sync()"
     },
     {
@@ -2083,8 +2083,8 @@
       "source_location": "L80",
       "_origin": "ast",
       "id": "bot_services_notion_query_ready_sync",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "_query_ready_sync()"
     },
     {
@@ -2094,8 +2094,8 @@
       "source_location": "L84",
       "_origin": "ast",
       "id": "bot_services_notion_prop",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "_prop()"
     },
     {
@@ -2105,8 +2105,8 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "bot_services_notion_rich",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "_rich()"
     },
     {
@@ -2116,8 +2116,8 @@
       "source_location": "L94",
       "_origin": "ast",
       "id": "bot_services_notion_url",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "_url()"
     },
     {
@@ -2127,8 +2127,8 @@
       "source_location": "L98",
       "_origin": "ast",
       "id": "bot_services_notion_select",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "_select()"
     },
     {
@@ -2138,8 +2138,8 @@
       "source_location": "L103",
       "_origin": "ast",
       "id": "bot_services_notion_episode_id",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "episode_id()"
     },
     {
@@ -2149,8 +2149,8 @@
       "source_location": "L107",
       "_origin": "ast",
       "id": "bot_services_notion_episode_title",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "episode_title()"
     },
     {
@@ -2160,8 +2160,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "bot_services_notion_episode_status",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "episode_status()"
     },
     {
@@ -2171,8 +2171,8 @@
       "source_location": "L115",
       "_origin": "ast",
       "id": "bot_services_notion_telegram_post",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "telegram_post()"
     },
     {
@@ -2182,8 +2182,8 @@
       "source_location": "L119",
       "_origin": "ast",
       "id": "bot_services_notion_vk_post",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "vk_post()"
     },
     {
@@ -2193,8 +2193,8 @@
       "source_location": "L123",
       "_origin": "ast",
       "id": "bot_services_notion_extract_catalog",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "extract_catalog()"
     },
     {
@@ -2204,8 +2204,8 @@
       "source_location": "L142",
       "_origin": "ast",
       "id": "bot_services_notion_create_episodes_db",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "create_episodes_db()"
     },
     {
@@ -2215,8 +2215,8 @@
       "source_location": "L153",
       "_origin": "ast",
       "id": "bot_services_notion_ready_episodes",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "ready_episodes()"
     },
     {
@@ -2226,8 +2226,8 @@
       "source_location": "L164",
       "_origin": "ast",
       "id": "bot_services_notion_query_status",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "_query_status()"
     },
     {
@@ -2237,8 +2237,8 @@
       "source_location": "L175",
       "_origin": "ast",
       "id": "bot_services_notion_catalog_pages",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "catalog_pages()"
     },
     {
@@ -2248,8 +2248,8 @@
       "source_location": "L179",
       "_origin": "ast",
       "id": "bot_services_notion_published_pages",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "published_pages()"
     },
     {
@@ -2336,8 +2336,8 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "bot_services_notion_sync_publish_vk_posts",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "publish_vk_posts()"
     },
     {
@@ -2436,7 +2436,7 @@
       "_origin": "ast",
       "id": "bot_services_sheets",
       "community": 19,
-      "community_name": "sheets.py",
+      "community_name": "fulfillment.py",
       "norm_label": "sheets.py"
     },
     {
@@ -2447,7 +2447,7 @@
       "_origin": "ast",
       "id": "bot_services_sheets_sheetsnotconfigured",
       "community": 19,
-      "community_name": "sheets.py",
+      "community_name": "fulfillment.py",
       "norm_label": "sheetsnotconfigured"
     },
     {
@@ -2458,7 +2458,7 @@
       "_origin": "ast",
       "id": "bot_services_sheets_py_runtimeerror",
       "community": 19,
-      "community_name": "sheets.py",
+      "community_name": "fulfillment.py",
       "norm_label": "runtimeerror"
     },
     {
@@ -2469,7 +2469,7 @@
       "_origin": "ast",
       "id": "bot_services_sheets_client",
       "community": 19,
-      "community_name": "sheets.py",
+      "community_name": "fulfillment.py",
       "norm_label": "_client()"
     },
     {
@@ -2480,7 +2480,7 @@
       "_origin": "ast",
       "id": "bot_services_sheets_py_any",
       "community": 19,
-      "community_name": "sheets.py",
+      "community_name": "fulfillment.py",
       "norm_label": "any"
     },
     {
@@ -2491,7 +2491,7 @@
       "_origin": "ast",
       "id": "bot_services_sheets_spreadsheet",
       "community": 19,
-      "community_name": "sheets.py",
+      "community_name": "fulfillment.py",
       "norm_label": "_spreadsheet()"
     },
     {
@@ -2502,7 +2502,7 @@
       "_origin": "ast",
       "id": "bot_services_sheets_worksheet",
       "community": 19,
-      "community_name": "sheets.py",
+      "community_name": "fulfillment.py",
       "norm_label": "_worksheet()"
     },
     {
@@ -2513,7 +2513,7 @@
       "_origin": "ast",
       "id": "bot_services_sheets_append_sync",
       "community": 19,
-      "community_name": "sheets.py",
+      "community_name": "fulfillment.py",
       "norm_label": "_append_sync()"
     },
     {
@@ -2524,7 +2524,7 @@
       "_origin": "ast",
       "id": "bot_services_sheets_bootstrap_sync",
       "community": 19,
-      "community_name": "sheets.py",
+      "community_name": "fulfillment.py",
       "norm_label": "_bootstrap_sync()"
     },
     {
@@ -2535,7 +2535,7 @@
       "_origin": "ast",
       "id": "bot_services_sheets_append",
       "community": 19,
-      "community_name": "sheets.py",
+      "community_name": "fulfillment.py",
       "norm_label": "_append()"
     },
     {
@@ -2546,7 +2546,7 @@
       "_origin": "ast",
       "id": "bot_services_sheets_now",
       "community": 19,
-      "community_name": "sheets.py",
+      "community_name": "fulfillment.py",
       "norm_label": "_now()"
     },
     {
@@ -2557,7 +2557,7 @@
       "_origin": "ast",
       "id": "bot_services_sheets_bootstrap",
       "community": 19,
-      "community_name": "sheets.py",
+      "community_name": "fulfillment.py",
       "norm_label": "bootstrap()"
     },
     {
@@ -2568,7 +2568,7 @@
       "_origin": "ast",
       "id": "bot_services_sheets_add_contact",
       "community": 19,
-      "community_name": "sheets.py",
+      "community_name": "fulfillment.py",
       "norm_label": "add_contact()"
     },
     {
@@ -2579,7 +2579,7 @@
       "_origin": "ast",
       "id": "bot_services_sheets_add_sale",
       "community": 19,
-      "community_name": "sheets.py",
+      "community_name": "fulfillment.py",
       "norm_label": "add_sale()"
     },
     {
@@ -2809,8 +2809,8 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "bot_services_users_has_season",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 11,
+      "community_name": "get_settings",
       "norm_label": "has_season()"
     },
     {
@@ -3004,7 +3004,7 @@
       "label": "post_to_wall()",
       "file_type": "code",
       "source_file": "bot/services/vk.py",
-      "source_location": "L57",
+      "source_location": "L61",
       "_origin": "ast",
       "id": "bot_services_vk_post_to_wall",
       "community": 9,
@@ -3026,7 +3026,7 @@
       "label": "_tg_link()",
       "file_type": "code",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L9",
+      "source_location": "L11",
       "_origin": "ast",
       "id": "bot_services_vk_bot_tg_link",
       "community": 9,
@@ -3034,10 +3034,54 @@
       "norm_label": "_tg_link()"
     },
     {
+      "label": "main_keyboard()",
+      "file_type": "code",
+      "source_file": "bot/services/vk_bot.py",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "bot_services_vk_bot_main_keyboard",
+      "community": 9,
+      "community_name": "test_vk.py",
+      "norm_label": "main_keyboard()"
+    },
+    {
+      "label": "_welcome_text()",
+      "file_type": "code",
+      "source_file": "bot/services/vk_bot.py",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "bot_services_vk_bot_welcome_text",
+      "community": 9,
+      "community_name": "test_vk.py",
+      "norm_label": "_welcome_text()"
+    },
+    {
+      "label": "_club_text()",
+      "file_type": "code",
+      "source_file": "bot/services/vk_bot.py",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "bot_services_vk_bot_club_text",
+      "community": 9,
+      "community_name": "test_vk.py",
+      "norm_label": "_club_text()"
+    },
+    {
+      "label": "_search_prompt()",
+      "file_type": "code",
+      "source_file": "bot/services/vk_bot.py",
+      "source_location": "L47",
+      "_origin": "ast",
+      "id": "bot_services_vk_bot_search_prompt",
+      "community": 9,
+      "community_name": "test_vk.py",
+      "norm_label": "_search_prompt()"
+    },
+    {
       "label": "_bonus_text()",
       "file_type": "code",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L13",
+      "source_location": "L51",
       "_origin": "ast",
       "id": "bot_services_vk_bot_bonus_text",
       "community": 9,
@@ -3048,7 +3092,7 @@
       "label": "_results_text()",
       "file_type": "code",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L23",
+      "source_location": "L61",
       "_origin": "ast",
       "id": "bot_services_vk_bot_results_text",
       "community": 9,
@@ -3059,7 +3103,7 @@
       "label": "_none_text()",
       "file_type": "code",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L33",
+      "source_location": "L71",
       "_origin": "ast",
       "id": "bot_services_vk_bot_none_text",
       "community": 9,
@@ -3067,10 +3111,21 @@
       "norm_label": "_none_text()"
     },
     {
+      "label": "_command()",
+      "file_type": "code",
+      "source_file": "bot/services/vk_bot.py",
+      "source_location": "L78",
+      "_origin": "ast",
+      "id": "bot_services_vk_bot_command",
+      "community": 9,
+      "community_name": "test_vk.py",
+      "norm_label": "_command()"
+    },
+    {
       "label": "handle_incoming()",
       "file_type": "code",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L40",
+      "source_location": "L96",
       "_origin": "ast",
       "id": "bot_services_vk_bot_handle_incoming",
       "community": 9,
@@ -3084,8 +3139,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "bot_services_yookassa",
-      "community": 22,
-      "community_name": "yookassa.py",
+      "community": 11,
+      "community_name": "get_settings",
       "norm_label": "yookassa.py"
     },
     {
@@ -3095,8 +3150,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "bot_services_yookassa_yookassanotconfigured",
-      "community": 22,
-      "community_name": "yookassa.py",
+      "community": 11,
+      "community_name": "get_settings",
       "norm_label": "yookassanotconfigured"
     },
     {
@@ -3106,8 +3161,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "bot_services_yookassa_py_runtimeerror",
-      "community": 22,
-      "community_name": "yookassa.py",
+      "community": 11,
+      "community_name": "get_settings",
       "norm_label": "runtimeerror"
     },
     {
@@ -3117,8 +3172,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "bot_services_yookassa_auth_header",
-      "community": 22,
-      "community_name": "yookassa.py",
+      "community": 11,
+      "community_name": "get_settings",
       "norm_label": "_auth_header()"
     },
     {
@@ -3128,8 +3183,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "bot_services_yookassa_create_payment",
-      "community": 22,
-      "community_name": "yookassa.py",
+      "community": 11,
+      "community_name": "get_settings",
       "norm_label": "create_payment()"
     },
     {
@@ -3139,8 +3194,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "bot_services_yookassa_py_any",
-      "community": 22,
-      "community_name": "yookassa.py",
+      "community": 11,
+      "community_name": "get_settings",
       "norm_label": "any"
     },
     {
@@ -3150,8 +3205,8 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "bot_services_yookassa_get_payment",
-      "community": 22,
-      "community_name": "yookassa.py",
+      "community": 11,
+      "community_name": "get_settings",
       "norm_label": "get_payment()"
     },
     {
@@ -3161,8 +3216,8 @@
       "source_location": "L61",
       "_origin": "ast",
       "id": "bot_services_yookassa_confirmation_url",
-      "community": 22,
-      "community_name": "yookassa.py",
+      "community": 11,
+      "community_name": "get_settings",
       "norm_label": "confirmation_url()"
     },
     {
@@ -3579,8 +3634,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "db_models",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "models.py"
     },
     {
@@ -3590,8 +3645,8 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "db_models_base",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "base"
     },
     {
@@ -3601,8 +3656,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "declarativebase",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "declarativebase"
     },
     {
@@ -3623,8 +3678,8 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "db_models_season",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "season"
     },
     {
@@ -3634,8 +3689,8 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "db_models_episode",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "episode"
     },
     {
@@ -3645,8 +3700,8 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "db_models_bonus",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 9,
+      "community_name": "test_vk.py",
       "norm_label": "bonus"
     },
     {
@@ -3656,8 +3711,8 @@
       "source_location": "L79",
       "_origin": "ast",
       "id": "db_models_mainproduct",
-      "community": 25,
-      "community_name": "catalog.py",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "mainproduct"
     },
     {
@@ -3711,8 +3766,8 @@
       "source_location": "L141",
       "_origin": "ast",
       "id": "db_models_seenkey",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "seenkey"
     },
     {
@@ -4660,8 +4715,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_core_flows",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "test_core_flows.py"
     },
     {
@@ -4671,8 +4726,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "tests_test_core_flows_seed",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "_seed()"
     },
     {
@@ -4682,8 +4737,8 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "tests_test_core_flows_test_keyword_bonus_cyrillic",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "test_keyword_bonus_cyrillic()"
     },
     {
@@ -4693,8 +4748,8 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "tests_test_core_flows_test_search_by_tag_and_title",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "test_search_by_tag_and_title()"
     },
     {
@@ -4726,8 +4781,8 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "tests_test_core_flows_test_voice_demo_once",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "test_voice_demo_once()"
     },
     {
@@ -4737,8 +4792,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_integrations",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "test_integrations.py"
     },
     {
@@ -4748,8 +4803,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "tests_test_integrations_test_sheet_headers_cover_four_tabs",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "test_sheet_headers_cover_four_tabs()"
     },
     {
@@ -4759,8 +4814,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "tests_test_integrations_test_episodes_schema_has_all_properties",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "test_episodes_schema_has_all_properties()"
     },
     {
@@ -4770,8 +4825,8 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "tests_test_integrations_test_ready_status_in_statuses",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "test_ready_status_in_statuses()"
     },
     {
@@ -4781,8 +4836,8 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "tests_test_integrations_test_episode_extractors",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "test_episode_extractors()"
     },
     {
@@ -4792,8 +4847,8 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "tests_test_integrations_test_episode_extractors_empty_defaults",
-      "community": 16,
-      "community_name": "notion.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "test_episode_extractors_empty_defaults()"
     },
     {
@@ -4803,8 +4858,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_notion_sync",
-      "community": 25,
-      "community_name": "catalog.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "test_notion_sync.py"
     },
     {
@@ -4814,8 +4869,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "tests_test_notion_sync_page",
-      "community": 25,
-      "community_name": "catalog.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "_page()"
     },
     {
@@ -4825,8 +4880,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "tests_test_notion_sync_py_any",
-      "community": 25,
-      "community_name": "catalog.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "any"
     },
     {
@@ -4836,8 +4891,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "tests_test_notion_sync_fakebot",
-      "community": 25,
-      "community_name": "catalog.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "fakebot"
     },
     {
@@ -4847,8 +4902,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "tests_test_notion_sync_fakebot_init",
-      "community": 25,
-      "community_name": "catalog.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": ".__init__()"
     },
     {
@@ -4858,8 +4913,8 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "tests_test_notion_sync_fakebot_send_message",
-      "community": 25,
-      "community_name": "catalog.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": ".send_message()"
     },
     {
@@ -4869,8 +4924,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "tests_test_notion_sync_test_extract_catalog_maps_fields",
-      "community": 25,
-      "community_name": "catalog.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "test_extract_catalog_maps_fields()"
     },
     {
@@ -4891,8 +4946,8 @@
       "source_location": "L62",
       "_origin": "ast",
       "id": "tests_test_notion_sync_test_sync_idempotent",
-      "community": 25,
-      "community_name": "catalog.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "test_sync_idempotent()"
     },
     {
@@ -4902,8 +4957,8 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "tests_test_notion_sync_test_publish_posts_once",
-      "community": 25,
-      "community_name": "catalog.py",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "test_publish_posts_once()"
     },
     {
@@ -5012,8 +5067,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_phase2",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "test_phase2.py"
     },
     {
@@ -5023,8 +5078,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "tests_test_phase2_fakebot",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "fakebot"
     },
     {
@@ -5034,8 +5089,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "tests_test_phase2_fakebot_init",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": ".__init__()"
     },
     {
@@ -5045,8 +5100,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "tests_test_phase2_fakebot_send_message",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": ".send_message()"
     },
     {
@@ -5056,8 +5111,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "tests_test_phase2_fakebot_ban_chat_member",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": ".ban_chat_member()"
     },
     {
@@ -5067,8 +5122,8 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "tests_test_phase2_fakebot_unban_chat_member",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": ".unban_chat_member()"
     },
     {
@@ -5089,8 +5144,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "tests_test_phase2_test_active_intensive",
-      "community": 25,
-      "community_name": "catalog.py",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "test_active_intensive()"
     },
     {
@@ -5100,8 +5155,8 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "tests_test_phase2_test_admin_content_upsert",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "test_admin_content_upsert()"
     },
     {
@@ -5111,8 +5166,8 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "tests_test_phase2_test_revoke_expired",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "test_revoke_expired()"
     },
     {
@@ -5122,8 +5177,8 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "tests_test_phase2_test_finale_broadcast",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "test_finale_broadcast()"
     },
     {
@@ -5452,8 +5507,8 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "tests_test_spec_features_test_catalog_excludes_all_pack",
-      "community": 25,
-      "community_name": "catalog.py",
+      "community": 12,
+      "community_name": "session_scope",
       "norm_label": "test_catalog_excludes_all_pack()"
     },
     {
@@ -5625,7 +5680,7 @@
       "label": "test_not_configured_by_default()",
       "file_type": "code",
       "source_file": "tests/test_vk.py",
-      "source_location": "L9",
+      "source_location": "L11",
       "_origin": "ast",
       "id": "tests_test_vk_test_not_configured_by_default",
       "community": 9,
@@ -5636,7 +5691,7 @@
       "label": "test_check_secret()",
       "file_type": "code",
       "source_file": "tests/test_vk.py",
-      "source_location": "L13",
+      "source_location": "L15",
       "_origin": "ast",
       "id": "tests_test_vk_test_check_secret",
       "community": 9,
@@ -5647,7 +5702,7 @@
       "label": "test_check_secret_disabled()",
       "file_type": "code",
       "source_file": "tests/test_vk.py",
-      "source_location": "L20",
+      "source_location": "L22",
       "_origin": "ast",
       "id": "tests_test_vk_test_check_secret_disabled",
       "community": 9,
@@ -5655,10 +5710,54 @@
       "norm_label": "test_check_secret_disabled()"
     },
     {
+      "label": "test_main_keyboard_has_buttons_and_tg_link()",
+      "file_type": "code",
+      "source_file": "tests/test_vk.py",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "tests_test_vk_test_main_keyboard_has_buttons_and_tg_link",
+      "community": 9,
+      "community_name": "test_vk.py",
+      "norm_label": "test_main_keyboard_has_buttons_and_tg_link()"
+    },
+    {
+      "label": "_Sink",
+      "file_type": "code",
+      "source_file": "tests/test_vk.py",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "tests_test_vk_sink",
+      "community": 9,
+      "community_name": "test_vk.py",
+      "norm_label": "_sink"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "tests/test_vk.py",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "tests_test_vk_sink_init",
+      "community": 9,
+      "community_name": "test_vk.py",
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".send()",
+      "file_type": "code",
+      "source_file": "tests/test_vk.py",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "tests_test_vk_sink_send",
+      "community": 9,
+      "community_name": "test_vk.py",
+      "norm_label": ".send()"
+    },
+    {
       "label": "_seed_bonus()",
       "file_type": "code",
       "source_file": "tests/test_vk.py",
-      "source_location": "L25",
+      "source_location": "L43",
       "_origin": "ast",
       "id": "tests_test_vk_seed_bonus",
       "community": 9,
@@ -5669,7 +5768,7 @@
       "label": "test_handle_incoming_bonus()",
       "file_type": "code",
       "source_file": "tests/test_vk.py",
-      "source_location": "L33",
+      "source_location": "L51",
       "_origin": "ast",
       "id": "tests_test_vk_test_handle_incoming_bonus",
       "community": 9,
@@ -5680,7 +5779,7 @@
       "label": "test_handle_incoming_none()",
       "file_type": "code",
       "source_file": "tests/test_vk.py",
-      "source_location": "L50",
+      "source_location": "L65",
       "_origin": "ast",
       "id": "tests_test_vk_test_handle_incoming_none",
       "community": 9,
@@ -5688,10 +5787,43 @@
       "norm_label": "test_handle_incoming_none()"
     },
     {
+      "label": "test_handle_start_greeting()",
+      "file_type": "code",
+      "source_file": "tests/test_vk.py",
+      "source_location": "L74",
+      "_origin": "ast",
+      "id": "tests_test_vk_test_handle_start_greeting",
+      "community": 9,
+      "community_name": "test_vk.py",
+      "norm_label": "test_handle_start_greeting()"
+    },
+    {
+      "label": "test_handle_club_button()",
+      "file_type": "code",
+      "source_file": "tests/test_vk.py",
+      "source_location": "L81",
+      "_origin": "ast",
+      "id": "tests_test_vk_test_handle_club_button",
+      "community": 9,
+      "community_name": "test_vk.py",
+      "norm_label": "test_handle_club_button()"
+    },
+    {
+      "label": "test_handle_search_button()",
+      "file_type": "code",
+      "source_file": "tests/test_vk.py",
+      "source_location": "L88",
+      "_origin": "ast",
+      "id": "tests_test_vk_test_handle_search_button",
+      "community": 9,
+      "community_name": "test_vk.py",
+      "norm_label": "test_handle_search_button()"
+    },
+    {
       "label": "test_publish_vk_posts_gate_when_unconfigured()",
       "file_type": "code",
       "source_file": "tests/test_vk.py",
-      "source_location": "L63",
+      "source_location": "L95",
       "_origin": "ast",
       "id": "tests_test_vk_test_publish_vk_posts_gate_when_unconfigured",
       "community": 9,
@@ -5705,8 +5837,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_web",
-      "community": 9,
-      "community_name": "test_vk.py",
+      "community": 11,
+      "community_name": "get_settings",
       "norm_label": "test_web.py"
     },
     {
@@ -5716,8 +5848,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "tests_test_web_test_health",
-      "community": 9,
-      "community_name": "test_vk.py",
+      "community": 11,
+      "community_name": "get_settings",
       "norm_label": "test_health()"
     },
     {
@@ -5727,8 +5859,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_yookassa",
-      "community": 22,
-      "community_name": "yookassa.py",
+      "community": 11,
+      "community_name": "get_settings",
       "norm_label": "test_yookassa.py"
     },
     {
@@ -5738,8 +5870,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "tests_test_yookassa_test_confirmation_url_extracted",
-      "community": 22,
-      "community_name": "yookassa.py",
+      "community": 11,
+      "community_name": "get_settings",
       "norm_label": "test_confirmation_url_extracted()"
     },
     {
@@ -5749,8 +5881,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "tests_test_yookassa_test_confirmation_url_missing",
-      "community": 22,
-      "community_name": "yookassa.py",
+      "community": 11,
+      "community_name": "get_settings",
       "norm_label": "test_confirmation_url_missing()"
     },
     {
@@ -5771,8 +5903,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "web_app",
-      "community": 9,
-      "community_name": "test_vk.py",
+      "community": 11,
+      "community_name": "get_settings",
       "norm_label": "app.py"
     },
     {
@@ -5782,8 +5914,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "web_app_get_bot",
-      "community": 9,
-      "community_name": "test_vk.py",
+      "community": 11,
+      "community_name": "get_settings",
       "norm_label": "_get_bot()"
     },
     {
@@ -5793,8 +5925,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "web_app_py_bot",
-      "community": 9,
-      "community_name": "test_vk.py",
+      "community": 11,
+      "community_name": "get_settings",
       "norm_label": "bot"
     },
     {
@@ -6705,7 +6837,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "\u0434\u0432\u0430 telegram-\u043a\u0430\u043d\u0430\u043b\u0430 (\u043e\u0442\u043a\u0440\u044b\u0442\u044b\u0438 \u043f\u0443\u0431\u043b\u0438\u0447\u043d\u044b\u0438 + \u0437\u0430\u043a\u0440\u044b\u0442\u044b\u0438 \u0447\u0430\u0441\u0442\u043d\u044b\u0438)",
-      "community_name": "\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "dostupy_dlya_yulii_two_channels"
     },
     {
@@ -7013,7 +7145,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "\u0432\u043e\u0440\u043e\u043d\u043a\u0430 \u043f\u0440\u043e\u0434\u0430\u0436",
-      "community_name": "\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_funnel"
     },
     {
@@ -7041,7 +7173,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "\u0440\u0430\u0441\u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0435\u043d\u0438\u0435 \u043f\u043e\u0434\u043a\u0430\u0441\u0442\u0430 (podster \u2192 \u043f\u043b\u043e\u0449\u0430\u0434\u043a\u0438)",
-      "community_name": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0430\u0443\u0434\u0438\u043e (ffmpeg, \u0431\u0435\u0437 \u043d\u0435\u0439\u0440\u043e\u043d\u043a\u0438)",
+      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_podcast_distribution"
     },
     {
@@ -7055,7 +7187,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "podster (\u0445\u043e\u0441\u0442\u0438\u043d\u0433 \u0430\u0443\u0434\u0438\u043e)",
-      "community_name": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0430\u0443\u0434\u0438\u043e (ffmpeg, \u0431\u0435\u0437 \u043d\u0435\u0439\u0440\u043e\u043d\u043a\u0438)",
+      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_podster"
     },
     {
@@ -7069,7 +7201,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "rss-\u043b\u0435\u043d\u0442\u0430 \u043f\u043e\u0434\u043a\u0430\u0441\u0442\u0430",
-      "community_name": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0430\u0443\u0434\u0438\u043e (ffmpeg, \u0431\u0435\u0437 \u043d\u0435\u0439\u0440\u043e\u043d\u043a\u0438)",
+      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_rss_feed"
     },
     {
@@ -7083,7 +7215,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "\u0430\u0432\u0442\u043e-\u0430\u043d\u043e\u043d\u0441 \u0432 \u043e\u0442\u043a\u0440\u044b\u0442\u044b\u0438 telegram-\u043a\u0430\u043d\u0430\u043b",
-      "community_name": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0430\u0443\u0434\u0438\u043e (ffmpeg, \u0431\u0435\u0437 \u043d\u0435\u0439\u0440\u043e\u043d\u043a\u0438)",
+      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_open_channel_announce"
     },
     {
@@ -7097,7 +7229,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "\u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0430\u0443\u0434\u0438\u043e (ffmpeg, \u0431\u0435\u0437 \u043d\u0435\u0438\u0440\u043e\u043d\u043a\u0438)",
-      "community_name": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0430\u0443\u0434\u0438\u043e (ffmpeg, \u0431\u0435\u0437 \u043d\u0435\u0439\u0440\u043e\u043d\u043a\u0438)",
+      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_audio_processing"
     },
     {
@@ -7151,9 +7283,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 1,
       "norm_label": "telegram-\u0431\u043e\u0442 (aiogram 3.x)",
-      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_telegram_bot"
     },
     {
@@ -7165,9 +7297,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 1,
       "norm_label": "\u0441\u0446\u0435\u043d\u0430\u0440\u0438\u0438 /start (\u043f\u0440\u0438\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u0435 + \u043a\u043d\u043e\u043f\u043a\u0438)",
-      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_scenario_start"
     },
     {
@@ -7181,7 +7313,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "\u0441\u0446\u0435\u043d\u0430\u0440\u0438\u0438 pdf-\u0431\u043e\u043d\u0443\u0441",
-      "community_name": "\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_scenario_pdf_bonus"
     },
     {
@@ -7209,7 +7341,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "\u0441\u0446\u0435\u043d\u0430\u0440\u0438\u0438 \u0437\u0430\u043a\u0440\u044b\u0442\u044b\u0438 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
-      "community_name": "\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_scenario_closed_channel"
     },
     {
@@ -7307,7 +7439,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "\u043c\u043e\u043d\u0435\u0442\u0438\u0437\u0430\u0446\u0438\u044f",
-      "community_name": "\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_monetization"
     },
     {
@@ -7321,7 +7453,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "\u043f\u043e\u0434\u043f\u0438\u0441\u043a\u0430 ~200 \u20bd/\u043c\u0435\u0441 (\u0437\u0430\u043a\u0440\u044b\u0442\u044b\u0438 \u043a\u0430\u043d\u0430\u043b)",
-      "community_name": "\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_subscription_200"
     },
     {
@@ -7335,7 +7467,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "pdf-\u0433\u0430\u0438\u0434\u044b 20-30 \u20bd",
-      "community_name": "\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_pdf_guides_20_30"
     },
     {
@@ -7349,7 +7481,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "1-\u0434\u043d\u0435\u0432\u043d\u044b\u0438 \u0431\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u044b\u0438 \u0442\u0440\u0438\u0430\u043b",
-      "community_name": "\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_trial_1day"
     },
     {
@@ -7363,7 +7495,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "\u043b\u043e\u0433\u0438\u043a\u0430 \u0432\u043e\u0440\u043e\u043d\u043a\u0438: \u0434\u0435\u0448\u0435\u0432\u044b\u0438 \u0433\u0430\u0438\u0434 \u0442\u043e\u043b\u043a\u0430\u0435\u0442 \u0432 \u043f\u043e\u0434\u043f\u0438\u0441\u043a\u0443",
-      "community_name": "\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_funnel_logic"
     },
     {
@@ -7543,7 +7675,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 2,
       "norm_label": "\u0442\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0438 \u0441\u0442\u0435\u043a",
       "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_tech_stack"
@@ -7557,7 +7689,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 2,
       "norm_label": "aiogram 3.x",
       "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_aiogram"
@@ -7571,7 +7703,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 2,
       "norm_label": "fastapi + uvicorn",
       "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_fastapi"
@@ -7585,7 +7717,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 2,
       "norm_label": "httpx (async http-\u043a\u043b\u0438\u0435\u043d\u0442)",
       "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_httpx"
@@ -7615,7 +7747,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "ffmpeg",
-      "community_name": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0430\u0443\u0434\u0438\u043e (ffmpeg, \u0431\u0435\u0437 \u043d\u0435\u0439\u0440\u043e\u043d\u043a\u0438)",
+      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_ffmpeg"
     },
     {
@@ -7657,7 +7789,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "feedparser (rss)",
-      "community_name": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0430\u0443\u0434\u0438\u043e (ffmpeg, \u0431\u0435\u0437 \u043d\u0435\u0439\u0440\u043e\u043d\u043a\u0438)",
+      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_feedparser"
     },
     {
@@ -7669,9 +7801,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 1,
       "norm_label": "redis (fsm-\u0445\u0440\u0430\u043d\u0438\u043b\u0438\u0449\u0435)",
-      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_redis"
     },
     {
@@ -7683,7 +7815,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 2,
       "norm_label": "caddy (\u0430\u0432\u0442\u043e-tls https \u0434\u043b\u044f \u0432\u0435\u0431\u0445\u0443\u043a\u043e\u0432)",
       "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_caddy"
@@ -7697,7 +7829,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 2,
       "norm_label": "\u0434\u0435\u043f\u043b\u043e\u0438 \u043d\u0430 vps (systemd / docker compose)",
       "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_vps_deploy"
@@ -7767,9 +7899,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 1,
       "norm_label": "bot_token",
-      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_env_bot_token"
     },
     {
@@ -7811,7 +7943,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "closed_channel_id",
-      "community_name": "\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u0430\u043d\u0430\u043b (\u043e\u043f\u043b\u0430\u0442\u0430 \u2192 invite)",
+      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
       "id": "project_env_closed_channel_id"
     },
     {
@@ -7881,7 +8013,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "podster_rss_url",
-      "community_name": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0430\u0443\u0434\u0438\u043e (ffmpeg, \u0431\u0435\u0437 \u043d\u0435\u0439\u0440\u043e\u043d\u043a\u0438)",
+      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_env_podster_rss_url"
     },
     {
@@ -14938,7 +15070,7 @@
       "context": "submodule_import",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L5",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot",
@@ -15287,7 +15419,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L46",
+      "source_location": "L117",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_handle_incoming",
@@ -15656,7 +15788,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L50",
+      "source_location": "L121",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_handle_incoming",
@@ -15774,7 +15906,7 @@
       "context": "submodule_import",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L5",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot",
@@ -15846,7 +15978,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L45",
+      "source_location": "L116",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_handle_incoming",
@@ -17731,7 +17863,7 @@
       "context": "submodule_import",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_vk.py",
-      "source_location": "L3",
+      "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk",
@@ -17996,7 +18128,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_vk.py",
-      "source_location": "L64",
+      "source_location": "L96",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk_test_publish_vk_posts_gate_when_unconfigured",
@@ -20277,7 +20409,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk.py",
-      "source_location": "L57",
+      "source_location": "L61",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk",
@@ -20335,7 +20467,7 @@
       "context": "submodule_import",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L5",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot",
@@ -20347,7 +20479,7 @@
       "context": "submodule_import",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_vk.py",
-      "source_location": "L3",
+      "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk",
@@ -20383,7 +20515,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk.py",
-      "source_location": "L60",
+      "source_location": "L64",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_post_to_wall",
@@ -20431,7 +20563,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_vk.py",
-      "source_location": "L10",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk_test_not_configured_by_default",
@@ -20467,7 +20599,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_vk.py",
-      "source_location": "L15",
+      "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk_test_check_secret",
@@ -20479,7 +20611,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_vk.py",
-      "source_location": "L22",
+      "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk_test_check_secret_disabled",
@@ -20526,7 +20658,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk.py",
-      "source_location": "L61",
+      "source_location": "L65",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_post_to_wall",
@@ -20538,7 +20670,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk.py",
-      "source_location": "L51",
+      "source_location": "L58",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_send_message",
@@ -20551,7 +20683,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L48",
+      "source_location": "L104",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_handle_incoming",
@@ -20562,7 +20694,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk.py",
-      "source_location": "L58",
+      "source_location": "L62",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_post_to_wall",
@@ -20573,7 +20705,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L13",
+      "source_location": "L51",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot",
@@ -20584,7 +20716,29 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L40",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "bot_services_vk_bot",
+      "target": "bot_services_vk_bot_club_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "bot/services/vk_bot.py",
+      "source_location": "L78",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "bot_services_vk_bot",
+      "target": "bot_services_vk_bot_command",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "bot/services/vk_bot.py",
+      "source_location": "L96",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot",
@@ -20595,7 +20749,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L33",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "bot_services_vk_bot",
+      "target": "bot_services_vk_bot_main_keyboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "bot/services/vk_bot.py",
+      "source_location": "L71",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot",
@@ -20606,7 +20771,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L23",
+      "source_location": "L61",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot",
@@ -20617,7 +20782,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L9",
+      "source_location": "L47",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "bot_services_vk_bot",
+      "target": "bot_services_vk_bot_search_prompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "bot/services/vk_bot.py",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot",
@@ -20625,11 +20801,22 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "bot/services/vk_bot.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "bot_services_vk_bot",
+      "target": "bot_services_vk_bot_welcome_text",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L6",
+      "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot",
@@ -20641,7 +20828,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L6",
+      "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot",
@@ -20653,7 +20840,7 @@
       "context": "submodule_import",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_vk.py",
-      "source_location": "L3",
+      "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk",
@@ -20677,7 +20864,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L19",
+      "source_location": "L57",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_bonus_text",
@@ -20689,7 +20876,31 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L36",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "bot_services_vk_bot_club_text",
+      "target": "bot_services_vk_bot_tg_link",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "bot/services/vk_bot.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "bot_services_vk_bot_main_keyboard",
+      "target": "bot_services_vk_bot_tg_link",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "bot/services/vk_bot.py",
+      "source_location": "L74",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_none_text",
@@ -20701,7 +20912,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L29",
+      "source_location": "L67",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_results_text",
@@ -20713,7 +20924,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L10",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_tg_link",
@@ -20725,7 +20936,79 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L48",
+      "source_location": "L35",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "bot_services_vk_bot_welcome_text",
+      "target": "bot_services_vk_bot_tg_link",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "bot/services/vk_bot.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "bot_services_vk_bot_handle_incoming",
+      "target": "bot_services_vk_bot_main_keyboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_vk.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_vk_test_main_keyboard_has_buttons_and_tg_link",
+      "target": "bot_services_vk_bot_main_keyboard"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "bot/services/vk_bot.py",
+      "source_location": "L104",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "bot_services_vk_bot_handle_incoming",
+      "target": "bot_services_vk_bot_welcome_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "bot/services/vk_bot.py",
+      "source_location": "L107",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "bot_services_vk_bot_handle_incoming",
+      "target": "bot_services_vk_bot_club_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "bot/services/vk_bot.py",
+      "source_location": "L110",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "bot_services_vk_bot_handle_incoming",
+      "target": "bot_services_vk_bot_search_prompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "bot/services/vk_bot.py",
+      "source_location": "L119",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_handle_incoming",
@@ -20737,7 +21020,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L51",
+      "source_location": "L122",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_handle_incoming",
@@ -20749,7 +21032,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L51",
+      "source_location": "L122",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_handle_incoming",
@@ -20760,9 +21043,33 @@
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
+      "source_file": "bot/services/vk_bot.py",
+      "source_location": "L100",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "bot_services_vk_bot_handle_incoming",
+      "target": "bot_services_vk_bot_command",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_vk.py",
-      "source_location": "L41",
+      "source_location": "L84",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_vk_test_handle_club_button",
+      "target": "bot_services_vk_bot_handle_incoming"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_vk.py",
+      "source_location": "L55",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk_test_handle_incoming_bonus",
@@ -20774,7 +21081,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_vk.py",
-      "source_location": "L57",
+      "source_location": "L68",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk_test_handle_incoming_none",
@@ -20785,8 +21092,32 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "tests/test_vk.py",
+      "source_location": "L91",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_vk_test_handle_search_button",
+      "target": "bot_services_vk_bot_handle_incoming"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_vk.py",
+      "source_location": "L77",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_vk_test_handle_start_greeting",
+      "target": "bot_services_vk_bot_handle_incoming"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "web/app.py",
-      "source_location": "L83",
+      "source_location": "L84",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app_vk_callback",
@@ -21297,7 +21628,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_vk.py",
-      "source_location": "L4",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk",
@@ -21591,7 +21922,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_vk.py",
-      "source_location": "L4",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk",
@@ -21599,11 +21930,22 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "tests/test_vk.py",
+      "source_location": "L6",
+      "weight": 0.8,
+      "_origin": "ast",
+      "source": "tests_test_vk_sink",
+      "target": "config_settings",
+      "confidence_score": 0.5
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_vk.py",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk_test_check_secret",
@@ -21615,7 +21957,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_vk.py",
-      "source_location": "L21",
+      "source_location": "L23",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk_test_check_secret_disabled",
@@ -22191,7 +22533,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_vk.py",
-      "source_location": "L5",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk",
@@ -22619,7 +22961,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_vk.py",
-      "source_location": "L5",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk",
@@ -22631,12 +22973,23 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_vk.py",
-      "source_location": "L27",
+      "source_location": "L45",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk_seed_bonus",
       "target": "db_models_bonus",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "tests/test_vk.py",
+      "source_location": "L7",
+      "weight": 0.8,
+      "_origin": "ast",
+      "source": "tests_test_vk_sink",
+      "target": "db_models_bonus",
+      "confidence_score": 0.5
     },
     {
       "relation": "imports",
@@ -22994,7 +23347,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_vk.py",
-      "source_location": "L6",
+      "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk",
@@ -23413,7 +23766,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_vk.py",
-      "source_location": "L6",
+      "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk",
@@ -23425,7 +23778,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_vk.py",
-      "source_location": "L26",
+      "source_location": "L44",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk_seed_bonus",
@@ -26706,7 +27059,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_vk.py",
-      "source_location": "L25",
+      "source_location": "L43",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk",
@@ -26717,7 +27070,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_vk.py",
-      "source_location": "L13",
+      "source_location": "L35",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_vk",
+      "target": "tests_test_vk_sink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_vk.py",
+      "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk",
@@ -26728,7 +27092,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_vk.py",
-      "source_location": "L20",
+      "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk",
@@ -26739,7 +27103,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_vk.py",
-      "source_location": "L33",
+      "source_location": "L81",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_vk",
+      "target": "tests_test_vk_test_handle_club_button",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_vk.py",
+      "source_location": "L51",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk",
@@ -26750,7 +27125,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_vk.py",
-      "source_location": "L50",
+      "source_location": "L65",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk",
@@ -26761,7 +27136,40 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_vk.py",
-      "source_location": "L9",
+      "source_location": "L88",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_vk",
+      "target": "tests_test_vk_test_handle_search_button",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_vk.py",
+      "source_location": "L74",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_vk",
+      "target": "tests_test_vk_test_handle_start_greeting",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_vk.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_vk",
+      "target": "tests_test_vk_test_main_keyboard_has_buttons_and_tg_link",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_vk.py",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk",
@@ -26772,7 +27180,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_vk.py",
-      "source_location": "L63",
+      "source_location": "L95",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk",
@@ -26780,11 +27188,93 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_vk.py",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_vk_sink",
+      "target": "tests_test_vk_sink_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_vk.py",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_vk_sink",
+      "target": "tests_test_vk_sink_send",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_vk.py",
-      "source_location": "L40",
+      "source_location": "L82",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_vk_test_handle_club_button",
+      "target": "tests_test_vk_sink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_vk.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_vk_test_handle_incoming_bonus",
+      "target": "tests_test_vk_sink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_vk.py",
+      "source_location": "L66",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_vk_test_handle_incoming_none",
+      "target": "tests_test_vk_sink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_vk.py",
+      "source_location": "L89",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_vk_test_handle_search_button",
+      "target": "tests_test_vk_sink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_vk.py",
+      "source_location": "L75",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_vk_test_handle_start_greeting",
+      "target": "tests_test_vk_sink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_vk.py",
+      "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk_test_handle_incoming_bonus",
@@ -29076,5 +29566,5 @@
       "source_file": "PROJECT.md"
     }
   ],
-  "built_at_commit": "62ce87167accb7a04365ff340d90b6b668a3adec"
+  "built_at_commit": "ab8238312e736078fb4d44e0bc83aee7b96af54c"
 }

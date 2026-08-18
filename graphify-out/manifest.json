@@ -345,8 +345,8 @@
     "semantic_hash": ""
   },
   "web/app.py": {
-    "mtime": 1787042534.2499983,
-    "ast_hash": "9017481bfb25e8509b8a2b269ae1974f",
+    "mtime": 1787045539.4934514,
+    "ast_hash": "6347f52486192f393e1a559df37ab2fb",
     "semantic_hash": ""
   },
   "README.md": {
@@ -485,18 +485,18 @@
     "semantic_hash": ""
   },
   "bot/services/vk.py": {
-    "mtime": 1787042489.5534453,
-    "ast_hash": "be3ae961bf4a5d374f75c455b45cc696",
+    "mtime": 1787045491.8565743,
+    "ast_hash": "0e62f949abb901953a469ba0cb0b07b1",
     "semantic_hash": ""
   },
   "bot/services/vk_bot.py": {
-    "mtime": 1787042509.1318488,
-    "ast_hash": "7a314ffc59f841dbc4214c00904ed51d",
+    "mtime": 1787045529.4249554,
+    "ast_hash": "2c2d274abb18cb774fc1a99c00a5622f",
     "semantic_hash": ""
   },
   "tests/test_vk.py": {
-    "mtime": 1787042617.5751598,
-    "ast_hash": "71ee0340453473063a2f8d3254895541",
+    "mtime": 1787045562.7084522,
+    "ast_hash": "838386ba1f735f8c571f070021bef3f3",
     "semantic_hash": ""
   }
 }

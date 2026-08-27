@@ -330,8 +330,8 @@
     "semantic_hash": ""
   },
   "tests/test_web.py": {
-    "mtime": 1785836417.820009,
-    "ast_hash": "f2730ed7ac4edbd576af66caa2414e9b",
+    "mtime": 1787842487.6260173,
+    "ast_hash": "8ee3fa81a1a9efdadc472d183c110aeb",
     "semantic_hash": ""
   },
   "tests/test_yookassa.py": {
@@ -345,8 +345,8 @@
     "semantic_hash": ""
   },
   "web/app.py": {
-    "mtime": 1787840260.6089497,
-    "ast_hash": "f80b629cd0d4d87a6f55ee887efbc886",
+    "mtime": 1787842456.310465,
+    "ast_hash": "63ea9d2d7a61322978c7a15f98c10e06",
     "semantic_hash": ""
   },
   "README.md": {
@@ -490,8 +490,8 @@
     "semantic_hash": ""
   },
   "bot/services/vk_bot.py": {
-    "mtime": 1787045529.4249554,
-    "ast_hash": "2c2d274abb18cb774fc1a99c00a5622f",
+    "mtime": 1787842563.3721561,
+    "ast_hash": "7f04760763761933dc025b78b22f38e8",
     "semantic_hash": ""
   },
   "tests/test_vk.py": {

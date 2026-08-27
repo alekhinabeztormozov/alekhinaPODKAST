@@ -1269,8 +1269,8 @@
       "source_location": "L177",
       "_origin": "ast",
       "id": "bot_keyboards_common_owner_menu",
-      "community": 13,
-      "community_name": "producer.py",
+      "community": 11,
+      "community_name": "get_settings",
       "norm_label": "owner_menu()"
     },
     {
@@ -1501,7 +1501,7 @@
       "_origin": "ast",
       "id": "bot_services_admin_content",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "admin_content.py"
     },
     {
@@ -1512,7 +1512,7 @@
       "_origin": "ast",
       "id": "bot_services_admin_content_tags",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "_tags()"
     },
     {
@@ -1523,7 +1523,7 @@
       "_origin": "ast",
       "id": "bot_services_admin_content_upsert",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "_upsert()"
     },
     {
@@ -1534,7 +1534,7 @@
       "_origin": "ast",
       "id": "bot_services_admin_content_add_season",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "add_season()"
     },
     {
@@ -1545,7 +1545,7 @@
       "_origin": "ast",
       "id": "bot_services_admin_content_add_bonus",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "add_bonus()"
     },
     {
@@ -1556,7 +1556,7 @@
       "_origin": "ast",
       "id": "bot_services_admin_content_add_episode",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "add_episode()"
     },
     {
@@ -1567,7 +1567,7 @@
       "_origin": "ast",
       "id": "bot_services_admin_content_add_product",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "add_product()"
     },
     {
@@ -1578,7 +1578,7 @@
       "_origin": "ast",
       "id": "bot_services_admin_content_set_workbook",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "set_workbook()"
     },
     {
@@ -1589,7 +1589,7 @@
       "_origin": "ast",
       "id": "bot_services_admin_content_counts",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "counts()"
     },
     {
@@ -1742,8 +1742,8 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "bot_services_catalog_get_season",
-      "community": 11,
-      "community_name": "get_settings",
+      "community": 25,
+      "community_name": "catalog.py",
       "norm_label": "get_season()"
     },
     {
@@ -1775,8 +1775,8 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "bot_services_catalog_all_seasons_pack",
-      "community": 11,
-      "community_name": "get_settings",
+      "community": 25,
+      "community_name": "catalog.py",
       "norm_label": "all_seasons_pack()"
     },
     {
@@ -1841,8 +1841,8 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "bot_services_catalog_rationale_110",
-      "community": 11,
-      "community_name": "get_settings",
+      "community": 25,
+      "community_name": "catalog.py",
       "norm_label": "\u0441\u043b\u0443\u0436\u0435\u0431\u043d\u044b\u0438 \u0441\u0435\u0437\u043e\u043d-\u043f\u0430\u043a\u0435\u0442 \u00ab\u0432\u0441\u0435 \u0441\u0435\u0437\u043e\u043d\u044b\u00bb (season_id \u0438\u0437 \u043d\u0430\u0441\u0442\u0440\u043e\u0435\u043a)."
     },
     {
@@ -1852,7 +1852,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "bot_services_contacts",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "contacts.py"
     },
@@ -1863,7 +1863,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "bot_services_contacts_record",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "record()"
     },
@@ -1874,7 +1874,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "bot_services_contacts_rationale_12",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "\u0437\u0430\u043f\u0438\u0441\u0430\u0442\u044c \u043a\u043e\u043d\u0442\u0430\u043a\u0442 \u0432 \u0431\u0434 + google sheets. \u043e\u0434\u0438\u043d \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c = \u043e\u0434\u043d\u0430 \u0441\u0442\u0440\u043e\u043a\u0430 (\u0434\u0435\u0434\u0443\u043f..."
     },
@@ -1886,7 +1886,7 @@
       "_origin": "ast",
       "id": "bot_services_fulfillment",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "fulfillment.py"
     },
     {
@@ -1897,7 +1897,7 @@
       "_origin": "ast",
       "id": "bot_services_fulfillment_already_done",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "_already_done()"
     },
     {
@@ -1908,7 +1908,7 @@
       "_origin": "ast",
       "id": "bot_services_fulfillment_release",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "_release()"
     },
     {
@@ -1919,7 +1919,7 @@
       "_origin": "ast",
       "id": "bot_services_fulfillment_notify",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "_notify()"
     },
     {
@@ -1930,7 +1930,7 @@
       "_origin": "ast",
       "id": "bot_services_fulfillment_py_bot",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "bot"
     },
     {
@@ -1941,7 +1941,7 @@
       "_origin": "ast",
       "id": "bot_services_fulfillment_invite_link",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "_invite_link()"
     },
     {
@@ -1952,7 +1952,7 @@
       "_origin": "ast",
       "id": "bot_services_fulfillment_record_sale",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "_record_sale()"
     },
     {
@@ -1963,7 +1963,7 @@
       "_origin": "ast",
       "id": "bot_services_fulfillment_fulfill",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "fulfill()"
     },
     {
@@ -1974,7 +1974,7 @@
       "_origin": "ast",
       "id": "bot_services_fulfillment_py_any",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "any"
     },
     {
@@ -1985,7 +1985,7 @@
       "_origin": "ast",
       "id": "bot_services_fulfillment_fulfill_sub",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "_fulfill_sub()"
     },
     {
@@ -1996,7 +1996,7 @@
       "_origin": "ast",
       "id": "bot_services_fulfillment_fulfill_season",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "_fulfill_season()"
     },
     {
@@ -2007,7 +2007,7 @@
       "_origin": "ast",
       "id": "bot_services_fulfillment_fulfill_workbook",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "_fulfill_workbook()"
     },
     {
@@ -2018,7 +2018,7 @@
       "_origin": "ast",
       "id": "bot_services_fulfillment_fulfill_all",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "_fulfill_all()"
     },
     {
@@ -2029,7 +2029,7 @@
       "_origin": "ast",
       "id": "bot_services_fulfillment_rationale_36",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "\u0441\u043d\u044f\u0442\u044c \u0440\u0435\u0437\u0435\u0440\u0432 \u0438\u0434\u0435\u043c\u043f\u043e\u0442\u0435\u043d\u0442\u043d\u043e\u0441\u0442\u0438, \u0447\u0442\u043e\u0431\u044b \u0432\u0435\u0431\u0445\u0443\u043a \u044ekassa \u043f\u043e\u0432\u0442\u043e\u0440\u0438\u043b \u0432\u044b\u0434\u0430\u0447\u0443."
     },
     {
@@ -2040,7 +2040,7 @@
       "_origin": "ast",
       "id": "bot_services_fulfillment_rationale_47",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "\u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u043e \u0432\u044b\u0434\u0430\u0447\u0435 \u2014 best-effort: \u0434\u043e\u0441\u0442\u0443\u043f \u0443\u0436\u0435 \u0432\u044b\u0434\u0430\u043d, \u0441\u0431\u043e\u0438 \u043e\u0442\u043f\u0440\u0430\u0432\u043a\u0438 \u043d\u0435 \u043a\u0440\u0438\u0442\u0438\u0447\u0435\u043d."
     },
     {
@@ -2304,7 +2304,7 @@
       "_origin": "ast",
       "id": "bot_services_notion_sync",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "notion_sync.py"
     },
     {
@@ -2315,7 +2315,7 @@
       "_origin": "ast",
       "id": "bot_services_notion_sync_upsert_episode",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "_upsert_episode()"
     },
     {
@@ -2326,7 +2326,7 @@
       "_origin": "ast",
       "id": "bot_services_notion_sync_py_any",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "any"
     },
     {
@@ -2337,7 +2337,7 @@
       "_origin": "ast",
       "id": "bot_services_notion_sync_upsert_bonus",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "_upsert_bonus()"
     },
     {
@@ -2348,7 +2348,7 @@
       "_origin": "ast",
       "id": "bot_services_notion_sync_sync_catalog",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "sync_catalog()"
     },
     {
@@ -2380,8 +2380,8 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "bot_services_notion_sync_publish_vk_posts",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 16,
+      "community_name": "notion.py",
       "norm_label": "publish_vk_posts()"
     },
     {
@@ -2424,7 +2424,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "bot_services_sales",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "sales.py"
     },
@@ -2435,7 +2435,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "bot_services_sales_record",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "record()"
     },
@@ -2446,8 +2446,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "bot_services_seen",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "seen.py"
     },
     {
@@ -2468,8 +2468,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "bot_services_seen_any_seen",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "any_seen()"
     },
     {
@@ -2490,8 +2490,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "bot_services_sheets",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 20,
+      "community_name": "sheets.py",
       "norm_label": "sheets.py"
     },
     {
@@ -2501,8 +2501,8 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "bot_services_sheets_sheetsnotconfigured",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 20,
+      "community_name": "sheets.py",
       "norm_label": "sheetsnotconfigured"
     },
     {
@@ -2512,8 +2512,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "bot_services_sheets_py_runtimeerror",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 20,
+      "community_name": "sheets.py",
       "norm_label": "runtimeerror"
     },
     {
@@ -2523,8 +2523,8 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "bot_services_sheets_client",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 20,
+      "community_name": "sheets.py",
       "norm_label": "_client()"
     },
     {
@@ -2534,8 +2534,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "bot_services_sheets_py_any",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 20,
+      "community_name": "sheets.py",
       "norm_label": "any"
     },
     {
@@ -2545,8 +2545,8 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "bot_services_sheets_spreadsheet",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 20,
+      "community_name": "sheets.py",
       "norm_label": "_spreadsheet()"
     },
     {
@@ -2556,8 +2556,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "bot_services_sheets_worksheet",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 20,
+      "community_name": "sheets.py",
       "norm_label": "_worksheet()"
     },
     {
@@ -2567,8 +2567,8 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "bot_services_sheets_append_sync",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 20,
+      "community_name": "sheets.py",
       "norm_label": "_append_sync()"
     },
     {
@@ -2578,8 +2578,8 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "bot_services_sheets_bootstrap_sync",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 20,
+      "community_name": "sheets.py",
       "norm_label": "_bootstrap_sync()"
     },
     {
@@ -2589,8 +2589,8 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "bot_services_sheets_append",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 20,
+      "community_name": "sheets.py",
       "norm_label": "_append()"
     },
     {
@@ -2600,8 +2600,8 @@
       "source_location": "L75",
       "_origin": "ast",
       "id": "bot_services_sheets_now",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 20,
+      "community_name": "sheets.py",
       "norm_label": "_now()"
     },
     {
@@ -2611,8 +2611,8 @@
       "source_location": "L79",
       "_origin": "ast",
       "id": "bot_services_sheets_bootstrap",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 20,
+      "community_name": "sheets.py",
       "norm_label": "bootstrap()"
     },
     {
@@ -2622,8 +2622,8 @@
       "source_location": "L91",
       "_origin": "ast",
       "id": "bot_services_sheets_add_contact",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 20,
+      "community_name": "sheets.py",
       "norm_label": "add_contact()"
     },
     {
@@ -2633,8 +2633,8 @@
       "source_location": "L101",
       "_origin": "ast",
       "id": "bot_services_sheets_add_sale",
-      "community": 18,
-      "community_name": "admin.py",
+      "community": 20,
+      "community_name": "sheets.py",
       "norm_label": "add_sale()"
     },
     {
@@ -2644,7 +2644,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "bot_services_subscriptions",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "subscriptions.py"
     },
@@ -2655,7 +2655,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "bot_services_subscriptions_now",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "_now()"
     },
@@ -2666,7 +2666,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "bot_services_subscriptions_py_datetime",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "datetime"
     },
@@ -2677,7 +2677,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "bot_services_subscriptions_grant",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "grant()"
     },
@@ -2688,7 +2688,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "bot_services_subscriptions_is_active",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "is_active()"
     },
@@ -2699,7 +2699,7 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "bot_services_subscriptions_has_used_trial",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "has_used_trial()"
     },
@@ -2710,7 +2710,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "bot_services_subscriptions_expired",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "expired()"
     },
@@ -2721,7 +2721,7 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "bot_services_subscriptions_mark_expired",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "mark_expired()"
     },
@@ -2732,8 +2732,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "bot_services_users",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "users.py"
     },
     {
@@ -2743,8 +2743,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "bot_services_users_now",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "_now()"
     },
     {
@@ -2754,8 +2754,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "bot_services_users_py_datetime",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "datetime"
     },
     {
@@ -2765,8 +2765,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "bot_services_users_aware",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "_aware()"
     },
     {
@@ -2776,8 +2776,8 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "bot_services_users_is_active",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "_is_active()"
     },
     {
@@ -2787,8 +2787,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "bot_services_users_get_or_create",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "get_or_create()"
     },
     {
@@ -2809,8 +2809,8 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "bot_services_users_subscription_until",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "subscription_until()"
     },
     {
@@ -2820,8 +2820,8 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "bot_services_users_can_trial",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "can_trial()"
     },
     {
@@ -2831,8 +2831,8 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "bot_services_users_grant_trial",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "grant_trial()"
     },
     {
@@ -2842,8 +2842,8 @@
       "source_location": "L85",
       "_origin": "ast",
       "id": "bot_services_users_grant_subscription",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "grant_subscription()"
     },
     {
@@ -2854,7 +2854,7 @@
       "_origin": "ast",
       "id": "bot_services_users_add_purchased_season",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "add_purchased_season()"
     },
     {
@@ -2865,7 +2865,7 @@
       "_origin": "ast",
       "id": "bot_services_users_has_season",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "has_season()"
     },
     {
@@ -2875,8 +2875,8 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "bot_services_users_all_user_ids",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "all_user_ids()"
     },
     {
@@ -2886,8 +2886,8 @@
       "source_location": "L126",
       "_origin": "ast",
       "id": "bot_services_users_subscriber_ids",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "subscriber_ids()"
     },
     {
@@ -2897,8 +2897,8 @@
       "source_location": "L136",
       "_origin": "ast",
       "id": "bot_services_users_take_voice_demo",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "take_voice_demo()"
     },
     {
@@ -2908,8 +2908,8 @@
       "source_location": "L149",
       "_origin": "ast",
       "id": "bot_services_users_expired_subscribers",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "expired_subscribers()"
     },
     {
@@ -2919,8 +2919,8 @@
       "source_location": "L160",
       "_origin": "ast",
       "id": "bot_services_users_drop_subscription",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "drop_subscription()"
     },
     {
@@ -2930,8 +2930,8 @@
       "source_location": "L167",
       "_origin": "ast",
       "id": "bot_services_users_snapshot",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "_snapshot()"
     },
     {
@@ -2941,8 +2941,8 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "bot_services_users_rationale_52",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "\u0434\u0430\u0442\u0430 \u043e\u043a\u043e\u043d\u0447\u0430\u043d\u0438\u044f \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0438 \u043f\u043e\u0434\u043f\u0438\u0441\u043a\u0438 (\u0438\u043b\u0438 none, \u0435\u0441\u043b\u0438 \u043d\u0435 \u0430\u043a\u0442\u0438\u0432\u043d\u0430)."
     },
     {
@@ -2952,8 +2952,8 @@
       "source_location": "L61",
       "_origin": "ast",
       "id": "bot_services_users_rationale_61",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "\u0442\u0440\u0438\u0430\u043b \u0434\u043e\u0441\u0442\u0443\u043f\u0435\u043d, \u0435\u0441\u043b\u0438 \u0435\u0449\u0435 \u043d\u0435 \u0431\u0440\u0430\u043b \u0438 \u0441\u0435\u0438\u0447\u0430\u0441 \u043d\u0435 \u043f\u043e\u0434\u043f\u0438\u0441\u0430\u043d."
     },
     {
@@ -2963,8 +2963,8 @@
       "source_location": "L70",
       "_origin": "ast",
       "id": "bot_services_users_rationale_70",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "\u0432\u044b\u0434\u0430\u0442\u044c 24\u0447 \u0442\u0440\u0438\u0430\u043b \u043a\u043b\u0443\u0431\u0430. none, \u0435\u0441\u043b\u0438 \u0442\u0440\u0438\u0430\u043b \u0443\u0436\u0435 \u0431\u0440\u0430\u043b\u0438 \u0438\u043b\u0438 \u043f\u043e\u0434\u043f\u0438\u0441\u043a\u0430 \u0430\u043a\u0442\u0438\u0432\u043d\u0430."
     },
     {
@@ -3180,7 +3180,7 @@
       "label": "handle_incoming()",
       "file_type": "code",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L96",
+      "source_location": "L99",
       "_origin": "ast",
       "id": "bot_services_vk_bot_handle_incoming",
       "community": 9,
@@ -3194,8 +3194,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "bot_services_yookassa",
-      "community": 11,
-      "community_name": "get_settings",
+      "community": 22,
+      "community_name": "yookassa.py",
       "norm_label": "yookassa.py"
     },
     {
@@ -3205,8 +3205,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "bot_services_yookassa_yookassanotconfigured",
-      "community": 11,
-      "community_name": "get_settings",
+      "community": 22,
+      "community_name": "yookassa.py",
       "norm_label": "yookassanotconfigured"
     },
     {
@@ -3216,8 +3216,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "bot_services_yookassa_py_runtimeerror",
-      "community": 11,
-      "community_name": "get_settings",
+      "community": 22,
+      "community_name": "yookassa.py",
       "norm_label": "runtimeerror"
     },
     {
@@ -3227,8 +3227,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "bot_services_yookassa_auth_header",
-      "community": 11,
-      "community_name": "get_settings",
+      "community": 22,
+      "community_name": "yookassa.py",
       "norm_label": "_auth_header()"
     },
     {
@@ -3238,8 +3238,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "bot_services_yookassa_create_payment",
-      "community": 11,
-      "community_name": "get_settings",
+      "community": 22,
+      "community_name": "yookassa.py",
       "norm_label": "create_payment()"
     },
     {
@@ -3249,8 +3249,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "bot_services_yookassa_py_any",
-      "community": 11,
-      "community_name": "get_settings",
+      "community": 22,
+      "community_name": "yookassa.py",
       "norm_label": "any"
     },
     {
@@ -3260,8 +3260,8 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "bot_services_yookassa_get_payment",
-      "community": 11,
-      "community_name": "get_settings",
+      "community": 22,
+      "community_name": "yookassa.py",
       "norm_label": "get_payment()"
     },
     {
@@ -3271,8 +3271,8 @@
       "source_location": "L61",
       "_origin": "ast",
       "id": "bot_services_yookassa_confirmation_url",
-      "community": 11,
-      "community_name": "get_settings",
+      "community": 22,
+      "community_name": "yookassa.py",
       "norm_label": "confirmation_url()"
     },
     {
@@ -3491,8 +3491,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "db_migrations_env",
-      "community": 46,
-      "community_name": "env.py",
+      "community": 12,
+      "community_name": "models.py",
       "norm_label": "env.py"
     },
     {
@@ -3502,8 +3502,8 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "db_migrations_env_get_url",
-      "community": 46,
-      "community_name": "env.py",
+      "community": 12,
+      "community_name": "models.py",
       "norm_label": "get_url()"
     },
     {
@@ -3513,8 +3513,8 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "db_migrations_env_run_migrations_offline",
-      "community": 46,
-      "community_name": "env.py",
+      "community": 12,
+      "community_name": "models.py",
       "norm_label": "run_migrations_offline()"
     },
     {
@@ -3524,8 +3524,8 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "db_migrations_env_do_run_migrations",
-      "community": 46,
-      "community_name": "env.py",
+      "community": 12,
+      "community_name": "models.py",
       "norm_label": "do_run_migrations()"
     },
     {
@@ -3535,8 +3535,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "connection",
-      "community": 46,
-      "community_name": "env.py",
+      "community": 12,
+      "community_name": "models.py",
       "norm_label": "connection"
     },
     {
@@ -3546,8 +3546,8 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "db_migrations_env_run_migrations_online",
-      "community": 46,
-      "community_name": "env.py",
+      "community": 12,
+      "community_name": "models.py",
       "norm_label": "run_migrations_online()"
     },
     {
@@ -3690,7 +3690,7 @@
       "_origin": "ast",
       "id": "db_models",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "models.py"
     },
     {
@@ -3701,7 +3701,7 @@
       "_origin": "ast",
       "id": "db_models_base",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "base"
     },
     {
@@ -3712,7 +3712,7 @@
       "_origin": "ast",
       "id": "declarativebase",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "declarativebase"
     },
     {
@@ -3722,8 +3722,8 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "db_models_user",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "user"
     },
     {
@@ -3734,7 +3734,7 @@
       "_origin": "ast",
       "id": "db_models_season",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "season"
     },
     {
@@ -3745,7 +3745,7 @@
       "_origin": "ast",
       "id": "db_models_episode",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "episode"
     },
     {
@@ -3756,7 +3756,7 @@
       "_origin": "ast",
       "id": "db_models_bonus",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "bonus"
     },
     {
@@ -3767,7 +3767,7 @@
       "_origin": "ast",
       "id": "db_models_mainproduct",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "mainproduct"
     },
     {
@@ -3777,7 +3777,7 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "db_models_contact",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "contact"
     },
@@ -3788,7 +3788,7 @@
       "source_location": "L105",
       "_origin": "ast",
       "id": "db_models_subscription",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "subscription"
     },
@@ -3799,7 +3799,7 @@
       "source_location": "L116",
       "_origin": "ast",
       "id": "db_models_processedpayment",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "processedpayment"
     },
@@ -3810,7 +3810,7 @@
       "source_location": "L129",
       "_origin": "ast",
       "id": "db_models_sale",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "sale"
     },
@@ -3821,8 +3821,8 @@
       "source_location": "L141",
       "_origin": "ast",
       "id": "db_models_seenkey",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "seenkey"
     },
     {
@@ -3832,8 +3832,8 @@
       "source_location": "L151",
       "_origin": "ast",
       "id": "db_models_scheduledpost",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "scheduledpost"
     },
     {
@@ -3844,7 +3844,7 @@
       "_origin": "ast",
       "id": "db_session",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "session.py"
     },
     {
@@ -3855,7 +3855,7 @@
       "_origin": "ast",
       "id": "db_session_databasenotconfigured",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "databasenotconfigured"
     },
     {
@@ -3866,7 +3866,7 @@
       "_origin": "ast",
       "id": "db_session_py_runtimeerror",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "runtimeerror"
     },
     {
@@ -3877,7 +3877,7 @@
       "_origin": "ast",
       "id": "db_session_get_engine",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "get_engine()"
     },
     {
@@ -3888,7 +3888,7 @@
       "_origin": "ast",
       "id": "asyncengine",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "asyncengine"
     },
     {
@@ -3899,7 +3899,7 @@
       "_origin": "ast",
       "id": "db_session_get_sessionmaker",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "get_sessionmaker()"
     },
     {
@@ -3910,7 +3910,7 @@
       "_origin": "ast",
       "id": "async_sessionmaker",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "async_sessionmaker"
     },
     {
@@ -3921,7 +3921,7 @@
       "_origin": "ast",
       "id": "asyncsession",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "asyncsession"
     },
     {
@@ -3931,7 +3931,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "db_session_session_scope",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "session_scope()"
     },
@@ -3943,7 +3943,7 @@
       "_origin": "ast",
       "id": "db_session_init_models",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "init_models()"
     },
     {
@@ -4606,7 +4606,7 @@
       "_origin": "ast",
       "id": "scripts_seed_demo",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "seed_demo.py"
     },
     {
@@ -4617,7 +4617,7 @@
       "_origin": "ast",
       "id": "scripts_seed_demo_upsert",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "_upsert()"
     },
     {
@@ -4628,7 +4628,7 @@
       "_origin": "ast",
       "id": "scripts_seed_demo_main",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "main()"
     },
     {
@@ -4639,7 +4639,7 @@
       "_origin": "ast",
       "id": "tests_conftest",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "conftest.py"
     },
     {
@@ -4650,7 +4650,7 @@
       "_origin": "ast",
       "id": "fixture",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "fixture"
     },
     {
@@ -4661,7 +4661,7 @@
       "_origin": "ast",
       "id": "tests_conftest_db",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "db()"
     },
     {
@@ -4771,7 +4771,7 @@
       "_origin": "ast",
       "id": "tests_test_core_flows",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "test_core_flows.py"
     },
     {
@@ -4782,7 +4782,7 @@
       "_origin": "ast",
       "id": "tests_test_core_flows_seed",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "_seed()"
     },
     {
@@ -4793,7 +4793,7 @@
       "_origin": "ast",
       "id": "tests_test_core_flows_test_keyword_bonus_cyrillic",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "test_keyword_bonus_cyrillic()"
     },
     {
@@ -4804,7 +4804,7 @@
       "_origin": "ast",
       "id": "tests_test_core_flows_test_search_by_tag_and_title",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "test_search_by_tag_and_title()"
     },
     {
@@ -4814,8 +4814,8 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "tests_test_core_flows_test_subscription_lifecycle",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "test_subscription_lifecycle()"
     },
     {
@@ -4826,7 +4826,7 @@
       "_origin": "ast",
       "id": "tests_test_core_flows_test_season_purchase",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "test_season_purchase()"
     },
     {
@@ -4836,8 +4836,8 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "tests_test_core_flows_test_voice_demo_once",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 12,
+      "community_name": "models.py",
       "norm_label": "test_voice_demo_once()"
     },
     {
@@ -5123,7 +5123,7 @@
       "_origin": "ast",
       "id": "tests_test_phase2",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "test_phase2.py"
     },
     {
@@ -5134,7 +5134,7 @@
       "_origin": "ast",
       "id": "tests_test_phase2_fakebot",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "fakebot"
     },
     {
@@ -5145,7 +5145,7 @@
       "_origin": "ast",
       "id": "tests_test_phase2_fakebot_init",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": ".__init__()"
     },
     {
@@ -5156,7 +5156,7 @@
       "_origin": "ast",
       "id": "tests_test_phase2_fakebot_send_message",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": ".send_message()"
     },
     {
@@ -5167,7 +5167,7 @@
       "_origin": "ast",
       "id": "tests_test_phase2_fakebot_ban_chat_member",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": ".ban_chat_member()"
     },
     {
@@ -5178,7 +5178,7 @@
       "_origin": "ast",
       "id": "tests_test_phase2_fakebot_unban_chat_member",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": ".unban_chat_member()"
     },
     {
@@ -5189,7 +5189,7 @@
       "_origin": "ast",
       "id": "tests_test_phase2_test_all_seasons_access",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "test_all_seasons_access()"
     },
     {
@@ -5200,7 +5200,7 @@
       "_origin": "ast",
       "id": "tests_test_phase2_test_active_intensive",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "test_active_intensive()"
     },
     {
@@ -5211,7 +5211,7 @@
       "_origin": "ast",
       "id": "tests_test_phase2_test_admin_content_upsert",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "test_admin_content_upsert()"
     },
     {
@@ -5221,8 +5221,8 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "tests_test_phase2_test_revoke_expired",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "test_revoke_expired()"
     },
     {
@@ -5233,7 +5233,7 @@
       "_origin": "ast",
       "id": "tests_test_phase2_test_finale_broadcast",
       "community": 12,
-      "community_name": "session_scope",
+      "community_name": "models.py",
       "norm_label": "test_finale_broadcast()"
     },
     {
@@ -5397,8 +5397,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_scheduler_db",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "test_scheduler_db.py"
     },
     {
@@ -5408,8 +5408,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "tests_test_scheduler_db_fakebot",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "fakebot"
     },
     {
@@ -5419,8 +5419,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "tests_test_scheduler_db_fakebot_init",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": ".__init__()"
     },
     {
@@ -5430,8 +5430,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "tests_test_scheduler_db_fakebot_send_message",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": ".send_message()"
     },
     {
@@ -5452,8 +5452,8 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "tests_test_scheduler_db_test_publish_due_only_past",
-      "community": 12,
-      "community_name": "session_scope",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "test_publish_due_only_past()"
     },
     {
@@ -5475,7 +5475,7 @@
       "_origin": "ast",
       "id": "tests_test_spec_features",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "test_spec_features.py"
     },
     {
@@ -5486,7 +5486,7 @@
       "_origin": "ast",
       "id": "tests_test_spec_features_fakebot",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "fakebot"
     },
     {
@@ -5497,7 +5497,7 @@
       "_origin": "ast",
       "id": "tests_test_spec_features_fakebot_init",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": ".__init__()"
     },
     {
@@ -5508,7 +5508,7 @@
       "_origin": "ast",
       "id": "tests_test_spec_features_fakebot_send_message",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": ".send_message()"
     },
     {
@@ -5519,7 +5519,7 @@
       "_origin": "ast",
       "id": "tests_test_spec_features_fakebot_create_chat_invite_link",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": ".create_chat_invite_link()"
     },
     {
@@ -5530,7 +5530,7 @@
       "_origin": "ast",
       "id": "tests_test_spec_features_seed_seasons",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "_seed_seasons()"
     },
     {
@@ -5540,8 +5540,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "tests_test_spec_features_test_trial_once",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "test_trial_once()"
     },
     {
@@ -5551,8 +5551,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "tests_test_spec_features_test_subscription_until",
-      "community": 20,
-      "community_name": "users.py",
+      "community": 19,
+      "community_name": "session_scope",
       "norm_label": "test_subscription_until()"
     },
     {
@@ -5563,7 +5563,7 @@
       "_origin": "ast",
       "id": "tests_test_spec_features_test_subscription_renewal_stacks",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "test_subscription_renewal_stacks()"
     },
     {
@@ -5573,8 +5573,8 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "tests_test_spec_features_test_catalog_excludes_all_pack",
-      "community": 19,
-      "community_name": "test_spec_features.py",
+      "community": 25,
+      "community_name": "catalog.py",
       "norm_label": "test_catalog_excludes_all_pack()"
     },
     {
@@ -5585,7 +5585,7 @@
       "_origin": "ast",
       "id": "tests_test_spec_features_test_fulfill_sub_3m",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "test_fulfill_sub_3m()"
     },
     {
@@ -5596,7 +5596,7 @@
       "_origin": "ast",
       "id": "tests_test_spec_features_test_fulfill_season_and_idempotent",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "test_fulfill_season_and_idempotent()"
     },
     {
@@ -5607,7 +5607,7 @@
       "_origin": "ast",
       "id": "tests_test_spec_features_test_fulfill_workbook",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "test_fulfill_workbook()"
     },
     {
@@ -5618,7 +5618,7 @@
       "_origin": "ast",
       "id": "tests_test_spec_features_test_fulfill_all_grants_everything",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "test_fulfill_all_grants_everything()"
     },
     {
@@ -5628,7 +5628,7 @@
       "source_location": "L107",
       "_origin": "ast",
       "id": "tests_test_spec_features_test_contacts_dedupe",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "test_contacts_dedupe()"
     },
@@ -5640,7 +5640,7 @@
       "_origin": "ast",
       "id": "tests_test_spec_features_reserved",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "_reserved()"
     },
     {
@@ -5651,7 +5651,7 @@
       "_origin": "ast",
       "id": "tests_test_spec_features_test_fulfill_releases_reservation_on_grant_failure",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "test_fulfill_releases_reservation_on_grant_failure()"
     },
     {
@@ -5662,7 +5662,7 @@
       "_origin": "ast",
       "id": "tests_test_spec_features_test_fulfill_send_failure_still_grants",
       "community": 19,
-      "community_name": "test_spec_features.py",
+      "community_name": "session_scope",
       "norm_label": "test_fulfill_send_failure_still_grants()"
     },
     {
@@ -5672,7 +5672,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_subscriptions_db",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "test_subscriptions_db.py"
     },
@@ -5683,7 +5683,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "tests_test_subscriptions_db_test_grant_and_active",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "test_grant_and_active()"
     },
@@ -5694,7 +5694,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "tests_test_subscriptions_db_test_trial_tracking",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "test_trial_tracking()"
     },
@@ -5705,7 +5705,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "tests_test_subscriptions_db_test_expiry_and_revoke",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "test_expiry_and_revoke()"
     },
@@ -5716,7 +5716,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "tests_test_subscriptions_db_test_payment_idempotency",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "test_payment_idempotency()"
     },
@@ -5727,7 +5727,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "tests_test_subscriptions_db_test_sale_recorded_in_db",
-      "community": 12,
+      "community": 19,
       "community_name": "session_scope",
       "norm_label": "test_sale_recorded_in_db()"
     },
@@ -5925,8 +5925,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "tests_test_vk_test_publish_vk_posts_gate_when_unconfigured",
-      "community": 10,
-      "community_name": "Settings",
+      "community": 9,
+      "community_name": "test_vk.py",
       "norm_label": "test_publish_vk_posts_gate_when_unconfigured()"
     },
     {
@@ -5936,20 +5936,64 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_web",
-      "community": 11,
-      "community_name": "get_settings",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "test_web.py"
     },
     {
       "label": "test_health()",
       "file_type": "code",
       "source_file": "tests/test_web.py",
-      "source_location": "L8",
+      "source_location": "L10",
       "_origin": "ast",
       "id": "tests_test_web_test_health",
-      "community": 11,
-      "community_name": "get_settings",
+      "community": 10,
+      "community_name": "Settings",
       "norm_label": "test_health()"
+    },
+    {
+      "label": "test_vk_callback_disabled_returns_ok()",
+      "file_type": "code",
+      "source_file": "tests/test_web.py",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "tests_test_web_test_vk_callback_disabled_returns_ok",
+      "community": 10,
+      "community_name": "Settings",
+      "norm_label": "test_vk_callback_disabled_returns_ok()"
+    },
+    {
+      "label": "test_vk_callback_confirmation()",
+      "file_type": "code",
+      "source_file": "tests/test_web.py",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "tests_test_web_test_vk_callback_confirmation",
+      "community": 10,
+      "community_name": "Settings",
+      "norm_label": "test_vk_callback_confirmation()"
+    },
+    {
+      "label": "test_vk_callback_message_new_schedules_handler()",
+      "file_type": "code",
+      "source_file": "tests/test_web.py",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "tests_test_web_test_vk_callback_message_new_schedules_handler",
+      "community": 10,
+      "community_name": "Settings",
+      "norm_label": "test_vk_callback_message_new_schedules_handler()"
+    },
+    {
+      "label": "test_vk_callback_bad_secret_ignored()",
+      "file_type": "code",
+      "source_file": "tests/test_web.py",
+      "source_location": "L48",
+      "_origin": "ast",
+      "id": "tests_test_web_test_vk_callback_bad_secret_ignored",
+      "community": 10,
+      "community_name": "Settings",
+      "norm_label": "test_vk_callback_bad_secret_ignored()"
     },
     {
       "label": "test_yookassa.py",
@@ -5958,8 +6002,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_yookassa",
-      "community": 11,
-      "community_name": "get_settings",
+      "community": 22,
+      "community_name": "yookassa.py",
       "norm_label": "test_yookassa.py"
     },
     {
@@ -5969,8 +6013,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "tests_test_yookassa_test_confirmation_url_extracted",
-      "community": 11,
-      "community_name": "get_settings",
+      "community": 22,
+      "community_name": "yookassa.py",
       "norm_label": "test_confirmation_url_extracted()"
     },
     {
@@ -5980,8 +6024,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "tests_test_yookassa_test_confirmation_url_missing",
-      "community": 11,
-      "community_name": "get_settings",
+      "community": 22,
+      "community_name": "yookassa.py",
       "norm_label": "test_confirmation_url_missing()"
     },
     {
@@ -6002,19 +6046,19 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "web_app",
-      "community": 11,
-      "community_name": "get_settings",
+      "community": 9,
+      "community_name": "test_vk.py",
       "norm_label": "app.py"
     },
     {
       "label": "_get_bot()",
       "file_type": "code",
       "source_file": "web/app.py",
-      "source_location": "L17",
+      "source_location": "L18",
       "_origin": "ast",
       "id": "web_app_get_bot",
-      "community": 11,
-      "community_name": "get_settings",
+      "community": 9,
+      "community_name": "test_vk.py",
       "norm_label": "_get_bot()"
     },
     {
@@ -6024,8 +6068,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "web_app_py_bot",
-      "community": 11,
-      "community_name": "get_settings",
+      "community": 9,
+      "community_name": "test_vk.py",
       "norm_label": "bot"
     },
     {
@@ -6043,7 +6087,7 @@
       "label": "health()",
       "file_type": "code",
       "source_file": "web/app.py",
-      "source_location": "L25",
+      "source_location": "L26",
       "_origin": "ast",
       "id": "web_app_health",
       "community": 9,
@@ -6065,7 +6109,7 @@
       "label": "yookassa_webhook()",
       "file_type": "code",
       "source_file": "web/app.py",
-      "source_location": "L30",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "web_app_yookassa_webhook",
       "community": 9,
@@ -6087,7 +6131,7 @@
       "label": "vk_callback()",
       "file_type": "code",
       "source_file": "web/app.py",
-      "source_location": "L61",
+      "source_location": "L62",
       "_origin": "ast",
       "id": "web_app_vk_callback",
       "community": 9,
@@ -7788,9 +7832,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "aiogram 3.x",
-      "community_name": "Telegram-\u0431\u043e\u0442 (aiogram 3.x)",
+      "community_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a",
       "id": "project_aiogram"
     },
     {
@@ -14105,7 +14149,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app",
@@ -14237,7 +14281,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app",
@@ -14249,7 +14293,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app_get_bot",
@@ -15518,7 +15562,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L117",
+      "source_location": "L120",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_handle_incoming",
@@ -15887,7 +15931,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L121",
+      "source_location": "L124",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_handle_incoming",
@@ -16077,7 +16121,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L116",
+      "source_location": "L119",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_handle_incoming",
@@ -16354,7 +16398,7 @@
       "context": "submodule_import",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L9",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app",
@@ -16821,7 +16865,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "web/app.py",
-      "source_location": "L53",
+      "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app_yookassa_webhook",
@@ -20825,7 +20869,7 @@
       "context": "submodule_import",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L9",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app",
@@ -20909,7 +20953,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "web/app.py",
-      "source_location": "L62",
+      "source_location": "L63",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app_vk_callback",
@@ -20957,7 +21001,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "web/app.py",
-      "source_location": "L72",
+      "source_location": "L73",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app_vk_callback",
@@ -21017,7 +21061,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L104",
+      "source_location": "L107",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_handle_incoming",
@@ -21072,7 +21116,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L96",
+      "source_location": "L99",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot",
@@ -21186,7 +21230,7 @@
       "context": "submodule_import",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L9",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app",
@@ -21282,7 +21326,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L101",
+      "source_location": "L104",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_handle_incoming",
@@ -21306,7 +21350,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L104",
+      "source_location": "L107",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_handle_incoming",
@@ -21318,7 +21362,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L107",
+      "source_location": "L110",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_handle_incoming",
@@ -21330,7 +21374,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L110",
+      "source_location": "L113",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_handle_incoming",
@@ -21342,7 +21386,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L119",
+      "source_location": "L122",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_handle_incoming",
@@ -21354,7 +21398,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L122",
+      "source_location": "L125",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_handle_incoming",
@@ -21366,7 +21410,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L122",
+      "source_location": "L125",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_handle_incoming",
@@ -21378,7 +21422,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "bot/services/vk_bot.py",
-      "source_location": "L100",
+      "source_location": "L103",
       "weight": 1.0,
       "_origin": "ast",
       "source": "bot_services_vk_bot_handle_incoming",
@@ -21443,18 +21487,6 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_vk_test_handle_start_greeting",
-      "target": "bot_services_vk_bot_handle_incoming"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "web/app.py",
-      "source_location": "L85",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "web_app_vk_callback",
       "target": "bot_services_vk_bot_handle_incoming"
     },
     {
@@ -21553,7 +21585,7 @@
       "context": "submodule_import",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L9",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app",
@@ -21661,7 +21693,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "web/app.py",
-      "source_location": "L41",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app_yookassa_webhook",
@@ -21973,8 +22005,20 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "tests/test_web.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_web",
+      "target": "config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L10",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app",
@@ -22302,6 +22346,30 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "tests/test_web.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_web",
+      "target": "config_settings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_web.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_web_test_vk_callback_confirmation",
+      "target": "config_settings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "db/migrations/env.py",
       "source_location": "L11",
       "weight": 1.0,
@@ -22399,7 +22467,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L10",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app",
@@ -22411,7 +22479,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app_get_bot",
@@ -22424,7 +22492,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "web/app.py",
-      "source_location": "L70",
+      "source_location": "L71",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app_vk_callback",
@@ -27758,7 +27826,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_web.py",
-      "source_location": "L8",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_web",
@@ -27766,11 +27834,55 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_web.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_web",
+      "target": "tests_test_web_test_vk_callback_bad_secret_ignored",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_web.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_web",
+      "target": "tests_test_web_test_vk_callback_confirmation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_web.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_web",
+      "target": "tests_test_web_test_vk_callback_disabled_returns_ok",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_web.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_web",
+      "target": "tests_test_web_test_vk_callback_message_new_schedules_handler",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_web.py",
-      "source_location": "L5",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_web",
@@ -27803,7 +27915,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app",
@@ -27814,7 +27926,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L25",
+      "source_location": "L26",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app",
@@ -27825,7 +27937,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L61",
+      "source_location": "L62",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app",
@@ -27836,7 +27948,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L30",
+      "source_location": "L31",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app",
@@ -27848,7 +27960,7 @@
       "context": "return_type",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app_get_bot",
@@ -27860,7 +27972,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L53",
+      "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app_yookassa_webhook",
@@ -27871,7 +27983,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L24",
+      "source_location": "L25",
       "weight": 1.0,
       "context": "decorator",
       "_origin": "ast",
@@ -27884,7 +27996,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L69",
+      "source_location": "L70",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app_vk_callback",
@@ -27896,7 +28008,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L36",
+      "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app_yookassa_webhook",
@@ -27907,7 +28019,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L60",
+      "source_location": "L61",
       "weight": 1.0,
       "context": "decorator",
       "_origin": "ast",
@@ -27919,7 +28031,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L29",
+      "source_location": "L30",
       "weight": 1.0,
       "context": "decorator",
       "_origin": "ast",
@@ -27932,7 +28044,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L30",
+      "source_location": "L31",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app_yookassa_webhook",
@@ -27944,7 +28056,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L61",
+      "source_location": "L62",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app_vk_callback",
@@ -27956,7 +28068,7 @@
       "context": "return_type",
       "confidence": "EXTRACTED",
       "source_file": "web/app.py",
-      "source_location": "L61",
+      "source_location": "L62",
       "weight": 1.0,
       "_origin": "ast",
       "source": "web_app_vk_callback",
@@ -30039,5 +30151,5 @@
       "source_file": "PROJECT.md"
     }
   ],
-  "built_at_commit": "149eac644a38272861f3db41e9e517012e3a7b8c"
+  "built_at_commit": "e2a9b60d71f6126a859e764fda875f28e5533224"
 }

@@ -11,16 +11,17 @@
   "9": "test_vk.py",
   "10": "Settings",
   "11": "get_settings",
-  "12": "session_scope",
+  "12": "models.py",
   "13": "producer.py",
   "14": "PipelineInputs",
   "15": "render_guide",
   "16": "notion.py",
   "17": "Алёхина без тормозов — бот и автоматизация подкаста",
   "18": "admin.py",
-  "19": "test_spec_features.py",
-  "20": "users.py",
+  "19": "session_scope",
+  "20": "sheets.py",
   "21": "Чеклист go-live (VPS)",
+  "22": "yookassa.py",
   "23": "Логика бота (спека клиента, 14.08) — источник правды",
   "24": "Гайд владельца — как пользоваться ботом",
   "25": "catalog.py",
@@ -43,6 +44,5 @@
   "42": "scripts/__init__.py",
   "43": "web/__init__.py",
   "44": "a1b2c3d4e5f6_trial_used_workbook_link.py",
-  "45": "ThrottlingMiddleware",
-  "46": "env.py"
+  "45": "ThrottlingMiddleware"
 }

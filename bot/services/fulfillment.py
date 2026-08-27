@@ -5,6 +5,7 @@ from typing import Any
 
 from aiogram import Bot
 from loguru import logger
+from sqlalchemy import delete
 from sqlalchemy.exc import IntegrityError
 
 from bot.services import catalog, sales, sheets, users
@@ -31,6 +32,25 @@ async def _already_done(payment_id: str, tg_id: int, kind: str, amount: int, cur
         return False
 
 
+async def _release(payment_id: str) -> None:
+    """Снять резерв идемпотентности, чтобы вебхук ЮKassa повторил выдачу."""
+    try:
+        async with session_scope() as session:
+            await session.execute(
+                delete(ProcessedPayment).where(ProcessedPayment.provider_payment_id == payment_id)
+            )
+    except Exception as exc:
+        logger.error("Не снял резерв платежа {}: {}", payment_id, exc)
+
+
+async def _notify(bot: Bot, tg_id: int, text: str) -> None:
+    """Сообщение о выдаче — best-effort: доступ уже выдан, сбой отправки не критичен."""
+    try:
+        await bot.send_message(tg_id, text)
+    except Exception as exc:
+        logger.error("Не отправил сообщение о выдаче {}: {}", tg_id, exc)
+
+
 async def _invite_link(bot: Bot, settings: Settings, days: int) -> str:
     if not settings.closed_channel_id:
         return ""
@@ -46,8 +66,11 @@ async def _invite_link(bot: Bot, settings: Settings, days: int) -> str:
 
 
 async def _record_sale(tg_id: int, item: str, amount: int, currency: str) -> None:
-    await sales.record(tg_id, item, amount, currency)
-    await sheets.add_sale(tg_id, item, amount)
+    try:
+        await sales.record(tg_id, item, amount, currency)
+        await sheets.add_sale(tg_id, item, amount)
+    except Exception as exc:
+        logger.error("Не записал продажу {} {}: {}", tg_id, item, exc)
 
 
 async def fulfill(bot: Bot, payment_id: str, metadata: dict[str, Any], amount: int, currency: str) -> bool:
@@ -65,13 +88,17 @@ async def fulfill(bot: Bot, payment_id: str, metadata: dict[str, Any], amount: i
         return False
 
     settings = get_settings()
-    if kind == "sub":
-        return await _fulfill_sub(bot, tg_id, metadata, amount, currency, settings)
-    if kind == "workbook":
-        return await _fulfill_workbook(bot, tg_id, metadata, amount, currency)
-    if kind == "all":
-        return await _fulfill_all(bot, tg_id, amount, currency, settings)
-    return await _fulfill_season(bot, tg_id, metadata, amount, currency)
+    try:
+        if kind == "sub":
+            return await _fulfill_sub(bot, tg_id, metadata, amount, currency, settings)
+        if kind == "workbook":
+            return await _fulfill_workbook(bot, tg_id, metadata, amount, currency)
+        if kind == "all":
+            return await _fulfill_all(bot, tg_id, amount, currency, settings)
+        return await _fulfill_season(bot, tg_id, metadata, amount, currency)
+    except Exception:
+        await _release(payment_id)
+        raise
 
 
 async def _fulfill_sub(
@@ -84,8 +111,8 @@ async def _fulfill_sub(
     expires = await users.grant_subscription(tg_id, days)
     invite = await _invite_link(bot, settings, days)
     tail = f"\nСсылка на клуб: {invite}" if invite else ""
-    await bot.send_message(
-        tg_id,
+    await _notify(
+        bot, tg_id,
         f"✅ Ты в клубе «Код Алёхиной»!\nДоступ активен до {expires:%d.%m.%Y}.{tail}\n\n"
         "Напиши слово из любого эпизода — выдам бонус, или загляни в бонусы сезона.",
     )
@@ -112,7 +139,7 @@ async def _fulfill_season(
             f"\n\n🔥 А прямо сейчас идёт новый сезон «{current['title']}». "
             "Оформи подписку на клуб — получай свежие бонусы и скидку 40% на архивы."
         )
-    await bot.send_message(tg_id, text)
+    await _notify(bot, tg_id, text)
     await _record_sale(tg_id, f"season:{season_id}", amount, currency)
     return True
 
@@ -124,8 +151,8 @@ async def _fulfill_workbook(
     season = await catalog.get_season(season_id)
     link = season["workbook_link"] if season else ""
     title = season["title"] if season else season_id
-    await bot.send_message(
-        tg_id,
+    await _notify(
+        bot, tg_id,
         f"✅ Оплата прошла! Рабочая тетрадь сезона «{title}» твоя.\n"
         f"Скачать: {link or '—'}\nПриятного внедрения!",
     )
@@ -137,8 +164,8 @@ async def _fulfill_all(bot: Bot, tg_id: int, amount: int, currency: str, setting
     await users.add_purchased_season(tg_id, settings.all_seasons_season_id)
     pack = await catalog.get_season(settings.all_seasons_season_id)
     link = pack["archive_link"] if pack else ""
-    await bot.send_message(
-        tg_id,
+    await _notify(
+        bot, tg_id,
         "✅ Оплата прошла! Доступ ко ВСЕМ сезонам открыт навсегда.\n"
         f"Общий архив: {link or '—'}\nСохрани ссылку — она не потеряется.",
     )

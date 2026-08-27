@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 from datetime import UTC, date, datetime, timedelta
 from typing import Any
 
@@ -49,9 +50,21 @@ async def pull_notion(bot: Bot, settings: Settings) -> int:
 async def poll_rss(bot: Bot, settings: Settings) -> int:
     if not settings.podster_rss_url or not settings.open_channel_id:
         return 0
-    feed = feedparser.parse(settings.podster_rss_url)
+    feed = await asyncio.to_thread(feedparser.parse, settings.podster_rss_url)
+    entries = list(feed.entries)
+    if not entries:
+        return 0
+
+    if not await seen.any_seen("rss"):
+        for entry in entries:
+            guid = entry.get("id") or entry.get("link", "")
+            if guid:
+                await seen.mark_seen("rss", guid)
+        logger.info("RSS: первичный сид {} записей без анонса (бэклог фида)", len(entries))
+        return 0
+
     published = 0
-    for entry in reversed(feed.entries):
+    for entry in reversed(entries):
         guid = entry.get("id") or entry.get("link", "")
         if not guid or await seen.is_seen("rss", guid):
             continue

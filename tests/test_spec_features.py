@@ -3,7 +3,7 @@ from __future__ import annotations
 from sqlalchemy import func, select
 
 from bot.services import catalog, contacts, fulfillment, users
-from db.models import Contact, Sale, Season
+from db.models import Contact, ProcessedPayment, Sale, Season
 from db.session import session_scope
 
 
@@ -46,6 +46,12 @@ async def test_subscription_until(db):
     until = await users.subscription_until(60)
     assert until is not None
     assert await users.subscription_until(61) is None
+
+
+async def test_subscription_renewal_stacks(db):
+    first = await users.grant_subscription(65, 30)
+    second = await users.grant_subscription(65, 30)
+    assert (second - first).days >= 29
 
 
 async def test_catalog_excludes_all_pack(db):
@@ -104,3 +110,51 @@ async def test_contacts_dedupe(db):
     async with session_scope() as session:
         count = await session.scalar(select(func.count()).select_from(Contact).where(Contact.tg_id == 80))
     assert count == 1
+
+
+async def _reserved(payment_id: str) -> bool:
+    async with session_scope() as session:
+        row = await session.scalar(
+            select(ProcessedPayment).where(ProcessedPayment.provider_payment_id == payment_id)
+        )
+    return row is not None
+
+
+async def test_fulfill_releases_reservation_on_grant_failure(db, monkeypatch):
+    await _seed_seasons()
+    bot = FakeBot()
+
+    async def boom(*a, **k):
+        raise RuntimeError("БД недоступна")
+
+    monkeypatch.setattr(users, "grant_subscription", boom)
+    meta = {"kind": "sub", "tg_id": 90, "days": 30}
+    try:
+        await fulfillment.fulfill(bot, "pay-fail", meta, 790, "RUB")
+        raised = False
+    except RuntimeError:
+        raised = True
+    assert raised is True
+    assert await _reserved("pay-fail") is False
+
+    monkeypatch.undo()
+    ok = await fulfillment.fulfill(bot, "pay-fail", meta, 790, "RUB")
+    assert ok is True
+    assert await users.is_subscribed(90) is True
+
+
+async def test_fulfill_send_failure_still_grants(db):
+    await _seed_seasons()
+
+    class RaisingBot(FakeBot):
+        async def send_message(self, chat_id, text, **kwargs):
+            raise RuntimeError("user blocked bot")
+
+    bot = RaisingBot()
+    meta = {"kind": "season", "season_id": "sweet", "tg_id": 91}
+    ok = await fulfillment.fulfill(bot, "pay-send", meta, 299, "RUB")
+    assert ok is True
+    assert await users.has_season(91, "sweet") is True
+    assert await _reserved("pay-send") is True
+    again = await fulfillment.fulfill(bot, "pay-send", meta, 299, "RUB")
+    assert again is False

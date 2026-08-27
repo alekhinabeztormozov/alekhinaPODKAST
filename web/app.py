@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from aiogram import Bot
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import PlainTextResponse
 from loguru import logger
 
@@ -53,6 +53,7 @@ async def yookassa_webhook(request: Request) -> dict[str, str]:
         await fulfillment.fulfill(_get_bot(), payment_id, metadata, amount, currency)
     except Exception as exc:
         logger.error("Выдача по платежу {} упала: {}", payment_id, exc)
+        raise HTTPException(status_code=500, detail="fulfillment failed") from exc
     return {"status": "ok"}
 
 

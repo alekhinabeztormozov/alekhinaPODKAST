@@ -14,6 +14,12 @@ async def is_seen(kind: str, key: str) -> bool:
         return result.first() is not None
 
 
+async def any_seen(kind: str) -> bool:
+    async with session_scope() as session:
+        result = await session.execute(select(SeenKey.id).where(SeenKey.kind == kind).limit(1))
+        return result.first() is not None
+
+
 async def mark_seen(kind: str, key: str) -> bool:
     if await is_seen(kind, key):
         return False

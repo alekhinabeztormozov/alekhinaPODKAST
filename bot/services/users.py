@@ -83,12 +83,15 @@ async def grant_trial(tg_id: int, hours: int, username: str = "") -> datetime | 
 
 
 async def grant_subscription(tg_id: int, days: int, username: str = "") -> datetime:
-    expires = _now() + timedelta(days=days)
+    now = _now()
     async with session_scope() as session:
         user = await session.scalar(select(User).where(User.tg_id == tg_id))
         if user is None:
             user = User(tg_id=tg_id, username=username)
             session.add(user)
+        current = _aware(user.subscription_expires)
+        base = current if current and current > now else now
+        expires = base + timedelta(days=days)
         user.is_subscribed = True
         user.subscription_expires = expires
     return expires

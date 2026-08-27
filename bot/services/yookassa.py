@@ -40,7 +40,7 @@ async def create_payment(
         "capture": True,
         "confirmation": {"type": "redirect", "return_url": return_url},
         "description": description,
-        "metadata": metadata,
+        "metadata": {key: str(value) for key, value in metadata.items()},
     }
     async with httpx.AsyncClient(timeout=30) as client:
         response = await client.post(API_URL, headers=headers, json=body)

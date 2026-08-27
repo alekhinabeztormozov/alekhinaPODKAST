@@ -4,6 +4,7 @@ from aiogram import Bot
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import PlainTextResponse
 from loguru import logger
+from starlette.background import BackgroundTask
 
 from bot.main import build_bot
 from bot.services import fulfillment, vk, vk_bot, yookassa
@@ -76,14 +77,15 @@ async def vk_callback(request: Request) -> PlainTextResponse:
     if data.get("type") == "message_new":
         obj = data.get("object", {})
         message = obj.get("message", obj)
-        text = message.get("text", "")
-        payload = message.get("payload", "")
         peer_id = message.get("peer_id") or message.get("from_id")
-        from_id = message.get("from_id", 0)
         if peer_id:
-            try:
-                await vk_bot.handle_incoming(text, int(peer_id), int(from_id), payload=payload)
-            except Exception as exc:
-                logger.error("VK message_new обработка упала: {}", exc)
+            task = BackgroundTask(
+                vk_bot.handle_incoming,
+                message.get("text", ""),
+                int(peer_id),
+                int(message.get("from_id", 0)),
+                payload=message.get("payload", ""),
+            )
+            return PlainTextResponse("ok", background=task)
 
     return PlainTextResponse("ok")

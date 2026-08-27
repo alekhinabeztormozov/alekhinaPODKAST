@@ -78,10 +78,13 @@ def _none_text() -> str:
 def _command(payload: str, text: str) -> str:
     if payload:
         try:
-            cmd = json.loads(payload).get("cmd", "")
+            data = json.loads(payload)
+            cmd = data.get("cmd") or data.get("command") or ""
+            if cmd == "start":
+                return "start"
             if cmd:
                 return cmd
-        except (ValueError, TypeError):
+        except (ValueError, TypeError, AttributeError):
             pass
     low = text.strip().lower()
     if low in {"начать", "start", "старт", "привет", "меню"}:

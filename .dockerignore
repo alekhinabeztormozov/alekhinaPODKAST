@@ -12,4 +12,5 @@ media/tmp
 *.sqlite3
 *.db
 .env
+secrets
 logs

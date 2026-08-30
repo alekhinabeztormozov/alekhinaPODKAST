@@ -52,7 +52,7 @@ docker compose exec bot python -m scripts.chat_id
 ## 5. Notion и Sheets
 
 - Notion: расшарить страницу интеграции (Notion → страница → ... → Connections → bot-access), затем в боте `/setup_notion <page_id>` — создаст базу «Эпизоды», вернёт её id → в `.env` `NOTION_DB_EPISODES`, `docker compose up -d bot scheduler`.
-- Sheets: создать service-account JSON в Google Cloud (на единую почту), положить путь в `GOOGLE_SA_JSON`, id таблицы в `GOOGLE_SHEETS_ID`, расшарить таблицу на email сервис-аккаунта, затем `/setup_sheets`.
+- Sheets: создать service-account JSON в Google Cloud (на единую почту), положить файл в `/opt/alehina-bot/secrets/` (каталог монтируется в контейнеры только на чтение и в образ не попадает), путь к нему в `GOOGLE_SA_JSON`, id таблицы в `GOOGLE_SHEETS_ID`, расшарить таблицу на email сервис-аккаунта, затем `/setup_sheets`.
 
 ## 5.05. Webhook ЮKassa (обязательно для оплат)
 

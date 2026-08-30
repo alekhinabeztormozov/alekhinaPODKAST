@@ -124,11 +124,13 @@ def extract_catalog(page: dict[str, Any]) -> dict[str, Any]:
     page_id = page.get("id", "")
     slug = page_id.replace("-", "")
     tags = [t.strip() for t in _rich(page, "Теги").split(",") if t.strip()]
-    title = episode_title(page)
+    raw_title = _rich(page, "Название")
+    title = raw_title or "Без названия"
     return {
         "episode_id": page_id,
         "season_id": _select(page, "Сезон"),
         "title": title,
+        "has_title": bool(raw_title),
         "audio_link": _url(page, "Ссылка на аудио"),
         "tags": tags,
         "keyword": _rich(page, "Ключевое слово"),
@@ -161,20 +163,22 @@ async def ready_episodes() -> list[dict[str, Any]]:
         return []
 
 
-async def _query_status(statuses: tuple[str, ...]) -> list[dict[str, Any]]:
+async def _query_status(statuses: tuple[str, ...]) -> list[dict[str, Any]] | None:
+    """None — не смогли спросить Notion. Пустой список — Notion ответил, что строк нет."""
     try:
         return await asyncio.to_thread(_query_status_sync, statuses)
     except NotionNotConfigured:
-        logger.warning("Notion не настроен — возвращаю пусто")
-        return []
+        logger.warning("Notion не настроен — данных нет")
+        return None
     except Exception as exc:
         logger.error("Notion запрос упал: {}", exc)
-        return []
+        return None
 
 
-async def catalog_pages() -> list[dict[str, Any]]:
+async def catalog_pages() -> list[dict[str, Any]] | None:
+    """Отдаёт None, если Notion недоступен: на этом синк удаляет строки, разница важна."""
     return await _query_status(CATALOG_STATUSES)
 
 
 async def published_pages() -> list[dict[str, Any]]:
-    return await _query_status((PUBLISHED_STATUS,))
+    return await _query_status((PUBLISHED_STATUS,)) or []

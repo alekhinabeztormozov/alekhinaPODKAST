@@ -126,10 +126,22 @@ async def sync_notion(message: Message) -> None:
         return
     await message.answer("Синхронизирую контент из Notion…")
     result = await notion_sync.sync_catalog()
-    await message.answer(
+    lines = [
         f"Готово. Эпизоды: {result['episodes']}, бонусы: {result['bonuses']}, "
         f"пропущено: {result['skipped']}."
-    )
+    ]
+    problems = result.get("problems") or []
+    if problems:
+        lines.append("")
+        lines.extend(f"- {p}" for p in problems[:10])
+        if len(problems) > 10:
+            lines.append(f"…и ещё {len(problems) - 10}")
+    elif not result["episodes"] and not result["bonuses"]:
+        lines.append(
+            "В Notion нет строк со статусом «Контент готов» или «Опубликован» — "
+            "заполнять нечего."
+        )
+    await message.answer("\n".join(lines))
 
 
 @router.message(Command("content"))

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from sqlalchemy import func, select
+from sqlalchemy import func, select, update
 
 from db.models import Bonus, Episode, MainProduct, Season
 from db.session import session_scope
@@ -23,10 +23,25 @@ async def _upsert(model, key_field: str, key: str, values: dict) -> str:
 
 async def add_season(parts: list[str]) -> str:
     season_id, title, price, price_sub, archive, is_current = parts
-    return await _upsert(Season, "season_id", season_id, dict(
+    current = is_current.strip() in {"1", "да", "true"}
+    result = await _upsert(Season, "season_id", season_id, dict(
         title=title, price=int(price), price_subscriber=int(price_sub),
-        archive_link=archive, is_current=is_current.strip() in {"1", "да", "true"},
+        archive_link=archive, is_current=current,
     ))
+    if current:
+        await _make_only_current(season_id)
+    return result
+
+
+async def _make_only_current(season_id: str) -> None:
+    """Текущий сезон ровно один: current_season() берёт первую попавшуюся строку с флагом."""
+    async with session_scope() as session:
+        await session.execute(
+            update(Season)
+            .where(Season.season_id != season_id)
+            .where(Season.is_current.is_(True))
+            .values(is_current=False)
+        )
 
 
 async def add_bonus(parts: list[str]) -> str:

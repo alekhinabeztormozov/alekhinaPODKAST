@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -28,6 +29,18 @@ class AmbientTrack:
     def filename(self) -> str:
         return self.path.name
 
+    @property
+    def code(self) -> str:
+        """Короткий ASCII-ключ для callback_data (у Telegram лимит 64 байта)."""
+        return _code(self.id)
+
+
+def _code(stem: str) -> str:
+    raw = stem.encode()
+    if stem.isascii() and len(raw) <= 48:
+        return stem
+    return "h" + hashlib.sha1(raw).hexdigest()[:16]
+
 
 def _humanize(stem: str) -> str:
     cleaned = re.sub(r"[_-]?\d+$", "", stem)
@@ -50,4 +63,8 @@ def get_ambients() -> list[AmbientTrack]:
 
 
 def find_ambient(ambient_id: str) -> AmbientTrack | None:
-    return next((track for track in get_ambients() if track.id == ambient_id), None)
+    """Ищет по id (имя файла) или по короткому коду из callback_data."""
+    return next(
+        (t for t in get_ambients() if ambient_id in (t.id, t.code)),
+        None,
+    )

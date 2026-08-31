@@ -194,7 +194,7 @@ def back_to_owner() -> InlineKeyboardMarkup:
 def ambient_kb() -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     for track in get_ambients():
-        builder.button(text=track.title, callback_data=f"amb:{track.id}")
+        builder.button(text=track.title, callback_data=f"amb:{track.code}")
     builder.button(text="Без фона", callback_data="amb:none")
     builder.button(text="Отмена", callback_data="amb:cancel")
     builder.adjust(1)
@@ -204,7 +204,7 @@ def ambient_kb() -> InlineKeyboardMarkup:
 def ambient_preview_kb() -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     for track in get_ambients():
-        builder.button(text=f"▶ {track.title}", callback_data=f"ambprev:{track.id}")
+        builder.button(text=f"▶ {track.title}", callback_data=f"ambprev:{track.code}")
     builder.button(text="◀️ В пульт", callback_data="own:panel")
     builder.adjust(1)
     return builder.as_markup()

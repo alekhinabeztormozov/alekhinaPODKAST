@@ -84,8 +84,9 @@ async def _upsert_bonus(session: Any, data: dict[str, Any]) -> None:
 async def _prune_missing(session: Any, live_episodes: set[str], live_bonuses: set[str]) -> list[str]:
     """Убирает из базы то, что раньше пришло из Notion, а теперь там пропало.
 
-    Вызывается только когда Notion реально отдал страницы: catalog_pages() при любой
-    ошибке возвращает пустой список, и на пустом ответе синк выходит раньше.
+    Вызывается только когда Notion реально ответил: catalog_pages() отдаёт None при любой
+    ошибке, и на None синк выходит раньше. Пустой список — это честное «подходящих строк
+    нет», и тогда чистим всё, что раньше пришло из Notion.
     """
     removed: list[str] = []
     for row in (await session.execute(select(Episode))).scalars().all():

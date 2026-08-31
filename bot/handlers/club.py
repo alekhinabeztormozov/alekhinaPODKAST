@@ -116,7 +116,7 @@ async def club_bonuses(callback: CallbackQuery) -> None:
         await callback.answer()
         return
     if not await users.is_subscribed(callback.from_user.id):
-        text, kb = _offer(callback)
+        text, kb = _offer()
         await show(callback, text, kb)
         return
     season = await catalog.current_season()

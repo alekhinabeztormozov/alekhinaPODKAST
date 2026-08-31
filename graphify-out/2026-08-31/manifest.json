@@ -30,8 +30,8 @@
     "semantic_hash": ""
   },
   "bot/handlers/admin.py": {
-    "mtime": 1786876438.1375475,
-    "ast_hash": "34a605fc3f23cb047a7fbcdfa2c598fd",
+    "mtime": 1788124454.4009466,
+    "ast_hash": "2960ce09332962cba865657bbd29e86a",
     "semantic_hash": ""
   },
   "bot/handlers/bonus.py": {
@@ -120,8 +120,8 @@
     "semantic_hash": ""
   },
   "bot/services/notion.py": {
-    "mtime": 1787042545.9266627,
-    "ast_hash": "b9a63b98a9a98c35f121f24b158eb729",
+    "mtime": 1788125636.9342504,
+    "ast_hash": "fcb49fb4bdc8989cdc080d392e90d431",
     "semantic_hash": ""
   },
   "bot/services/pdf.py": {
@@ -220,8 +220,8 @@
     "semantic_hash": ""
   },
   "media/ambient.py": {
-    "mtime": 1785839828.692671,
-    "ast_hash": "329d4144fda52fc155d0f170b61c1177",
+    "mtime": 1788041266.2408774,
+    "ast_hash": "2ceb2b1a76d78c1910ea28f4f8ded49b",
     "semantic_hash": ""
   },
   "media/generate_ambient.py": {
@@ -460,13 +460,13 @@
     "semantic_hash": ""
   },
   "bot/services/notion_sync.py": {
-    "mtime": 1787042564.1326594,
-    "ast_hash": "834a1b1792a529b9eaf5d96160e16c27",
+    "mtime": 1788125636.9342504,
+    "ast_hash": "285f03b2ab40d34ed428fed756a117e6",
     "semantic_hash": ""
   },
   "tests/test_notion_sync.py": {
-    "mtime": 1786876473.2944512,
-    "ast_hash": "98cc2ae340dc4b29cef146279a4589ea",
+    "mtime": 1788125648.4206653,
+    "ast_hash": "b6b8c861019864121e766b829da5a5de",
     "semantic_hash": ""
   },
   "tests/test_pipeline_ffmpeg.py": {
@@ -497,6 +497,11 @@
   "tests/test_vk.py": {
     "mtime": 1787045562.7084522,
     "ast_hash": "838386ba1f735f8c571f070021bef3f3",
+    "semantic_hash": ""
+  },
+  "media/assets/ambient/jaga-instrumental.mp3": {
+    "mtime": 1788041260.324103,
+    "ast_hash": "0c276bdaef3a910b176f2acf2171625c",
     "semantic_hash": ""
   }
 }

@@ -5,8 +5,8 @@
     "semantic_hash": ""
   },
   "PROJECT.md": {
-    "mtime": 1786875217.5266027,
-    "ast_hash": "637d6a681dcc0dfd40a60cf2f9750c70",
+    "mtime": 1788201871.765466,
+    "ast_hash": "2abd3bec1f97042996aae90bcfb73512",
     "semantic_hash": ""
   },
   "\u0434\u043e\u0441\u0442\u0443\u043f\u044b-\u0434\u043b\u044f-\u044e\u043b\u0438\u0438.md": {
@@ -40,8 +40,8 @@
     "semantic_hash": ""
   },
   "bot/handlers/club.py": {
-    "mtime": 1786874959.5002882,
-    "ast_hash": "6f6a287262330a6e3444db2cc483cd26",
+    "mtime": 1788193872.3539822,
+    "ast_hash": "b8b94e43dc4b998f0a18f7294ef50b11",
     "semantic_hash": ""
   },
   "bot/handlers/intensive.py": {
@@ -75,8 +75,8 @@
     "semantic_hash": ""
   },
   "bot/keyboards/common.py": {
-    "mtime": 1786874698.218848,
-    "ast_hash": "f0ac5497e11056b33b104e13cd8183e2",
+    "mtime": 1788194054.7872095,
+    "ast_hash": "920147d734ea7a3443d4f47dd505ef3e",
     "semantic_hash": ""
   },
   "bot/main.py": {
@@ -100,8 +100,8 @@
     "semantic_hash": ""
   },
   "bot/services/admin_content.py": {
-    "mtime": 1786874775.5518432,
-    "ast_hash": "8647bab2f0a51e7e0f05c23263079c7c",
+    "mtime": 1788193887.3467581,
+    "ast_hash": "dc69f23b8ce1fba6fba75a2ede41deff",
     "semantic_hash": ""
   },
   "bot/services/audio.py": {
@@ -142,11 +142,6 @@
   "bot/services/sheets.py": {
     "mtime": 1785836923.3004272,
     "ast_hash": "7b8b4ea3d5866424d78cdf0360f33b99",
-    "semantic_hash": ""
-  },
-  "bot/services/subscriptions.py": {
-    "mtime": 1785836298.5826237,
-    "ast_hash": "78062e9056dcd29be1840db5888678f2",
     "semantic_hash": ""
   },
   "bot/services/users.py": {
@@ -205,8 +200,8 @@
     "semantic_hash": ""
   },
   "db/models.py": {
-    "mtime": 1786874337.4989984,
-    "ast_hash": "40a1a2c556134ad1d1ca2ce3dfff950b",
+    "mtime": 1788203049.7903209,
+    "ast_hash": "3a71bc696116d44aa1f5f997537ae14e",
     "semantic_hash": ""
   },
   "db/session.py": {
@@ -220,8 +215,8 @@
     "semantic_hash": ""
   },
   "media/ambient.py": {
-    "mtime": 1788041266.2408774,
-    "ast_hash": "2ceb2b1a76d78c1910ea28f4f8ded49b",
+    "mtime": 1788194054.7861722,
+    "ast_hash": "7674c070c9d87d31a34d43ff858ad7a6",
     "semantic_hash": ""
   },
   "media/generate_ambient.py": {
@@ -285,8 +280,8 @@
     "semantic_hash": ""
   },
   "tests/test_ambient.py": {
-    "mtime": 1785839869.2938037,
-    "ast_hash": "ebff5676bcd0feb7a5556a93acc2c48b",
+    "mtime": 1788194079.037411,
+    "ast_hash": "85255f2984231355022abe0ab617031e",
     "semantic_hash": ""
   },
   "tests/test_core_flows.py": {
@@ -317,11 +312,6 @@
   "tests/test_scheduler_db.py": {
     "mtime": 1785837138.890012,
     "ast_hash": "a4200f28f4905ffa8f766cd5bff9fe0e",
-    "semantic_hash": ""
-  },
-  "tests/test_subscriptions_db.py": {
-    "mtime": 1785840463.6482546,
-    "ast_hash": "92ab7afc396bfbd7858dbc2c4a6485e4",
     "semantic_hash": ""
   },
   "tests/test_throttling.py": {
@@ -355,13 +345,13 @@
     "semantic_hash": ""
   },
   "deploy/DEPLOY.md": {
-    "mtime": 1786875096.516721,
-    "ast_hash": "680f10acb8fe9ec4971d80753106bf3f",
+    "mtime": 1788127706.1810863,
+    "ast_hash": "67a2d1768554cf30c8cbb71892f15515",
     "semantic_hash": ""
   },
   "docker-compose.yml": {
-    "mtime": 1785837269.9284751,
-    "ast_hash": "9acf35e64f195c481b29a359d3e0e67a",
+    "mtime": 1788193944.021629,
+    "ast_hash": "f816411b896c8c78af35f43b7ccfe132",
     "semantic_hash": ""
   },
   "docs/bot-logic.md": {
@@ -460,8 +450,8 @@
     "semantic_hash": ""
   },
   "bot/services/notion_sync.py": {
-    "mtime": 1788125636.9342504,
-    "ast_hash": "285f03b2ab40d34ed428fed756a117e6",
+    "mtime": 1788193944.02063,
+    "ast_hash": "a92c0670351eda62fcb60ca17f1a8932",
     "semantic_hash": ""
   },
   "tests/test_notion_sync.py": {
@@ -502,6 +492,26 @@
   "media/assets/ambient/jaga-instrumental.mp3": {
     "mtime": 1788041260.324103,
     "ast_hash": "0c276bdaef3a910b176f2acf2171625c",
+    "semantic_hash": ""
+  },
+  "db/migrations/versions/7f08f0e84186_drop_unused_subscriptions_table.py": {
+    "mtime": 1788203096.3419218,
+    "ast_hash": "750eea3b5b1a15d44c2fbb9852d706da",
+    "semantic_hash": ""
+  },
+  "tests/test_admin_content.py": {
+    "mtime": 1788193896.080295,
+    "ast_hash": "d0d0ab3509afb0e1a24afc84745640a0",
+    "semantic_hash": ""
+  },
+  "tests/test_club.py": {
+    "mtime": 1788193858.3026805,
+    "ast_hash": "eba543018be5a7dc7bf2466767b7ed99",
+    "semantic_hash": ""
+  },
+  "tests/test_payments_db.py": {
+    "mtime": 1788201871.6758697,
+    "ast_hash": "a7d6d2b90c6451b9cb563bdf483d946b",
     "semantic_hash": ""
   }
 }

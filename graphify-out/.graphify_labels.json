@@ -11,7 +11,7 @@
   "9": "test_vk.py",
   "10": "get_settings",
   "11": "producer.py",
-  "12": "env.py",
+  "12": "Settings",
   "13": "notion_sync.py",
   "14": "PipelineInputs",
   "15": "render_guide",
@@ -21,7 +21,7 @@
   "19": "session_scope",
   "20": "sheets.py",
   "21": "Чеклист go-live (VPS)",
-  "22": "test_spec_features.py",
+  "22": "fulfillment.py",
   "23": "Логика бота (спека клиента, 14.08) — источник правды",
   "24": "Гайд владельца — как пользоваться ботом",
   "25": "catalog.py",
@@ -44,5 +44,13 @@
   "42": "scripts/__init__.py",
   "43": "web/__init__.py",
   "44": "a1b2c3d4e5f6_trial_used_workbook_link.py",
-  "45": "ThrottlingMiddleware"
+  "45": "ThrottlingMiddleware",
+  "46": "models.py",
+  "47": "test_spec_features.py",
+  "48": "seed_demo.py",
+  "49": "admin_content.py",
+  "50": "Season",
+  "51": "test_phase2.py",
+  "52": "test_core_flows.py",
+  "53": "7f08f0e84186_drop_unused_subscriptions_table.py"
 }

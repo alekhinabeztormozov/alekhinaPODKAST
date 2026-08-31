@@ -102,17 +102,6 @@ class Contact(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
-class Subscription(Base):
-    __tablename__ = "subscriptions"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-    tg_id: Mapped[int] = mapped_column(BigInteger, index=True)
-    status: Mapped[str] = mapped_column(String(16), default="active")
-    started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
-    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
-
-
 class ProcessedPayment(Base):
     __tablename__ = "processed_payments"
 

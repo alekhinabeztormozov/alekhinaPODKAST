@@ -158,7 +158,7 @@ music-bot/
 │   ├── keyboards/      # кнопки
 │   ├── states/         # FSM (квиз, сбор email)
 │   ├── middlewares/    # rate-limit, логирование
-│   └── services/       # sheets, notion, payments, audio, pdf, subscriptions
+│   └── services/       # sheets, notion, payments, audio, pdf, подписки в users
 ├── web/                # FastAPI: платёжный callback, health
 ├── scheduler/          # rss poll, отложенная публикация, ревокация подписок
 ├── media/              # ffmpeg-пайплайн, ассеты (интро, музыка)

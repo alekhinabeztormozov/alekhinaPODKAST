@@ -1,6 +1,7 @@
 # secrets
 .env
 *.env
+.env.backup*
 !.env.example
 **/service_account*.json
 *.key

@@ -8,7 +8,8 @@ from db.models import Bonus
 from db.session import session_scope
 
 
-def test_not_configured_by_default():
+def test_not_configured_by_default(monkeypatch):
+    monkeypatch.setattr(vk, "get_settings", lambda: Settings(vk_group_token=""))
     assert vk.is_configured() is False
 
 

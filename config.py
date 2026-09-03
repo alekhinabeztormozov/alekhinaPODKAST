@@ -40,6 +40,7 @@ class Settings(BaseSettings):
     payment_currency: str = "XTR"
     yookassa_shop_id: str = ""
     yookassa_secret_key: str = ""
+    yookassa_proxy: str = ""
 
     database_url: str = ""
     redis_url: str = ""

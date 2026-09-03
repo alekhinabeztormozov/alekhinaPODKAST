@@ -24,6 +24,18 @@ def _auth_header() -> str:
     return "Basic " + base64.b64encode(raw).decode("ascii")
 
 
+def _client() -> httpx.AsyncClient:
+    """HTTP client for YooKassa API.
+
+    api.yookassa.ru гео-блочит зарубежные IP, а VPS с ботом вынесен за
+    пределы РФ (иначе Telegram режется DPI). Поэтому вызовы YooKassa при
+    необходимости идут через российский прокси (``YOOKASSA_PROXY``,
+    http:// или socks5://); остальной трафик — напрямую.
+    """
+    proxy = get_settings().yookassa_proxy or None
+    return httpx.AsyncClient(timeout=30, proxy=proxy)
+
+
 async def create_payment(
     amount_rub: int,
     description: str,
@@ -42,7 +54,7 @@ async def create_payment(
         "description": description,
         "metadata": {key: str(value) for key, value in metadata.items()},
     }
-    async with httpx.AsyncClient(timeout=30) as client:
+    async with _client() as client:
         response = await client.post(API_URL, headers=headers, json=body)
         if response.status_code >= 400:
             logger.error("YooKassa {}: {}", response.status_code, response.text)
@@ -52,7 +64,7 @@ async def create_payment(
 
 async def get_payment(payment_id: str) -> dict[str, Any]:
     headers = {"Authorization": _auth_header()}
-    async with httpx.AsyncClient(timeout=30) as client:
+    async with _client() as client:
         response = await client.get(f"{API_URL}/{payment_id}", headers=headers)
         response.raise_for_status()
         return response.json()

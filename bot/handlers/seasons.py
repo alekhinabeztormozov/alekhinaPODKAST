@@ -9,6 +9,8 @@ from loguru import logger
 from bot.content import (
     ALL_SEASONS_OFFER,
     PACK_UNAVAILABLE,
+    PAY_CREATING,
+    PAY_ERROR,
     PAY_LINK,
     PAY_UNAVAILABLE,
     SEASON_OFFER,
@@ -40,18 +42,22 @@ def _return_url() -> str:
 
 
 async def _pay(callback: CallbackQuery, price: int, description: str, metadata: dict[str, Any]) -> None:
+    # Отвечаем на колбэк сразу (show это делает), иначе спиннер висит весь
+    # вызов YooKassa и колбэк протухает. Ссылку создаём после.
+    await show(callback, PAY_CREATING, back_to_menu())
     try:
         payment = await yookassa.create_payment(price, description, metadata, _return_url())
     except yookassa.YooKassaNotConfigured:
-        await callback.answer()
-        await show(callback, PAY_UNAVAILABLE, back_to_menu())
+        await callback.message.edit_text(PAY_UNAVAILABLE, reply_markup=back_to_menu())
         return
     except Exception as exc:
         logger.error("Оплата {} упала: {}", metadata, exc)
-        await callback.answer("Не удалось создать оплату.", show_alert=True)
+        await callback.message.edit_text(PAY_ERROR, reply_markup=back_to_menu())
         return
-    await callback.answer()
-    await show(callback, PAY_LINK.format(url=yookassa.confirmation_url(payment)), back_to_menu())
+    await callback.message.edit_text(
+        PAY_LINK.format(url=yookassa.confirmation_url(payment)),
+        reply_markup=back_to_menu(),
+    )
 
 
 def _all_price(pack: dict[str, Any] | None, subscribed: bool) -> int:

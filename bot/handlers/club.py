@@ -9,6 +9,8 @@ from loguru import logger
 from bot.content import (
     CLUB_ACTIVE,
     CLUB_OFFER,
+    PAY_CREATING,
+    PAY_ERROR,
     PAY_LINK,
     PAY_UNAVAILABLE,
     TRIAL_GRANTED,
@@ -61,6 +63,9 @@ async def buy_club(callback: CallbackQuery) -> None:
         price = settings.subscription_price
         days = settings.subscription_days
         title = "Подписка на клуб «Код Алёхиной»"
+    # Отвечаем на колбэк сразу (иначе спиннер висит весь вызов YooKassa и
+    # колбэк протухает — "query is too old"). Ссылку создаём уже после.
+    await show(callback, PAY_CREATING, back_to_menu())
     try:
         payment = await yookassa.create_payment(
             price, title,
@@ -68,16 +73,17 @@ async def buy_club(callback: CallbackQuery) -> None:
             _return_url(),
         )
     except yookassa.YooKassaNotConfigured:
-        await callback.answer()
         _, kb = _offer()
-        await show(callback, PAY_UNAVAILABLE, kb)
+        await callback.message.edit_text(PAY_UNAVAILABLE, reply_markup=kb)
         return
     except Exception as exc:
         logger.error("Оплата клуба упала: {}", exc)
-        await callback.answer("Не удалось создать оплату.", show_alert=True)
+        await callback.message.edit_text(PAY_ERROR, reply_markup=back_to_menu())
         return
-    await callback.answer()
-    await show(callback, PAY_LINK.format(url=yookassa.confirmation_url(payment)), back_to_menu())
+    await callback.message.edit_text(
+        PAY_LINK.format(url=yookassa.confirmation_url(payment)),
+        reply_markup=back_to_menu(),
+    )
 
 
 @router.callback_query(F.data == "club:trial")

@@ -100,3 +100,13 @@ volumes:
   redisdata:
   caddydata:
   caddyconfig:
+
+# podster.fm (RSS для авто-анонсов) доступен только по IPv6 из этого ДЦ,
+# а Docker по умолчанию не даёт контейнерам IPv6-выход. Включаем IPv6 на
+# сети (NAT66 через host IPv6; на демоне нужен "ip6tables": true).
+networks:
+  default:
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fd00:0dc0:1::/64

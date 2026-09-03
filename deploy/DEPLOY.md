@@ -72,6 +72,26 @@ sudo cp pdf/fonts/*.ttf /usr/share/fonts/truetype/brand/ && sudo fc-cache -f
 
 Иначе гайды рендерятся системным шрифтом вместо фирменного Oswald/Roboto.
 
+## 5.6. IPv6 для контейнеров (обязательно, иначе не работают RSS-анонсы)
+
+podster.fm (RSS для авто-анонсов) в некоторых ДЦ доступен ТОЛЬКО по IPv6
+(его IPv4 не маршрутизируется). Docker по умолчанию не даёт контейнерам
+IPv6-выход, поэтому scheduler/bot не могут забрать ленту. Включить один раз:
+
+```bash
+cat > /etc/docker/daemon.json <<'JSON'
+{
+  "experimental": true,
+  "ip6tables": true
+}
+JSON
+systemctl restart docker
+```
+
+Сеть в `docker-compose.yml` уже помечена `enable_ipv6: true` (ULA-подсеть,
+NAT66 через host IPv6). После правок демона — `docker compose down && up -d`.
+Проверка: `docker compose exec bot python -c "import feedparser,os;print(len(feedparser.parse(os.environ['PODSTER_RSS_URL']).entries))"` не должно падать.
+
 ## 6. Проверка цепочки
 
 - Написать боту `/start` — меню.

@@ -24,6 +24,7 @@ from bot.states.flows import Producer
 from bot.ui import show
 from config import Settings, get_settings
 from media.ambient import find_ambient, get_ambients
+from media.intro import get_intro
 
 router = Router(name="producer")
 
@@ -206,7 +207,7 @@ async def _process(bot: Bot, file_id: str, music: Path | None) -> Path:
 
     await bot.download(file_id, destination=str(source))
     try:
-        await make_episode(voice=source, out_path=out_path, music=music)
+        await make_episode(voice=source, out_path=out_path, intro=get_intro(), music=music)
     finally:
         source.unlink(missing_ok=True)
     return out_path

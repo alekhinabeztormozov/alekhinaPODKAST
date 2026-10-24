@@ -40,3 +40,29 @@ def test_input_order_matches_indices():
     filt, _ = build_filter_complex(inp)
     assert filt.startswith("[0:a]aformat")
     assert "[3:a]aformat" in filt
+
+
+def test_voice_cleanup_applies_only_to_voice():
+    profile = AudioProfile()
+    filt, _ = build_filter_complex(
+        PipelineInputs(voice=Path("v.mp3"), intro=Path("i.mp3"), profile=profile)
+    )
+    voice_part = next(part for part in filt.split(";") if part.endswith("[voicef]"))
+    intro_part = next(part for part in filt.split(";") if part.endswith("[introf]"))
+    assert profile.voice_cleanup in voice_part
+    assert profile.voice_cleanup not in intro_part
+
+
+def test_voice_cleanup_can_be_disabled():
+    filt, _ = build_filter_complex(
+        PipelineInputs(voice=Path("v.mp3"), profile=AudioProfile(voice_cleanup=""))
+    )
+    assert "afftdn" not in filt
+
+
+def test_intro_and_voice_normalized_separately_before_concat():
+    filt, _ = build_filter_complex(PipelineInputs(voice=Path("v.mp3"), intro=Path("i.mp3")))
+    assert "[introf]loudnorm" in filt
+    assert "[body]loudnorm" in filt
+    assert filt.index("[body]loudnorm") < filt.index("concat")
+    assert filt.endswith("[out]")

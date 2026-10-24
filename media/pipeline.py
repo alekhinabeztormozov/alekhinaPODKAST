@@ -26,6 +26,13 @@ class AudioProfile:
     bitrate: str = "192k"
     sample_rate: int = 44100
     channels: int = 2
+    voice_cleanup: str = (
+        "highpass=f=80,"
+        "afftdn=nr=10:nf=-40,"
+        "equalizer=f=250:t=q:w=1.2:g=-2,"
+        "equalizer=f=3500:t=q:w=1.0:g=2,"
+        "acompressor=threshold=-24dB:ratio=3:attack=15:release=250:makeup=4"
+    )
 
 
 @dataclass
@@ -82,7 +89,8 @@ def build_filter_complex(inp: PipelineInputs, voice_duration: float | None = Non
     parts: list[str] = []
     fmt = f"aformat=sample_rates={profile.sample_rate}:channel_layouts=stereo"
     for name in order:
-        parts.append(f"[{index[name]}:a]{fmt}[{name}f]")
+        chain = f"{fmt},{profile.voice_cleanup}" if name == "voice" and profile.voice_cleanup else fmt
+        parts.append(f"[{index[name]}:a]{chain}[{name}f]")
 
     if inp.music:
         parts.append("[voicef]asplit=2[vmain][vside]")
@@ -107,22 +115,24 @@ def build_filter_complex(inp: PipelineInputs, voice_duration: float | None = Non
 
     segments: list[str] = []
     if inp.intro:
-        segments.append("[introf]")
-    segments.append("[body]")
+        segments.append("introf")
+    segments.append("body")
     if inp.outro:
-        segments.append("[outrof]")
+        segments.append("outrof")
 
-    if len(segments) > 1:
-        n = len(segments)
-        parts.append(f"{''.join(segments)}concat=n={n}:v=0:a=1[cat]")
-        stitched = "[cat]"
-    else:
-        stitched = "[body]"
-
-    parts.append(
-        f"{stitched}loudnorm=I={profile.loudness_i}:"
-        f"TP={profile.loudness_tp}:LRA={profile.loudness_lra}[out]"
+    loudnorm = (
+        f"loudnorm=I={profile.loudness_i}:"
+        f"TP={profile.loudness_tp}:LRA={profile.loudness_lra}"
     )
+    if len(segments) == 1:
+        parts.append(f"[body]{loudnorm}[out]")
+        return ";".join(parts), "[out]"
+
+    for segment in segments:
+        parts.append(f"[{segment}]{loudnorm}[{segment}n]")
+    joined = "".join(f"[{segment}n]" for segment in segments)
+    parts.append(f"{joined}concat=n={len(segments)}:v=0:a=1[cat]")
+    parts.append(f"[cat]alimiter=limit={10 ** (profile.loudness_tp / 20):.3f}:level=disabled[out]")
     return ";".join(parts), "[out]"
 
 

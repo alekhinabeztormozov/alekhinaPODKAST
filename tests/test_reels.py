@@ -168,3 +168,17 @@ def test_song_visual_picks_first_media(tmp_path, monkeypatch):
     (tmp_path / "b.png").write_bytes(b"x")
     (tmp_path / "a.jpg").write_bytes(b"x")
     assert conveyor.song_visual() == Path(tmp_path / "a.jpg")
+
+
+def test_idea_request_puts_image_first():
+    content = scenarios.idea_request("Ваза на стене", b"jpg", "- Мак Э2")
+    assert [block["type"] for block in content] == ["image", "text"]
+    assert content[0]["source"]["data"] == "anBn"
+    assert "Ваза на стене" in content[1]["text"]
+    assert "- Мак Э2" in content[1]["text"]
+
+
+def test_idea_request_text_only():
+    content = scenarios.idea_request("Шоколад внутри", None, "")
+    assert len(content) == 1
+    assert "Выпуски подкаста" not in content[0]["text"]

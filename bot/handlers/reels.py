@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import io
 import re
 import uuid
 from pathlib import Path
@@ -10,6 +11,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, InlineKeyboardMarkup, Message
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from loguru import logger
+from sqlalchemy import select
 
 from bot.handlers.producer import MAX_TG_DOWNLOAD, TMP_DIR, _is_owner, owner_only
 from bot.handlers.workbooks import episode_pdf_kb
@@ -17,6 +19,8 @@ from bot.services import notion
 from bot.states.flows import ReelFlow
 from bot.ui import show
 from config import get_settings
+from db.models import Episode
+from db.session import session_scope
 from reels import announces, scenarios, store
 from reels.transcribe import load_transcript, transcribe_episode, transcript_text
 
@@ -37,7 +41,11 @@ ANNOUNCE_LABELS = {
     "closed_channel": "🔒 Закрытый канал",
     "vk": "🟦 ВКонтакте",
 }
-TRACK_HINT ="Пришлите трек для этого ролика (mp3 файлом), из него возьму самый яркий кусок."
+IDEA_HINT = (
+    "Пришлите идею из Instagram: текст поста, ваше описание или скриншот с подписью. "
+    "Бот разберет, почему она взлетела, и напишет рилс и карусель."
+)
+TRACK_HINT = "Пришлите трек для этого ролика (mp3 файлом), из него возьму самый яркий кусок."
 
 
 def episode_ref(title: str) -> str:
@@ -48,6 +56,7 @@ def episode_ref(title: str) -> str:
 def panel_kb() -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     builder.button(text="➕ Сценарии из выпуска", callback_data="reel:new")
+    builder.button(text="💡 Разбор бизнес-идеи", callback_data="reel:idea")
     builder.button(text="📝 На проверке", callback_data="reel:drafts")
     builder.button(text="🎵 Ждут трек", callback_data="reel:tracks")
     builder.button(text="◀️ В пульт", callback_data="own:panel")
@@ -163,6 +172,45 @@ async def make_scenarios(bot: Bot, file_id: str, title: str) -> list[int]:
 async def scenarios_for(ref: str, title: str, transcript: str) -> list[int]:
     items = await scenarios.generate(title, transcript, get_settings().reels_per_episode)
     return await store.add_drafts(ref, title, [item.model_dump() for item in items])
+
+
+@router.callback_query(F.data == "reel:idea")
+async def ask_idea(callback: CallbackQuery, state: FSMContext) -> None:
+    if not _is_owner(callback.from_user, get_settings()):
+        await callback.answer()
+        return
+    await state.set_state(ReelFlow.waiting_idea)
+    await show(callback, IDEA_HINT)
+
+
+async def _photo_bytes(bot: Bot, message: Message) -> bytes | None:
+    if not message.photo:
+        return None
+    buffer = io.BytesIO()
+    await bot.download(message.photo[-1].file_id, destination=buffer)
+    return buffer.getvalue()
+
+
+async def _episode_titles() -> str:
+    async with session_scope() as session:
+        titles = (await session.execute(select(Episode.title))).scalars().all()
+    return "\n".join(f"- {title}" for title in titles)
+
+
+@router.message(ReelFlow.waiting_idea, owner_only, F.text | F.photo)
+async def receive_idea(message: Message, bot: Bot, state: FSMContext) -> None:
+    await state.clear()
+    description = (message.text or message.caption or "").strip()
+    await message.answer("Разбираю идею…")
+    try:
+        items = await scenarios.from_idea(description, await _photo_bytes(bot, message), await _episode_titles())
+    except Exception as exc:
+        logger.error("Разбор идеи упал: {}", exc)
+        await message.answer("Не получилось разобрать идею. Лев посмотрит.")
+        return
+    ref = f"idea-{uuid.uuid4().hex[:8]}"
+    reel_ids = await store.add_drafts(ref, "Бизнес-идея", [item.model_dump() for item in items])
+    await send_cards(bot, message.chat.id, reel_ids)
 
 
 @router.callback_query(F.data.in_({"reel:drafts", "reel:tracks"}))

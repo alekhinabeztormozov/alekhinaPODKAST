@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import base64
 from html import escape
 from pathlib import Path
 from typing import Literal
@@ -23,6 +24,7 @@ KIND_TITLES: dict[str, str] = {
 }
 
 SYSTEM_PROMPT = (TEMPLATES_DIR / "scenario_system.md").read_text(encoding="utf-8").strip()
+IDEA_PROMPT = (TEMPLATES_DIR / "business_idea.md").read_text(encoding="utf-8").strip()
 
 
 class Scene(BaseModel):
@@ -88,7 +90,7 @@ def default_counts(total: int) -> dict[str, int]:
     return {"why_buy": total - songs - carousels, "trigger_song": songs, "carousel": carousels}
 
 
-async def _ask(prompt: str) -> ScenarioBatch:
+async def _ask(prompt: str | list[dict]) -> ScenarioBatch:
     settings = get_settings()
     client = AsyncAnthropic(api_key=settings.anthropic_api_key or None)
     response = await client.messages.parse(
@@ -102,6 +104,27 @@ async def _ask(prompt: str) -> ScenarioBatch:
     if response.stop_reason == "refusal" or response.parsed_output is None:
         raise RuntimeError(f"модель не вернула сценарии: {response.stop_reason}")
     return response.parsed_output
+
+
+def idea_request(description: str, image: bytes | None, archive: str) -> list[dict]:
+    instruction = "\n\n".join(part for part in (
+        IDEA_PROMPT,
+        f"Что прислала Юлия про идею:\n{description}" if description else "",
+        f"Выпуски подкаста, на которые можно сослаться:\n{archive}" if archive else "",
+    ) if part)
+    content: list[dict] = []
+    if image:
+        content.append({
+            "type": "image",
+            "source": {"type": "base64", "media_type": "image/jpeg", "data": base64.b64encode(image).decode()},
+        })
+    content.append({"type": "text", "text": instruction})
+    return content
+
+
+async def from_idea(description: str, image: bytes | None, archive: str = "") -> list[Scenario]:
+    batch = await _ask(idea_request(description, image, archive))
+    return batch.scenarios
 
 
 async def generate(title: str, transcript: str, total: int) -> list[Scenario]:

@@ -19,3 +19,4 @@ class ReelFlow(StatesGroup):
     waiting_episode = State()
     waiting_feedback = State()
     waiting_track = State()
+    waiting_idea = State()

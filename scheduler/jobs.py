@@ -64,18 +64,43 @@ async def poll_rss(bot: Bot, settings: Settings) -> int:
         logger.info("RSS: первичный сид {} записей без анонса (бэклог фида)", len(entries))
         return 0
 
+    fresh = [entry for entry in reversed(entries) if await _is_fresh(entry)]
+    if not fresh:
+        return 0
+    pages = await _pages_by_title()
     published = 0
-    for entry in reversed(entries):
+    for entry in fresh:
         guid = entry.get("id") or entry.get("link", "")
-        if not guid or await seen.is_seen("rss", guid):
-            continue
+        page = pages.get(_title_key(entry.get("title", "")))
+        notion_post = notion.telegram_post(page) if page else ""
+        text = merged_announce(notion_post, entry.get("link", "")) if notion_post else announce_text(entry)
         try:
-            await bot.send_message(settings.open_channel_id, announce_text(entry))
+            await bot.send_message(settings.open_channel_id, text)
             await seen.mark_seen("rss", guid)
+            if notion_post:
+                await seen.mark_seen("notion_post", notion.episode_id(page))
             published += 1
         except Exception as exc:
             logger.error("Не отправил анонс {}: {}", guid, exc)
     return published
+
+
+async def _is_fresh(entry: dict[str, Any]) -> bool:
+    guid = entry.get("id") or entry.get("link", "")
+    return bool(guid) and not await seen.is_seen("rss", guid)
+
+
+def _title_key(title: str) -> str:
+    return " ".join(title.casefold().split())
+
+
+async def _pages_by_title() -> dict[str, dict[str, Any]]:
+    pages = await notion.catalog_pages() or []
+    return {_title_key(notion.episode_title(page)): page for page in pages}
+
+
+def merged_announce(notion_post: str, link: str) -> str:
+    return f"{notion_post}\n\nСлушать: {link}" if link else notion_post
 
 
 async def publish_due(bot: Bot) -> int:

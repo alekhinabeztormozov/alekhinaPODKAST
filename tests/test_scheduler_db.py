@@ -68,3 +68,54 @@ async def test_notify_ready_dedups(db, monkeypatch):
     assert first == 1
     assert second == 0
     assert bot.sent[0][0] == 1
+
+
+class FakeFeed:
+    def __init__(self, entries):
+        self.entries = entries
+
+
+async def test_rss_uses_notion_post_and_blocks_repeat(db, monkeypatch):
+    from bot.services import notion, notion_sync
+
+    entries = [
+        {"id": "g2", "title": "Мак  Э2", "link": "https://podster.fm/2", "summary": "s"},
+        {"id": "g1", "title": "Старый", "link": "https://podster.fm/1"},
+    ]
+    page = {
+        "id": "p-2",
+        "properties": {
+            "Название": {"title": [{"plain_text": "мак э2"}]},
+            "Пост для Telegram": {"rich_text": [{"plain_text": "Почему мы берем фри сытыми"}]},
+        },
+    }
+
+    async def fake_pages():
+        return [page]
+
+    monkeypatch.setattr(jobs.feedparser, "parse", lambda url: FakeFeed(entries))
+    monkeypatch.setattr(notion, "catalog_pages", fake_pages)
+    monkeypatch.setattr(notion, "published_pages", fake_pages)
+    await seen.mark_seen("rss", "g1")
+    settings = Settings(podster_rss_url="https://rss", open_channel_id="@open")
+    bot = FakeBot()
+
+    assert await jobs.poll_rss(bot, settings) == 1
+    assert bot.sent == [("@open", "Почему мы берем фри сытыми\n\nСлушать: https://podster.fm/2")]
+    assert await notion_sync.publish_ready_posts(bot, settings) == 0
+    assert await jobs.poll_rss(bot, settings) == 0
+
+
+async def test_rss_falls_back_to_template(db, monkeypatch):
+    from bot.services import notion
+
+    async def no_pages():
+        return None
+
+    monkeypatch.setattr(jobs.feedparser, "parse", lambda url: FakeFeed([{"id": "g3", "title": "Э3", "link": "L"}]))
+    monkeypatch.setattr(notion, "catalog_pages", no_pages)
+    await seen.mark_seen("rss", "seed")
+    bot = FakeBot()
+
+    assert await jobs.poll_rss(bot, Settings(podster_rss_url="u", open_channel_id="@open")) == 1
+    assert bot.sent[0][1].startswith("<b>Э3</b>")

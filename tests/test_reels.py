@@ -70,8 +70,8 @@ def test_loudest_start_finds_peak_window():
 
 
 def test_default_counts_keeps_total():
-    assert scenarios.default_counts(6) == {"why_buy": 4, "trigger_song": 2}
-    assert scenarios.default_counts(1) == {"why_buy": 0, "trigger_song": 1}
+    assert scenarios.default_counts(6) == {"why_buy": 3, "trigger_song": 2, "carousel": 1}
+    assert scenarios.default_counts(1) == {"why_buy": 0, "trigger_song": 1, "carousel": 0}
 
 
 def test_card_text_escapes_html():

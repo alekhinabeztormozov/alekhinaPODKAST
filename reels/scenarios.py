@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field
 
 from config import get_settings
 
-ReelKind = Literal["why_buy", "trigger_song"]
+ReelKind = Literal["why_buy", "trigger_song", "carousel"]
 
 EXAMPLES_DIR = Path("data/reels/examples")
 TEMPLATES_DIR = Path(__file__).parent / "templates"
@@ -19,6 +19,7 @@ MAX_TOKENS = 16_000
 KIND_TITLES: dict[str, str] = {
     "why_buy": "Рилс \"почему покупают\"",
     "trigger_song": "Нейротрек",
+    "carousel": "Карусель",
 }
 
 SYSTEM_PROMPT = (TEMPLATES_DIR / "scenario_system.md").read_text(encoding="utf-8").strip()
@@ -31,6 +32,12 @@ class Scene(BaseModel):
     visual: str = Field(description="что в кадре: план, шляпа, предметы, движение")
 
 
+class Slide(BaseModel):
+    kicker: str = Field(description="мелкая надпись над заголовком, 1-3 слова, можно пусто")
+    title: str = Field(description="крупный заголовок слайда, до 7 слов")
+    text: str = Field(description="текст слайда, до 220 знаков, можно пусто")
+
+
 class Scenario(BaseModel):
     kind: ReelKind
     title: str = Field(description="рабочее название ролика, до 8 слов")
@@ -39,6 +46,7 @@ class Scenario(BaseModel):
     scenes: list[Scene]
     lyrics: str = Field(description="для trigger_song - полный текст песни, для why_buy пусто")
     hat: str = Field(description="какая шляпа или образ на аватаре")
+    slides: list[Slide] = Field(description="для carousel - 6-9 слайдов, для остальных пусто")
     caption: str
     hashtags: list[str]
 
@@ -76,7 +84,8 @@ def build_rewrite_request(title: str, transcript: str, scenario: dict, feedback:
 
 def default_counts(total: int) -> dict[str, int]:
     songs = max(1, total // 3)
-    return {"why_buy": total - songs, "trigger_song": songs}
+    carousels = 1 if total >= 3 else 0
+    return {"why_buy": total - songs - carousels, "trigger_song": songs, "carousel": carousels}
 
 
 async def _ask(prompt: str) -> ScenarioBatch:
@@ -122,6 +131,9 @@ def card_text(scenario: dict) -> str:
     for number, scene in enumerate(scenario.get("scenes", []), start=1):
         screen = f" [{escape(scene['on_screen'])}]" if scene.get("on_screen") else ""
         lines.append(f"{number}. ({scene.get('seconds', 0)} с){screen} {escape(scene.get('voiceover', ''))}")
+    for number, slide in enumerate(scenario.get("slides") or [], start=1):
+        text = f" - {escape(slide['text'])}" if slide.get("text") else ""
+        lines.append(f"Слайд {number}: <b>{escape(slide.get('title', ''))}</b>{text}")
     if scenario.get("lyrics"):
         lines.append(f"\nТекст песни:\n{field('lyrics')}")
     lines.append(f"\nПодпись: {field('caption')}")

@@ -11,6 +11,7 @@ from loguru import logger
 
 from config import Settings
 from db.models import Reel
+from pdf.carousel import render_carousel
 from reels import heygen, publish, render, store
 from reels.scenarios import voiceover_text
 from reels.subtitles import Word, build_ass
@@ -57,12 +58,20 @@ def preview_kb(reel_id: int) -> InlineKeyboardMarkup:
     return builder.as_markup()
 
 
-async def _announce_ready(bot: Bot, settings: Settings, reel: Reel, video: Path) -> None:
+async def _send_preview(bot: Bot, chat_id: int, reel: Reel, media: Path, caption: str) -> None:
+    if media.is_dir():
+        await bot.send_media_group(chat_id, publish.album(publish.slide_paths(media)))
+        await bot.send_message(chat_id, caption, reply_markup=preview_kb(reel.id))
+        return
+    await bot.send_video(chat_id, FSInputFile(media), caption=caption, reply_markup=preview_kb(reel.id))
+
+
+async def _announce_ready(bot: Bot, settings: Settings, reel: Reel, media: Path) -> None:
     slot = reel.publish_at.astimezone(store.MSK).strftime("%d.%m %H:%M") if reel.publish_at else "-"
-    caption = f"Готов ролик: {reel.scenario.get('title', '')}\nВыйдет {slot} по мск"
+    caption = f"Готов материал: {reel.scenario.get('title', '')}\nВыйдет {slot} по мск"
     for chat_id in settings.report_ids:
         try:
-            await bot.send_video(chat_id, FSInputFile(video), caption=caption, reply_markup=preview_kb(reel.id))
+            await _send_preview(bot, chat_id, reel, media, caption)
         except Exception as exc:
             logger.error("Не показал превью {}: {}", chat_id, exc)
 
@@ -97,13 +106,24 @@ async def render_song(bot: Bot, settings: Settings, reel: Reel) -> None:
     await _finish(bot, settings, reel.id, out)
 
 
+async def render_slides(bot: Bot, settings: Settings, reel: Reel) -> None:
+    folder = REELS_DIR / f"reel_{reel.id}_slides"
+    slides = reel.scenario.get("slides") or []
+    await asyncio.to_thread(render_carousel, slides, folder, settings.bot_username)
+    await _finish(bot, settings, reel.id, folder)
+
+
+LOCAL_RENDERS = {"trigger_song": render_song, "carousel": render_slides}
+
+
 async def start_renders(bot: Bot, settings: Settings) -> int:
     started = 0
     for reel in await store.with_status(store.APPROVED):
         try:
-            if reel.kind == "trigger_song":
+            local_render = LOCAL_RENDERS.get(reel.kind)
+            if local_render:
                 await store.update(reel.id, status=store.RENDERING)
-                await render_song(bot, settings, reel)
+                await local_render(bot, settings, reel)
             else:
                 job = await heygen.start_video(voiceover_text(reel.scenario))
                 await store.update(reel.id, status=store.RENDERING, render_job=job)
@@ -138,8 +158,19 @@ async def poll_renders(bot: Bot, settings: Settings) -> int:
     return finished
 
 
-async def _publish_target(bot: Bot, target: str, reel: Reel, video: Path) -> None:
+async def _publish_album(bot: Bot, target: str, reel: Reel, folder: Path) -> None:
     if target == "tg":
+        await publish.album_to_telegram(bot, folder, reel.scenario)
+    elif target == "vk":
+        await publish.album_to_vk(folder, reel.scenario)
+    elif target == "ig":
+        await publish.album_to_instagram_owner(bot, folder, reel.scenario, reel.id)
+
+
+async def _publish_target(bot: Bot, target: str, reel: Reel, video: Path) -> None:
+    if video.is_dir():
+        await _publish_album(bot, target, reel, video)
+    elif target == "tg":
         await publish.to_telegram(bot, video, reel.scenario)
     elif target == "vk":
         await publish.to_vk(video, reel.scenario)

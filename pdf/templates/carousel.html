@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<style>
+    @page { size: 1080px 1350px; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Roboto", Arial, sans-serif; color: #111111; }
+
+    .slide {
+        position: relative;
+        width: 1080px;
+        height: 1350px;
+        padding: 120px 96px 140px 96px;
+        page-break-after: always;
+        overflow: hidden;
+        background: #ffffff;
+    }
+    .slide:last-child { page-break-after: auto; }
+
+    .brush { position: absolute; top: -90px; left: -110px; width: 980px; transform: rotate(-8deg); }
+    .logo { position: absolute; right: 70px; bottom: 56px; width: 150px; }
+
+    .kicker {
+        font-family: "Oswald", "Arial Narrow", Arial, sans-serif;
+        font-size: 34px;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        color: ${accent};
+        margin-bottom: 26px;
+    }
+    h1, h2 {
+        font-family: "Oswald", "Arial Narrow", Arial, sans-serif;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #0d0d0d;
+    }
+    h1 { font-size: 118px; line-height: 1.0; margin-top: 330px; }
+    h2 { font-size: 80px; line-height: 1.05; margin-bottom: 44px; }
+    p.text { font-size: 42px; line-height: 1.42; color: #1d1d1d; }
+
+    .num {
+        font-family: "Oswald", "Arial Narrow", Arial, sans-serif;
+        font-weight: 700;
+        font-size: 200px;
+        line-height: 0.9;
+        color: ${accent};
+        margin-bottom: 40px;
+    }
+    .rule { width: 120px; height: 10px; background: ${accent}; margin-bottom: 40px; }
+
+    .footer {
+        position: absolute;
+        left: 96px;
+        bottom: 66px;
+        font-family: "Oswald", "Arial Narrow", Arial, sans-serif;
+        font-size: 26px;
+        letter-spacing: 4px;
+        color: #9a9a9a;
+    }
+    .swipe {
+        position: absolute;
+        left: 96px;
+        bottom: 66px;
+        font-family: "Oswald", "Arial Narrow", Arial, sans-serif;
+        font-size: 34px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: #0d0d0d;
+    }
+
+    .slide.final { background: #0d0d0d; }
+    .slide.final h2 { color: #ffffff; margin-top: 260px; }
+    .slide.final p.text { color: #e6e6e6; }
+    .cta {
+        margin-top: 70px;
+        display: inline-block;
+        background: ${accent};
+        color: #ffffff;
+        font-family: "Oswald", "Arial Narrow", Arial, sans-serif;
+        font-size: 46px;
+        letter-spacing: 2px;
+        padding: 26px 44px;
+    }
+    .slide.final .footer { color: #6f6f6f; }
+</style>
+</head>
+<body>
+${slides}
+</body>
+</html>

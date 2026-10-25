@@ -23,6 +23,14 @@
 - [ ] `docker compose logs -f bot` — «Бот запускается», без трейсбеков.
 - [ ] `docker compose ps` — все healthy; `curl https://<домен>/health` → `{"status":"ok"}`.
 
+## 2.1 Вторая часть: рилсы, карусели, анонсы, PDF
+- [ ] В `.env`: `ANTHROPIC_API_KEY`, `GROQ_API_KEY`, `HEYGEN_API_KEY` + `HEYGEN_AVATAR_ID` + `HEYGEN_VOICE_ID`, `VK_USER_TOKEN` (админ сообщества, права video,photos,wall,groups,offline), `REPORT_TG_IDS` (id Льва).
+- [ ] Первый прогон HeyGen с `HEYGEN_TEST_MODE=true` (бесплатно, водяной знак), потом false.
+- [ ] Картинка или видео для нейротреков в `media/assets/reels/` (первый файл по алфавиту).
+- [ ] Примеры сценариев Юлии - `data/reels/examples/*.txt`, генератор держится их подачи.
+- [ ] `docker compose up -d --build` - миграция `b7e2c4d9a1f0` (таблица reels) применится сама; тома `media/reels`, `media/assets/reels`, `data` общие для bot и scheduler.
+- [ ] `/reels` в боте -> выпуск -> карточки пришли; утвердить карусель -> через 2 минуты превью альбомом в `REPORT_TG_IDS`.
+
 ## 3. Закрытый канал
 - [ ] `docker compose exec bot python -m scripts.chat_id` (или пост в канал + логи) → взять `-100…`.
 - [ ] Вписать `CLOSED_CHANNEL_ID` в `.env` → `docker compose up -d bot web scheduler`.

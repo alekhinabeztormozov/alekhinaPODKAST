@@ -19,6 +19,7 @@ gspread==6.1.4
 google-auth==2.37.0
 notion-client==2.2.1
 feedparser==6.0.11
+anthropic==1.13.0
 
 # --- media / pdf ---
 # ffmpeg is a system binary (not pip). WeasyPrint needs GTK libs on Windows.

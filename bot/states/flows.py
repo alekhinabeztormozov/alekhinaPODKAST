@@ -13,3 +13,9 @@ class Quiz(StatesGroup):
 
 class Producer(StatesGroup):
     choosing_ambient = State()
+
+
+class ReelFlow(StatesGroup):
+    waiting_episode = State()
+    waiting_feedback = State()
+    waiting_track = State()

@@ -43,6 +43,7 @@ async def _broadcast(bot: Bot, ids: list[int], text: str) -> int:
 async def pull_notion(bot: Bot, settings: Settings) -> int:
     await notion_sync.sync_catalog()
     published = await notion_sync.publish_ready_posts(bot, settings)
+    published += await notion_sync.publish_closed_posts(bot, settings)
     published += await notion_sync.publish_vk_posts()
     return published
 

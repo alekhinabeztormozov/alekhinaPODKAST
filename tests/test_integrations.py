@@ -10,7 +10,7 @@ def test_sheet_headers_cover_four_tabs():
 
 
 def test_episodes_schema_has_all_properties():
-    assert len(notion.EPISODES_SCHEMA) == 16
+    assert len(notion.EPISODES_SCHEMA) == 17
     assert "title" in notion.EPISODES_SCHEMA["Название"]
     for field in ("Ключевое слово", "Теги", "Аудио-бонус", "PDF-бонус"):
         assert field in notion.EPISODES_SCHEMA

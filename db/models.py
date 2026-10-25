@@ -137,6 +137,28 @@ class SeenKey(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
+class Reel(Base):
+    __tablename__ = "reels"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    episode_ref: Mapped[str] = mapped_column(String(128), index=True)
+    episode_title: Mapped[str] = mapped_column(String(512), default="")
+    kind: Mapped[str] = mapped_column(String(32))
+    status: Mapped[str] = mapped_column(String(16), default="draft", index=True)
+    scenario: Mapped[dict] = mapped_column(JSON, default=dict)
+    feedback: Mapped[str] = mapped_column(Text, default="")
+    render_job: Mapped[str] = mapped_column(String(128), default="")
+    track_path: Mapped[str] = mapped_column(Text, default="")
+    video_path: Mapped[str] = mapped_column(Text, default="")
+    publish_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True, index=True)
+    published: Mapped[list] = mapped_column(JSON, default=list)
+    error: Mapped[str] = mapped_column(Text, default="")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
+    )
+
+
 class ScheduledPost(Base):
     __tablename__ = "scheduled_posts"
 

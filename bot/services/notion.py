@@ -12,6 +12,12 @@ STATUSES = ["Идея", "Сценарий", "Запись", "Монтаж", "К�
 READY_STATUS = "Контент готов"
 PUBLISHED_STATUS = "Опубликован"
 CATALOG_STATUSES = (READY_STATUS, PUBLISHED_STATUS)
+RICH_TEXT_LIMIT = 2000
+POST_FIELDS = {
+    "open_channel": "Пост для Telegram",
+    "closed_channel": "Пост для закрытого канала",
+    "vk": "Пост для VK",
+}
 
 EPISODES_SCHEMA: dict[str, dict[str, Any]] = {
     "Название": {"title": {}},
@@ -28,6 +34,7 @@ EPISODES_SCHEMA: dict[str, dict[str, Any]] = {
     "Аудио-бонус": {"url": {}},
     "Пост для Telegram": {"rich_text": {}},
     "Пост для VK": {"rich_text": {}},
+    "Пост для закрытого канала": {"rich_text": {}},
     "Текст для Дзен": {"rich_text": {}},
     "Темы для клипов": {"rich_text": {}},
 }
@@ -118,6 +125,51 @@ def telegram_post(page: dict[str, Any]) -> str:
 
 def vk_post(page: dict[str, Any]) -> str:
     return _rich(page, "Пост для VK")
+
+
+def closed_post(page: dict[str, Any]) -> str:
+    return _rich(page, "Пост для закрытого канала")
+
+
+def _rich_text_value(text: str) -> dict[str, Any]:
+    chunks = [text[i:i + RICH_TEXT_LIMIT] for i in range(0, len(text), RICH_TEXT_LIMIT)] or [""]
+    return {"rich_text": [{"type": "text", "text": {"content": chunk}} for chunk in chunks]}
+
+
+def _ensure_schema_sync() -> list[str]:
+    settings = get_settings()
+    database = _client().databases.retrieve(database_id=settings.notion_db_episodes)
+    missing = {name: spec for name, spec in EPISODES_SCHEMA.items() if name not in database.get("properties", {})}
+    if missing:
+        _client().databases.update(database_id=settings.notion_db_episodes, properties=missing)
+    return sorted(missing)
+
+
+def _find_page_sync(title: str) -> dict[str, Any] | None:
+    settings = get_settings()
+    response = _client().databases.query(
+        database_id=settings.notion_db_episodes,
+        filter={"property": "Название", "title": {"equals": title}},
+    )
+    results = response.get("results", [])
+    return results[0] if results else None
+
+
+def _write_posts_sync(page_id: str, posts: dict[str, str]) -> None:
+    properties = {POST_FIELDS[kind]: _rich_text_value(text) for kind, text in posts.items() if kind in POST_FIELDS}
+    _client().pages.update(page_id=page_id, properties=properties)
+
+
+async def ensure_schema() -> list[str]:
+    return await asyncio.to_thread(_ensure_schema_sync)
+
+
+async def find_page(title: str) -> dict[str, Any] | None:
+    return await asyncio.to_thread(_find_page_sync, title)
+
+
+async def write_posts(page_id: str, posts: dict[str, str]) -> None:
+    await asyncio.to_thread(_write_posts_sync, page_id, posts)
 
 
 def extract_catalog(page: dict[str, Any]) -> dict[str, Any]:

@@ -63,6 +63,38 @@ class Settings(BaseSettings):
 
     bot_username: str = "AlekhinaU_bot"
 
+    anthropic_api_key: str = ""
+    reels_model: str = "claude-opus-5-5"
+    groq_api_key: str = ""
+    transcribe_model: str = "whisper-large-v3"
+    heygen_api_key: str = ""
+    heygen_avatar_id: str = ""
+    heygen_voice_id: str = ""
+    heygen_test_mode: bool = False
+    vk_user_token: str = ""
+    reels_per_episode: int = 6
+    reels_slots_msk: str = "12:00,19:00"
+    reels_targets: str = "tg,vk,ig"
+    report_tg_ids: str = ""
+
+    @property
+    def reel_slots(self) -> list[tuple[int, int]]:
+        slots = []
+        for chunk in self.reels_slots_msk.split(","):
+            hours, _, minutes = chunk.strip().partition(":")
+            if hours.isdigit():
+                slots.append((int(hours), int(minutes or 0)))
+        return sorted(slots)
+
+    @property
+    def reel_targets(self) -> list[str]:
+        return [part.strip() for part in self.reels_targets.split(",") if part.strip()]
+
+    @property
+    def report_ids(self) -> list[int]:
+        raw = [p.strip() for p in self.report_tg_ids.split(",") if p.strip()]
+        return [int(x) for x in raw] or self.admin_ids
+
     @property
     def admin_ids(self) -> list[int]:
         return [int(x) for x in self.admin_ids_raw]

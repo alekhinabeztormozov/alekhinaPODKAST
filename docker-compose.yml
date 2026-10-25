@@ -41,6 +41,9 @@ services:
       USE_REDIS: "true"
     volumes:
       - ./secrets:/app/secrets:ro
+      - ./media/reels:/app/media/reels
+      - ./media/assets/reels:/app/media/assets/reels
+      - ./data:/app/data
     depends_on:
       db:
         condition: service_healthy
@@ -73,6 +76,9 @@ services:
       DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-alehina}:${POSTGRES_PASSWORD:-alehina}@db:5432/${POSTGRES_DB:-alehina}
     volumes:
       - ./secrets:/app/secrets:ro
+      - ./media/reels:/app/media/reels
+      - ./media/assets/reels:/app/media/assets/reels
+      - ./data:/app/data
     depends_on:
       db:
         condition: service_healthy

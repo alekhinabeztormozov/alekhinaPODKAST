@@ -180,8 +180,9 @@ def owner_menu() -> InlineKeyboardMarkup:
     builder.button(text="📄 Собрать гайд", callback_data="own:guide")
     builder.button(text="🎼 Эмбиенты", callback_data="own:ambients")
     builder.button(text="📊 Статистика", callback_data="own:stats")
+    builder.button(text="🎬 Рилсы", callback_data="reel:panel")
     builder.button(text="👀 Клиентский вид", callback_data="own:client")
-    builder.adjust(2, 2, 1)
+    builder.adjust(2, 2, 2)
     return builder.as_markup()
 
 

@@ -223,3 +223,21 @@ async def publish_vk_posts() -> int:
         except Exception as exc:
             logger.error("Не опубликовал пост VK {}: {}", page_id, exc)
     return published
+
+
+async def publish_closed_posts(bot: Bot, settings: Settings) -> int:
+    if not settings.closed_channel_id:
+        return 0
+    published = 0
+    for page in await notion.published_pages():
+        page_id = notion.episode_id(page)
+        text = notion.closed_post(page)
+        if not page_id or not text or await seen.is_seen("closed_post", page_id):
+            continue
+        try:
+            await bot.send_message(settings.closed_channel_id, text)
+            await seen.mark_seen("closed_post", page_id)
+            published += 1
+        except Exception as exc:
+            logger.error("Не опубликовал пост в закрытый канал {}: {}", page_id, exc)
+    return published

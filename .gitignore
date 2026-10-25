@@ -38,3 +38,7 @@ Thumbs.db
 # graph output stays tracked? keep cache out
 graphify-out/cache/
 secrets/
+
+# reels conveyor (generated + client media)
+media/reels/
+data/transcripts/

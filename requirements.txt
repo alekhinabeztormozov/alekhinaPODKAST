@@ -24,6 +24,7 @@ anthropic==1.13.0
 # --- media / pdf ---
 # ffmpeg is a system binary (not pip). WeasyPrint needs GTK libs on Windows.
 weasyprint==63.1
+pypdf==6.16.0
 
 # --- config / logging ---
 pydantic==2.9.2

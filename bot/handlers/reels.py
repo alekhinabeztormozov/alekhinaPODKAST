@@ -12,6 +12,7 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 from loguru import logger
 
 from bot.handlers.producer import MAX_TG_DOWNLOAD, TMP_DIR, _is_owner, owner_only
+from bot.handlers.workbooks import episode_pdf_kb
 from bot.services import notion
 from bot.states.flows import ReelFlow
 from bot.ui import show
@@ -115,10 +116,10 @@ async def receive_episode(message: Message, bot: Bot, state: FSMContext) -> None
         return
     await message.answer(f"Готово, сценариев: {len(reel_ids)}. Посмотрите логику каждого 👇")
     await send_cards(bot, message.chat.id, reel_ids)
-    await send_announces(message, title)
+    await send_announces(message, title, reel_ids[0] if reel_ids else 0)
 
 
-async def send_announces(message: Message, title: str) -> None:
+async def send_announces(message: Message, title: str, reel_id: int) -> None:
     transcript = transcript_text(load_transcript(episode_ref(title)))
     try:
         posts = await announces.generate(title, transcript)
@@ -129,6 +130,8 @@ async def send_announces(message: Message, title: str) -> None:
     await message.answer(f"Анонсы к выпуску ({where}):", parse_mode=None)
     for kind, label in ANNOUNCE_LABELS.items():
         await message.answer(f"{label}\n\n{posts[kind]}", parse_mode=None)
+    if reel_id:
+        await message.answer("Нужен печатный материал к выпуску?", reply_markup=episode_pdf_kb(reel_id))
 
 
 async def save_announces(title: str, posts: dict[str, str]) -> str:

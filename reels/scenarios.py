@@ -32,6 +32,10 @@ class Scene(BaseModel):
     voiceover: str = Field(description="что говорит или поет аватар")
     on_screen: str = Field(description="крупный текст на экране, до 6 слов, можно пусто")
     visual: str = Field(description="что в кадре: план, шляпа, предметы, движение")
+    sfx: str = Field(
+        default="",
+        description="звук в начале сцены, коротко по-английски (cash register ding), чаще пусто",
+    )
 
 
 class Slide(BaseModel):
@@ -153,7 +157,8 @@ def card_text(scenario: dict) -> str:
     lines.append(f"\nХук: {field('hook')}")
     for number, scene in enumerate(scenario.get("scenes", []), start=1):
         screen = f" [{escape(scene['on_screen'])}]" if scene.get("on_screen") else ""
-        lines.append(f"{number}. ({scene.get('seconds', 0)} с){screen} {escape(scene.get('voiceover', ''))}")
+        sound = f" 🔊 {escape(scene['sfx'])}" if scene.get("sfx") else ""
+        lines.append(f"{number}. ({scene.get('seconds', 0)} с){screen} {escape(scene.get('voiceover', ''))}{sound}")
     for number, slide in enumerate(scenario.get("slides") or [], start=1):
         text = f" - {escape(slide['text'])}" if slide.get("text") else ""
         lines.append(f"Слайд {number}: <b>{escape(slide.get('title', ''))}</b>{text}")

@@ -4,7 +4,7 @@ import uuid
 from pathlib import Path
 
 from aiogram import Bot, F, Router
-from aiogram.filters import Command, StateFilter
+from aiogram.filters import Command, CommandObject, StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, FSInputFile, Message, User
 from loguru import logger
@@ -25,6 +25,7 @@ from bot.ui import show
 from config import Settings, get_settings
 from media.ambient import find_ambient, get_ambients
 from media.intro import get_intro
+from media.sfx import SfxError, generate_sound
 
 router = Router(name="producer")
 
@@ -32,6 +33,10 @@ MAX_TG_DOWNLOAD = 20 * 1024 * 1024
 MIN_GUIDE_LEN = 30
 TMP_DIR = Path("media/tmp")
 OUT_DIR = Path("media/out")
+SFX_HINT = (
+    "Напишите после команды, какой нужен звук. Лучше по-английски, 2-5 слов: "
+    "/sfx cash register ding, /sfx chips bag crunch"
+)
 
 
 def _is_owner(user: User | None, settings: Settings) -> bool:
@@ -67,6 +72,22 @@ async def list_ambients(message: Message) -> None:
         "Фоновые эмбиенты (нажми, чтобы послушать):\n\n" + "\n".join(lines),
         reply_markup=ambient_preview_kb(),
     )
+
+
+@router.message(Command("sfx"), owner_only)
+async def make_sound(message: Message, command: CommandObject) -> None:
+    description = (command.args or "").strip()
+    if not description:
+        await message.answer(SFX_HINT)
+        return
+    await message.answer("Делаю звук…")
+    try:
+        sound = await generate_sound(description)
+    except SfxError as exc:
+        logger.warning("Звук не собрался: {}", exc)
+        await message.answer(f"Не получилось: {exc}")
+        return
+    await message.answer_audio(FSInputFile(sound), caption=description)
 
 
 @router.callback_query(F.data.startswith("ambprev:"))

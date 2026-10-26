@@ -11,6 +11,8 @@ from loguru import logger
 
 from config import Settings
 from db.models import Reel
+from media.pipeline import probe_duration
+from media.sfx import SfxError, generate_sound
 from pdf.carousel import render_carousel
 from reels import heygen, publish, render, store
 from reels.scenarios import voiceover_text
@@ -20,6 +22,7 @@ from reels.transcribe import TranscribeError, words_of
 REELS_DIR = Path("media/reels")
 SONG_VISUALS_DIR = Path("media/assets/reels")
 SONG_SECONDS = 25
+SFX_SECONDS = 2.0
 HEYGEN_DONE = "completed"
 
 
@@ -133,11 +136,41 @@ async def start_renders(bot: Bot, settings: Settings) -> int:
     return started
 
 
+def scene_offsets(scenes: list[dict], video_length: float) -> list[float]:
+    planned = sum(max(0, scene.get("seconds") or 0) for scene in scenes)
+    if not planned:
+        return [0.0 for _ in scenes]
+    scale = video_length / planned
+    offsets, elapsed = [], 0.0
+    for scene in scenes:
+        offsets.append(round(elapsed * scale, 2))
+        elapsed += max(0, scene.get("seconds") or 0)
+    return offsets
+
+
+async def scene_sounds(settings: Settings, scenario: dict, video_length: float) -> list[tuple[Path, float]]:
+    if not settings.elevenlabs_api_key:
+        return []
+    scenes = scenario.get("scenes") or []
+    sounds = []
+    for scene, offset in zip(scenes, scene_offsets(scenes, video_length), strict=True):
+        if not scene.get("sfx"):
+            continue
+        try:
+            sounds.append((await generate_sound(scene["sfx"], SFX_SECONDS), offset))
+        except SfxError as exc:
+            logger.warning("Звук \"{}\" пропущен: {}", scene["sfx"], exc)
+    return sounds
+
+
 async def finish_avatar(bot: Bot, settings: Settings, reel: Reel, video_url: str) -> None:
     raw = await heygen.download(video_url, reel_file(reel.id, "_raw.mp4"))
     words = await _safe_words(raw)
+    length = await asyncio.to_thread(probe_duration, raw, settings.ffprobe_bin)
+    sounds = await scene_sounds(settings, reel.scenario, length)
     out = reel_file(reel.id, ".mp4")
-    await asyncio.to_thread(render.compose_avatar_reel, raw, build_ass(words, screen_hook(reel.scenario)), out)
+    ass_text = build_ass(words, screen_hook(reel.scenario))
+    await asyncio.to_thread(render.compose_avatar_reel, raw, ass_text, out, sounds)
     raw.unlink(missing_ok=True)
     await _finish(bot, settings, reel.id, out)
 

@@ -76,3 +76,19 @@ def test_loudness_and_cut(tmp_path):
 
     clip = cut_audio(track, 3, 2, tmp_path / "clip.mp3")
     assert 1.8 <= float(_streams(clip)["format"]["duration"]) <= 2.2
+
+
+def test_avatar_reel_mixes_sound_effect(tmp_path):
+    source = tmp_path / "avatar.mp4"
+    ding = tmp_path / "ding.mp3"
+    _make([
+        "-f", "lavfi", "-i", "testsrc=size=720x1280:rate=25:duration=3",
+        "-f", "lavfi", "-i", "sine=frequency=220:duration=3", "-shortest", str(source),
+    ])
+    _make(["-f", "lavfi", "-i", "sine=frequency=1200:duration=0.5", str(ding)])
+
+    out = compose_avatar_reel(source, build_ass(WORDS, "Хук"), tmp_path / "sfx_out.mp4", [(ding, 1.0)])
+
+    info = _streams(out)
+    assert {stream["codec_type"] for stream in info["streams"]} == {"video", "audio"}
+    assert 2.8 <= float(info["format"]["duration"]) <= 3.3

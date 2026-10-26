@@ -4,7 +4,8 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 from config import Settings
-from reels import conveyor, publish, scenarios, store
+from media import sfx
+from reels import conveyor, publish, render, scenarios, store
 from reels.render import loudest_start
 from reels.subtitles import Word, ass_time, build_ass, group_lines, words_from_segments
 
@@ -182,3 +183,54 @@ def test_idea_request_text_only():
     content = scenarios.idea_request("Шоколад внутри", None, "")
     assert len(content) == 1
     assert "Выпуски подкаста" not in content[0]["text"]
+
+
+def test_scene_offsets_scale_to_real_length():
+    scenes = [{"seconds": 5}, {"seconds": 10}, {"seconds": 5}]
+    assert conveyor.scene_offsets(scenes, 40.0) == [0.0, 10.0, 30.0]
+
+
+def test_scene_offsets_without_plan_start_at_zero():
+    assert conveyor.scene_offsets([{"seconds": 0}, {}], 30.0) == [0.0, 0.0]
+
+
+async def test_scene_sounds_skip_without_key():
+    settings = Settings(elevenlabs_api_key="")
+    scenario = {**SCENARIO, "scenes": [{**SCENARIO["scenes"][0], "sfx": "cash register ding"}]}
+    assert await conveyor.scene_sounds(settings, scenario, 20.0) == []
+
+
+async def test_scene_sounds_place_sound_at_its_scene(tmp_path, monkeypatch):
+    calls = []
+
+    async def fake_generate(description, seconds=None):
+        calls.append(description)
+        return tmp_path / "ding.mp3"
+
+    monkeypatch.setattr(conveyor, "generate_sound", fake_generate)
+    scenes = [SCENARIO["scenes"][0], {**SCENARIO["scenes"][1], "sfx": "chips bag crunch"}]
+    sounds = await conveyor.scene_sounds(Settings(elevenlabs_api_key="key"), {**SCENARIO, "scenes": scenes}, 46.0)
+    assert calls == ["chips bag crunch"]
+    assert sounds == [(tmp_path / "ding.mp3", 6.0)]
+
+
+def test_card_text_marks_sound():
+    scenario = {**SCENARIO, "scenes": [{**SCENARIO["scenes"][0], "sfx": "cash register ding"}]}
+    assert "🔊 cash register ding" in scenarios.card_text(scenario)
+
+
+def test_avatar_audio_chain_mixes_delayed_sounds():
+    chain = render.avatar_audio_chain([0.0, 6.5])
+    assert "[2:a]adelay=6500|6500" in chain
+    assert "amix=inputs=3" in chain
+    assert render.avatar_audio_chain([]).startswith("[0:a]loudnorm")
+
+
+def test_sfx_cache_path_ignores_case_and_spaces():
+    assert sfx.sfx_path(" Cash Register ", 2) == sfx.sfx_path("cash register", 2.0)
+    assert sfx.sfx_path("cash register", 2) != sfx.sfx_path("cash register", None)
+
+
+def test_sound_request_clamps_duration():
+    assert sfx.sound_request("ding", 60)["duration_seconds"] == sfx.MAX_SECONDS
+    assert "duration_seconds" not in sfx.sound_request("ding", None)

@@ -12,6 +12,7 @@ FONTS_DIR = BASE_DIR / "pdf" / "fonts"
 IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp"}
 SONG_FADE = 0.8
 SOCIAL_LOUDNESS = "loudnorm=I=-14:TP=-1.5:LRA=11"
+SFX_VOLUME = 0.6
 ENCODE = [
     "-c:v", "libx264", "-preset", "veryfast", "-crf", "21", "-pix_fmt", "yuv420p",
     "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-movflags", "+faststart",
@@ -47,13 +48,32 @@ def _write_ass(ass_text: str, out_path: Path) -> Path:
     return ass_path
 
 
-def compose_avatar_reel(video: Path, ass_text: str, out_path: Path) -> Path:
+def avatar_audio_chain(offsets: list[float]) -> str:
+    if not offsets:
+        return f"[0:a]{SOCIAL_LOUDNESS}[a]"
+    parts = []
+    for number, offset in enumerate(offsets, start=1):
+        delay = int(offset * 1000)
+        parts.append(f"[{number}:a]adelay={delay}|{delay},volume={SFX_VOLUME}[sfx{number}]")
+    mixed = "".join(f"[sfx{number}]" for number in range(1, len(offsets) + 1))
+    parts.append(
+        f"[0:a]{mixed}amix=inputs={len(offsets) + 1}:duration=first:normalize=0,{SOCIAL_LOUDNESS}[a]"
+    )
+    return ";".join(parts)
+
+
+def compose_avatar_reel(
+    video: Path, ass_text: str, out_path: Path, sounds: list[tuple[Path, float]] | None = None
+) -> Path:
+    sounds = sounds or []
     out_path.parent.mkdir(parents=True, exist_ok=True)
     ass_path = _write_ass(ass_text, out_path)
     video_chain = f"[0:v]{_cover_filter()},{_subtitles_filter(ass_path.name)}[v]"
+    sound_inputs = [arg for sound, _ in sounds for arg in ("-i", str(sound.resolve()))]
+    audio_chain = avatar_audio_chain([offset for _, offset in sounds])
     cmd = [
-        get_settings().ffmpeg_bin, "-hide_banner", "-nostdin", "-y", "-i", str(video.resolve()),
-        "-filter_complex", f"{video_chain};[0:a]{SOCIAL_LOUDNESS}[a]",
+        get_settings().ffmpeg_bin, "-hide_banner", "-nostdin", "-y", "-i", str(video.resolve()), *sound_inputs,
+        "-filter_complex", f"{video_chain};{audio_chain}",
         "-map", "[v]", "-map", "[a]", *ENCODE, out_path.name,
     ]
     try:

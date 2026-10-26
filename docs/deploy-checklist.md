@@ -24,7 +24,7 @@
 - [ ] `docker compose ps` — все healthy; `curl https://<домен>/health` → `{"status":"ok"}`.
 
 ## 2.1 Вторая часть: рилсы, карусели, анонсы, PDF
-- [ ] В `.env`: `ANTHROPIC_API_KEY`, `GROQ_API_KEY`, `HEYGEN_API_KEY` + `HEYGEN_AVATAR_ID` + `HEYGEN_VOICE_ID`, `VK_USER_TOKEN` (админ сообщества, права video,photos,wall,groups,offline), `REPORT_TG_IDS` (id Льва).
+- [ ] В `.env`: `ANTHROPIC_API_KEY`, `GROQ_API_KEY`, `HEYGEN_API_KEY` + `HEYGEN_AVATAR_ID` + `HEYGEN_VOICE_ID`, `VK_USER_TOKEN` (админ сообщества, права video,photos,wall,groups,offline), `REPORT_TG_IDS` (id Льва), `ELEVENLABS_API_KEY` (звуки по описанию; без ключа рилсы собираются без звуков). Проверка ключа - `/sfx cash register ding` в боте.
 - [ ] Первый прогон HeyGen с `HEYGEN_TEST_MODE=true` (бесплатно, водяной знак), потом false.
 - [ ] Картинка или видео для нейротреков в `media/assets/reels/` (первый файл по алфавиту).
 - [ ] Примеры сценариев Юлии - `data/reels/examples/*.txt`, генератор держится их подачи.

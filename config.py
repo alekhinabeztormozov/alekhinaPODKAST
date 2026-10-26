@@ -71,6 +71,7 @@ class Settings(BaseSettings):
     heygen_avatar_id: str = ""
     heygen_voice_id: str = ""
     heygen_test_mode: bool = False
+    elevenlabs_api_key: str = ""
     vk_user_token: str = ""
     reels_per_episode: int = 6
     reels_slots_msk: str = "12:00,19:00"

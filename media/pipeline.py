@@ -17,11 +17,11 @@ class AudioProfile:
     loudness_i: float = -16.0
     loudness_tp: float = -1.5
     loudness_lra: float = 11.0
-    music_volume: float = 0.18
+    music_volume: float = 0.04
     duck_threshold: float = 0.03
     duck_ratio: float = 8.0
     duck_attack: int = 20
-    duck_release: int = 350
+    duck_release: int = 1200
     music_fade: float = 2.0
     bitrate: str = "192k"
     sample_rate: int = 44100

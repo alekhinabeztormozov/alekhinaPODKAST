@@ -13,6 +13,7 @@ async def make_episode(
     intro: Path | None = None,
     outro: Path | None = None,
     music: Path | None = None,
+    jingle: Path | None = None,
     profile: AudioProfile | None = None,
 ) -> Path:
     settings = get_settings()
@@ -21,6 +22,7 @@ async def make_episode(
         intro=intro,
         outro=outro,
         music=music,
+        jingle=jingle,
         profile=profile or AudioProfile(),
     )
     return await asyncio.to_thread(

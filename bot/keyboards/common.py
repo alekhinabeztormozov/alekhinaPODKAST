@@ -196,7 +196,7 @@ def ambient_kb() -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     for track in get_ambients():
         builder.button(text=track.title, callback_data=f"amb:{track.code}")
-    builder.button(text="Без фона", callback_data="amb:none")
+    builder.button(text="Без музыки", callback_data="amb:none")
     builder.button(text="Отмена", callback_data="amb:cancel")
     builder.adjust(1)
     return builder.as_markup()

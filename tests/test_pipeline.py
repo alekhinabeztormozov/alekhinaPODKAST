@@ -66,3 +66,31 @@ def test_intro_and_voice_normalized_separately_before_concat():
     assert "[body]loudnorm" in filt
     assert filt.index("[body]loudnorm") < filt.index("concat")
     assert filt.endswith("[out]")
+
+
+def test_jingle_wraps_clean_voice_without_mixing():
+    filt, _ = build_filter_complex(
+        PipelineInputs(voice=Path("v.mp3"), intro=Path("i.mp3"), jingle=Path("j.mp3")),
+        jingle_end=47.0,
+    )
+    assert "sidechaincompress" not in filt
+    assert "amix" not in filt
+    assert "concat=n=4:v=0:a=1[cat]" in filt
+    assert filt.index("[introfn]") < filt.index("[jopenn]") < filt.index("[bodyn]") < filt.index("[jclosen]")
+
+
+def test_jingle_closer_ends_where_track_sound_ends():
+    profile = AudioProfile()
+    filt, _ = build_filter_complex(
+        PipelineInputs(voice=Path("v.mp3"), jingle=Path("j.mp3"), profile=profile), jingle_end=47.0,
+    )
+    closer_start = 47.0 - profile.jingle_close_seconds
+    assert f"atrim={closer_start:.3f}:47.000" in filt
+    assert f"[jopenraw]atrim=0:{profile.jingle_open_seconds}" in filt
+
+
+def test_jingle_normalized_quieter_than_voice():
+    profile = AudioProfile()
+    filt, _ = build_filter_complex(PipelineInputs(voice=Path("v.mp3"), jingle=Path("j.mp3"), profile=profile))
+    assert f"[jopen]loudnorm=I={profile.jingle_loudness_i}" in filt
+    assert f"[body]loudnorm=I={profile.loudness_i}" in filt

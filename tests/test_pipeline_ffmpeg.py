@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from media.pipeline import AudioProfile, PipelineInputs, probe_duration, process_episode
+from media.pipeline import AudioProfile, PipelineInputs, probe_duration, probe_sound_end, process_episode
 
 pytestmark = pytest.mark.skipif(
     shutil.which("ffmpeg") is None or shutil.which("ffprobe") is None,
@@ -77,3 +77,30 @@ def test_ducking_lowers_music_under_voice(tmp_path):
     gap_rms = _segment_rms(out, 3.2, 3.8)
     voiced_rms = _segment_rms(out, 1.0, 2.5)
     assert voiced_rms > gap_rms
+
+
+def _with_trailing_silence(path: Path, sound: float, silence: float) -> Path:
+    subprocess.run(
+        [FFMPEG, "-y", "-hide_banner", "-loglevel", "error", "-f", "lavfi",
+         "-i", f"sine=frequency=330:duration={sound}", "-af", f"volume=0.6,apad=pad_dur={silence}",
+         "-ac", "2", "-ar", "44100", str(path)],
+        check=True, capture_output=True, encoding="utf-8", errors="replace",
+    )
+    return path
+
+
+def test_sound_end_skips_trailing_silence(tmp_path):
+    track = _with_trailing_silence(tmp_path / "j.wav", 20, 4)
+    assert abs(probe_sound_end(track, -50.0) - 20) < 0.3
+
+
+def test_jingle_adds_opener_and_closer_around_voice(tmp_path):
+    voice = _sine(tmp_path / "v.wav", 10)
+    track = _with_trailing_silence(tmp_path / "j.wav", 30, 3)
+    profile = AudioProfile()
+    out = process_episode(
+        PipelineInputs(voice=voice, jingle=track, profile=profile), tmp_path / "out.mp3", ffmpeg=FFMPEG
+    )
+    expected = profile.jingle_open_seconds + 10 + profile.jingle_close_seconds
+    assert abs(probe_duration(out) - expected) < 0.7
+    assert _segment_rms(out, expected - 2.5, expected - 1.5) > -45.0

@@ -171,7 +171,7 @@ async def receive_audio(message: Message, state: FSMContext) -> None:
             "\n\n⚠ Файл больше 20 МБ. Telegram Bot API не отдаст его боту без "
             "локального Bot API server — см. docs/owner-guide.md."
         )
-    await message.answer("Выбери фоновый эмбиент для эпизода:" + warning, reply_markup=ambient_kb())
+    await message.answer("Выбери музыку для начала и конца выпуска:" + warning, reply_markup=ambient_kb())
 
 
 @router.callback_query(F.data.startswith("amb:"), Producer.choosing_ambient)
@@ -191,17 +191,17 @@ async def choose_ambient(callback: CallbackQuery, bot: Bot, state: FSMContext) -
         await callback.answer("Файл потерялся, пришли аудио заново.", show_alert=True)
         return
 
-    music: Path | None = None
+    jingle: Path | None = None
     if action != "none":
         track = find_ambient(action)
         if track is None or not track.path.exists():
-            await callback.answer("Эмбиент не найден.", show_alert=True)
+            await callback.answer("Трек не найден.", show_alert=True)
             return
-        music = track.path
+        jingle = track.path
 
     await show(callback, "Обрабатываю аудио, подожди…")
     try:
-        result = await _process(bot, file_id, music)
+        result = await _process(bot, file_id, jingle)
     except Exception as exc:
         logger.error("Обработка аудио упала: {}", exc)
         await bot.send_message(
@@ -219,7 +219,7 @@ async def choose_ambient(callback: CallbackQuery, bot: Bot, state: FSMContext) -
     )
 
 
-async def _process(bot: Bot, file_id: str, music: Path | None) -> Path:
+async def _process(bot: Bot, file_id: str, jingle: Path | None) -> Path:
     TMP_DIR.mkdir(parents=True, exist_ok=True)
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     token = uuid.uuid4().hex[:12]
@@ -228,7 +228,7 @@ async def _process(bot: Bot, file_id: str, music: Path | None) -> Path:
 
     await bot.download(file_id, destination=str(source))
     try:
-        await make_episode(voice=source, out_path=out_path, intro=get_intro(), music=music)
+        await make_episode(voice=source, out_path=out_path, intro=get_intro(), jingle=jingle)
     finally:
         source.unlink(missing_ok=True)
     return out_path
